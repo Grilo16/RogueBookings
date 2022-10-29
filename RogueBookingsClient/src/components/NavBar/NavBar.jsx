@@ -23,6 +23,9 @@ function NavBar() {
         <li>
           <Link to="/businesses">Businesses</Link>
         </li>
+        <li>
+          <Link to="/messypage">Messy page =D</Link>
+        </li>
       </ul>
     </>
   );

@@ -7,6 +7,7 @@ import Users from "./Users";
 import Classes from "./Classes/Classes";
 import NavBar from "../NavBar/NavBar";
 import Businesses from "./Businesses";
+import HolderPage from "../../MessySpaceForHookingUpServerLetsGo/HolderPage";
 
 function Pages() {
   return (
@@ -19,6 +20,7 @@ function Pages() {
         <Route path="/users" element={<Users />} />
         <Route path="/classes" element={<Classes />} />
         <Route path="/businesses" element={<Businesses />} />
+        <Route path="/messypage" element={<HolderPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>
