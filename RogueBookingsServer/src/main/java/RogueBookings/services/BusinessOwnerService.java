@@ -3,9 +3,7 @@ package RogueBookings.services;
 
 import RogueBookings.converters.DTOConverter;
 import RogueBookings.dataTransferObjects.OwnerDTO;
-import RogueBookings.dataTransferObjects.UserDTO;
 import RogueBookings.models.businessOwner.BusinessesOwner;
-import RogueBookings.models.user.User;
 import RogueBookings.repositories.BusinessesOwnerRepository;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +27,6 @@ public class BusinessOwnerService {
         this.businessesOwnerRepository = businessesOwnerRepository;
         this.dtoConverter = dtoConverter;
     }
-
-
-
-
 
     public List<OwnerDTO> getAllBusinessOwners() {
         return dtoConverter.entityToDTO(businessesOwnerRepository.findAll(), ownerDTOType);

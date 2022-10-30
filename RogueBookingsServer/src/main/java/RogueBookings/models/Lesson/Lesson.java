@@ -1,8 +1,8 @@
 package RogueBookings.models.Lesson;
 
 import RogueBookings.models.business.Business;
+import RogueBookings.models.student.LessonsStudent;
 import RogueBookings.models.teacher.LessonsTeacher;
-import RogueBookings.models.user.User;
 import com.fasterxml.jackson.annotation.*;
 import org.hibernate.Hibernate;
 
@@ -46,16 +46,13 @@ public class Lesson {
     @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL)
     private Set<LessonsTeacher> lessonsTeachers = new LinkedHashSet<>();
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinTable(name = "lessons_students",
-            joinColumns = @JoinColumn(name = "lesson_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "students_id", referencedColumnName = "id"))
-    private Set<User> students = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL)
+    private Set<LessonsStudent> students = new LinkedHashSet<>();
 
     public Lesson() {
     }
 
-    public Lesson(String name, String date, Integer capacity, String description, Long price, Business business, Set<LessonsTeacher> lessonsTeachers, Set<User> students) {
+    public Lesson(String name, String date, Integer capacity, String description, Long price, Business business, Set<LessonsTeacher> lessonsTeachers, Set<LessonsStudent> students) {
         this.name = name;
         this.date = date;
         this.capacity = capacity;
@@ -66,7 +63,7 @@ public class Lesson {
         this.students = students;
     }
 
-    public Lesson(Long id, String name, String date, Integer capacity, String description, Long price, Business business, Set<LessonsTeacher> lessonsTeachers, Set<User> students) {
+    public Lesson(Long id, String name, String date, Integer capacity, String description, Long price, Business business, Set<LessonsTeacher> lessonsTeachers, Set<LessonsStudent> students) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -142,11 +139,11 @@ public class Lesson {
         this.lessonsTeachers = lessonsTeachers;
     }
 
-    public Set<User> getStudents() {
+    public Set<LessonsStudent> getStudents() {
         return students;
     }
 
-    public void setStudents(Set<User> students) {
+    public void setStudents(Set<LessonsStudent> students) {
         this.students = students;
     }
 

@@ -1,6 +1,7 @@
 package RogueBookings.controllers;
 
 
+import RogueBookings.dataTransferObjects.LessonDTO;
 import RogueBookings.services.LessonService;
 import RogueBookings.models.Lesson.Lesson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class LessonController {
     }
 
     @GetMapping
-    public List<Lesson> getAllLessons(){
+    public List<LessonDTO> getAllLessons(){
         return lessonService.getAllLessons();
     }
 

@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Component
 public class DTOConverter<DTO, Entity> {
@@ -22,6 +24,10 @@ public class DTOConverter<DTO, Entity> {
 
     }
     public List<DTO> entityToDTO(List<Entity> entities, Type type){
+        return entities.stream().map((Entity entity) -> entityToDTO(entity, type)).toList();
+    }
+
+    public List<DTO> entityToDTO(Set<Entity> entities, Type type){
         return entities.stream().map((Entity entity) -> entityToDTO(entity, type)).toList();
     }
 
