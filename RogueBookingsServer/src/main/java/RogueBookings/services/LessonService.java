@@ -8,6 +8,7 @@ import RogueBookings.models.Lesson.Lesson;
 import RogueBookings.models.user.User;
 import RogueBookings.repositories.BusinessRepository;
 import RogueBookings.repositories.LessonRepository;
+import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,9 @@ public class LessonService {
     LessonRepository lessonRepository;
     BusinessRepository businessRepository;
 
+    ModelMapper modelMapper;
+
+
     DTOConverter<LessonDTO, Lesson> dtoConverter;
     Type lessonDTOType = new TypeToken<LessonDTO>() {}.getType();
     Type lessonType = new TypeToken<Lesson>() {}.getType();
@@ -30,6 +34,8 @@ public class LessonService {
         this.lessonRepository = lessonRepository;
         this.businessRepository = businessRepository;
         this.dtoConverter = dtoConverter;
+        this.modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setSkipNullEnabled(true);
     }
 
     public List<LessonDTO> getAllLessons(){
@@ -44,6 +50,14 @@ public class LessonService {
 
     public void deleteLessonById(Long lessonId) {
         lessonRepository.deleteById(lessonId);
+    }
+
+    public Lesson editLesson(LessonDTO lessonDTO, Long lessonId) {
+        Lesson patchObj = dtoConverter.DTOtoEntity(lessonDTO, lessonType);
+        Lesson lesson = lessonRepository.findById(lessonId).get();
+        modelMapper.map(patchObj, lesson);
+        lessonRepository.save(lesson);
+        return lesson;
     }
 }
 

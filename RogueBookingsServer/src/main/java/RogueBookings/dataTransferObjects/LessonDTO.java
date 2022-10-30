@@ -15,18 +15,6 @@ import java.util.Set;
 @Component
 public class LessonDTO {
 
-    DTOConverter<BusinessDTO, Business> businessDTOConverter = new DTOConverter<>();
-
-    Type businessDTOType = new TypeToken<BusinessDTO>() {}.getType();
-
-    DTOConverter<TeacherDTO, LessonsTeacher> teacherDTOConverter = new DTOConverter<>();
-
-    Type teacherDTOType = new TypeToken<TeacherDTO>() {}.getType();
-
-
-    DTOConverter<StudentDTO, LessonsStudent> studentDTOConverter = new DTOConverter<>();
-
-    Type studentDTOType = new TypeToken<StudentDTO>() {}.getType();
 
 
 
@@ -46,6 +34,21 @@ public class LessonDTO {
     private Set<LessonsTeacher> teachers;
 
     private Set<LessonsStudent> students;
+
+
+    DTOConverter<BusinessDTO, Business> businessDTOConverter = new DTOConverter<>();
+
+    Type businessDTOType = new TypeToken<BusinessDTO>() {}.getType();
+
+    DTOConverter<TeacherDTO, LessonsTeacher> teacherDTOConverter = new DTOConverter<>();
+
+    Type teacherDTOType = new TypeToken<TeacherDTO>() {}.getType();
+
+
+    DTOConverter<StudentDTO, LessonsStudent> studentDTOConverter = new DTOConverter<>();
+
+    Type studentDTOType = new TypeToken<StudentDTO>() {}.getType();
+
 
     public LessonDTO() {
     }
@@ -102,6 +105,9 @@ public class LessonDTO {
     }
 
     public BusinessDTO getBusiness() {
+        if (this.business == null){
+            return null;
+        }
         return businessDTOConverter.entityToDTO(this.business, businessDTOType);
     }
 
@@ -110,6 +116,9 @@ public class LessonDTO {
     }
 
     public List<TeacherDTO> getTeachers() {
+        if (this.teachers == null){
+            return null;
+        }
         return teacherDTOConverter.entityToDTO(this.teachers, teacherDTOType);
     }
 
@@ -118,6 +127,9 @@ public class LessonDTO {
     }
 
     public List<StudentDTO> getStudents() {
+        if (this.students == null){
+            return null;
+        }
         return studentDTOConverter.entityToDTO(this.students, studentDTOType);
     }
 

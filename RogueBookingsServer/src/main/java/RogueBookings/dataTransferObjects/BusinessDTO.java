@@ -19,16 +19,18 @@ public class BusinessDTO {
 
     String businessName;
 
+    Long balance;
+
     Set<BusinessesMember> businessMembers;
 
     public BusinessDTO() {
     }
 
-    public BusinessDTO(String businessName, Set<BusinessesMember> businessMembers) {
+    public BusinessDTO(String businessName, Long balance, Set<BusinessesMember> businessMembers) {
         this.businessName = businessName;
+        this.balance = balance;
         this.businessMembers = businessMembers;
     }
-
 
     public String getBusinessName() {
         return businessName;
@@ -39,10 +41,21 @@ public class BusinessDTO {
     }
 
     public List<MemberDTO> getBusinessMembers() {
+        if (this.businessMembers == null){
+            return null;
+        }
         return memberDTOConverter.entityToDTO(this.businessMembers, memberDTOType);
     }
 
     public void setBusinessMembers(Set<BusinessesMember> businessMembers) {
         this.businessMembers = businessMembers;
+    }
+
+    public Long getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Long balance) {
+        this.balance = balance;
     }
 }

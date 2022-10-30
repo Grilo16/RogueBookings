@@ -47,10 +47,7 @@ public class UserService {
         User patchObj = dtoConverter.DTOtoEntity(userDTO, userType);
         User user = userRepository.findById(userId).get();
         modelMapper.map(patchObj, user);
-        user.setId(userId);
         userRepository.save(user);
         return user;
-
-
     }
 }

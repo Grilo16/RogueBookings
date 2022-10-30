@@ -2,6 +2,8 @@ package RogueBookings.controllers;
 
 
 import RogueBookings.dataTransferObjects.LessonDTO;
+import RogueBookings.dataTransferObjects.UserDTO;
+import RogueBookings.models.user.User;
 import RogueBookings.services.LessonService;
 import RogueBookings.models.Lesson.Lesson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,12 @@ public class LessonController {
     @DeleteMapping(value = "/{lessonId}")
     public void deleteBusinessById(@PathVariable Long lessonId){
         lessonService.deleteLessonById(lessonId);
+    }
+
+
+    @PatchMapping(path = "/{lessonId}")
+    public Lesson editUser(@RequestBody LessonDTO lessonDTO, @PathVariable Long lessonId){
+        return lessonService.editLesson(lessonDTO, lessonId);
     }
 
 }
