@@ -1,6 +1,7 @@
 package RogueBookings.controllers;
 
 
+import RogueBookings.dataTransferObjects.OwnerDTO;
 import RogueBookings.models.businessOwner.BusinessesOwner;
 import RogueBookings.services.BusinessOwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class BusinessOwnerController {
     }
 
     @GetMapping
-    public List<BusinessesOwner> getAllBusinessOwners(){
+    public List<OwnerDTO> getAllBusinessOwners(){
         return businessOwnerService.getAllBusinessOwners();
     }
 

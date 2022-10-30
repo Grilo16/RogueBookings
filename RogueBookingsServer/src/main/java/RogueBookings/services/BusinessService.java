@@ -1,32 +1,33 @@
 package RogueBookings.services;
 
+import RogueBookings.converters.DTOConverter;
+import RogueBookings.dataTransferObjects.BusinessDTO;
 import RogueBookings.models.business.Business;
-import RogueBookings.repositories.UserRepository;
 import RogueBookings.repositories.BusinessRepository;
-import RogueBookings.repositories.BusinessesOwnerRepository;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 @Service
 public class BusinessService {
 
 
-    UserRepository userRepository;
     BusinessRepository businessRepository;
 
-    BusinessesOwnerRepository businessesOwnerRepository;
+    DTOConverter<BusinessDTO, Business> dtoConverter;
 
+    Type businessDTOType = new TypeToken<BusinessDTO>() {}.getType();
     @Autowired
-    public BusinessService(UserRepository userRepository, BusinessRepository businessRepository, BusinessesOwnerRepository businessesOwnerRepository) {
-        this.userRepository = userRepository;
+    public BusinessService( BusinessRepository businessRepository, DTOConverter<BusinessDTO, Business> dtoConverter) {
         this.businessRepository = businessRepository;
-        this.businessesOwnerRepository = businessesOwnerRepository;
+        this.dtoConverter = dtoConverter;
     }
 
-    public List<Business> getAllBusinesses() {
-        return businessRepository.findAll();
+    public List<BusinessDTO> getAllBusinesses() {
+        return dtoConverter.entityToDTO(businessRepository.findAll(), businessDTOType);
     }
 
     public void createNewBusiness(Business business) {

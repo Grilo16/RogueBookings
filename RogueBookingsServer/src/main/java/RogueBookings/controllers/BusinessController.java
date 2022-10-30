@@ -1,5 +1,6 @@
 package RogueBookings.controllers;
 
+import RogueBookings.dataTransferObjects.BusinessDTO;
 import RogueBookings.models.business.Business;
 import RogueBookings.services.BusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class BusinessController {
 
 
     @GetMapping
-    public List<Business> getAllBusinesses(){
+    public List<BusinessDTO> getAllBusinesses(){
         return businessService.getAllBusinesses();
     }
 
