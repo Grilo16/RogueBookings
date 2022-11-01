@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class StudentService {
@@ -39,16 +40,28 @@ public class StudentService {
         Lesson lesson = lessonRepository.findById(lessonId).get();
         User user = userRepository.findById(studentId).get();
         Student student = new Student();
+        student.setLesson(lesson);
+        student.setStudent(user);
+        studentRepository.save(student);
         LessonLog lessonLog = new LessonLog();
         lessonLog.setLessonName(lesson.getName());
         lessonLog.setRole("student");
         lessonLog.setAction("Signed up");
         lessonLog.setUserLogs(user.getUserLogs());
-        user.getUserLogs().getLessonLogs().add(lessonLog);
-        student.setStudent(user);
-        student.setLesson(lesson);
-        studentRepository.save(student);
+        lessonLogRepository.save(lessonLog);
+    }
 
+    public void removeStudentFromLessonByStudentId(Long studentId){
+        Student student = studentRepository.findById(studentId).get();
+        Lesson lesson = student.getLesson();
+        User user = student.getStudent();
+        LessonLog lessonLog = new LessonLog();
+        lessonLog.setLessonName(lesson.getName());
+        lessonLog.setRole("student");
+        lessonLog.setAction("Left lesson");
+        lessonLog.setUserLogs(user.getUserLogs());
+        lessonLogRepository.save(lessonLog);
+        studentRepository.delete(student);
 
     }
 }

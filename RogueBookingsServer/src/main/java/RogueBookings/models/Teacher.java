@@ -21,11 +21,11 @@ public class Teacher {
     private Long payment;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "lesson_id")
     private Lesson lesson;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
     private User teacher;
 

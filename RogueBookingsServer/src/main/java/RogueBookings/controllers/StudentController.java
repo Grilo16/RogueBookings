@@ -27,6 +27,11 @@ public class StudentController {
     @PostMapping(value = "/{studentId}/lesson/{lessonId}")
     public void addStudentToLesson(@PathVariable Long studentId, @PathVariable Long lessonId){
         studentService.addStudentToLesson(studentId, lessonId);
-
     }
+
+    @PutMapping(value = "/{studentId}")
+    public void removeStudentFromLessonById(@PathVariable Long studentId){
+        studentService.removeStudentFromLessonByStudentId(studentId);
+    }
+
 }

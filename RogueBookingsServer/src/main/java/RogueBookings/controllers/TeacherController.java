@@ -27,4 +27,5 @@ public class TeacherController {
     public Teacher addTeacherToLesson(@RequestBody Teacher teacher, @PathVariable Long teacherId, @PathVariable Long lessonId){
         return teacherService.addTeacherToLesson(teacher, teacherId, lessonId);
     }
+
 }
