@@ -1,7 +1,7 @@
 package RogueBookings.controllers;
 
 
-import RogueBookings.models.user.User;
+import RogueBookings.models.User;
 import RogueBookings.dataTransferObjects.UserDTO;
 import RogueBookings.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

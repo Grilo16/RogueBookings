@@ -1,9 +1,7 @@
 package RogueBookings.controllers;
 
 import RogueBookings.dataTransferObjects.BusinessDTO;
-import RogueBookings.dataTransferObjects.LessonDTO;
-import RogueBookings.models.Lesson.Lesson;
-import RogueBookings.models.business.Business;
+import RogueBookings.models.Business;
 import RogueBookings.services.BusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

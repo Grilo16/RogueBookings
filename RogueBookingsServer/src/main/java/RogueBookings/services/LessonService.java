@@ -2,10 +2,8 @@ package RogueBookings.services;
 
 import RogueBookings.converters.DTOConverter;
 import RogueBookings.dataTransferObjects.LessonDTO;
-import RogueBookings.dataTransferObjects.UserDTO;
-import RogueBookings.models.business.Business;
-import RogueBookings.models.Lesson.Lesson;
-import RogueBookings.models.user.User;
+import RogueBookings.models.Business;
+import RogueBookings.models.Lesson;
 import RogueBookings.repositories.BusinessRepository;
 import RogueBookings.repositories.LessonRepository;
 import org.modelmapper.ModelMapper;

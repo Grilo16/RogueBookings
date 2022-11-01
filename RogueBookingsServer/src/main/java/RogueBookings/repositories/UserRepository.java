@@ -1,6 +1,6 @@
 package RogueBookings.repositories;
 
-import RogueBookings.models.user.User;
+import RogueBookings.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

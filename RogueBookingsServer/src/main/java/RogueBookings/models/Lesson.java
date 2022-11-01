@@ -1,8 +1,5 @@
-package RogueBookings.models.Lesson;
+package RogueBookings.models;
 
-import RogueBookings.models.business.Business;
-import RogueBookings.models.student.LessonsStudent;
-import RogueBookings.models.teacher.LessonsTeacher;
 import com.fasterxml.jackson.annotation.*;
 import org.hibernate.Hibernate;
 
@@ -14,6 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "lessons")
 public class Lesson {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "lesson_seq")
     @SequenceGenerator(name = "lesson_seq", allocationSize = 1)
@@ -36,34 +34,33 @@ public class Lesson {
     @Column(name = "price", nullable = false)
     private Long price;
 
-
-    @ManyToOne(optional = false)
-    @JsonBackReference
+    @ManyToOne
     @JoinColumn(name = "business_id", nullable = false)
     private Business business;
 
-
+    @JsonBackReference(value = "lessons_students")
     @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL)
-    private Set<LessonsTeacher> lessonsTeachers = new LinkedHashSet<>();
+    private Set<Student> students = new LinkedHashSet<>();
 
+    @JsonBackReference(value = "lessons_teachers")
     @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL)
-    private Set<LessonsStudent> students = new LinkedHashSet<>();
+    private Set<Teacher> teachers = new LinkedHashSet<>();
 
     public Lesson() {
     }
 
-    public Lesson(String name, String date, Integer capacity, String description, Long price, Business business, Set<LessonsTeacher> lessonsTeachers, Set<LessonsStudent> students) {
+    public Lesson(String name, String date, Integer capacity, String description, Long price, Business business, Set<Student> students, Set<Teacher> teachers) {
         this.name = name;
         this.date = date;
         this.capacity = capacity;
         this.description = description;
         this.price = price;
         this.business = business;
-        this.lessonsTeachers = lessonsTeachers;
         this.students = students;
+        this.teachers = teachers;
     }
 
-    public Lesson(Long id, String name, String date, Integer capacity, String description, Long price, Business business, Set<LessonsTeacher> lessonsTeachers, Set<LessonsStudent> students) {
+    public Lesson(Long id, String name, String date, Integer capacity, String description, Long price, Business business, Set<Student> students, Set<Teacher> teachers) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -71,8 +68,8 @@ public class Lesson {
         this.description = description;
         this.price = price;
         this.business = business;
-        this.lessonsTeachers = lessonsTeachers;
         this.students = students;
+        this.teachers = teachers;
     }
 
     public Long getId() {
@@ -131,20 +128,20 @@ public class Lesson {
         this.business = business;
     }
 
-    public Set<LessonsTeacher> getLessonsTeachers() {
-        return lessonsTeachers;
-    }
-
-    public void setLessonsTeachers(Set<LessonsTeacher> lessonsTeachers) {
-        this.lessonsTeachers = lessonsTeachers;
-    }
-
-    public Set<LessonsStudent> getStudents() {
+    public Set<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(Set<LessonsStudent> students) {
+    public void setStudents(Set<Student> students) {
         this.students = students;
+    }
+
+    public Set<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(Set<Teacher> teachers) {
+        this.teachers = teachers;
     }
 
     @Override

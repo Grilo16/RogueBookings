@@ -1,8 +1,6 @@
-package RogueBookings.models.business;
+package RogueBookings.models;
 
-import RogueBookings.models.businessOwner.BusinessesOwner;
-import RogueBookings.models.Lesson.Lesson;
-import RogueBookings.models.member.BusinessesMember;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
@@ -23,42 +21,36 @@ public class Business {
     @Column(name = "balance", nullable = false)
     private Long balance = 0L;
 
-    @OneToMany(mappedBy = "business", cascade = CascadeType.ALL)
-    private Set<BusinessesOwner> businessesOwners = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "business", cascade = CascadeType.ALL)
-    private Set<BusinessesMember> businessesMembers = new LinkedHashSet<>();
-
+    @JsonBackReference(value = "businesses_lessons")
     @OneToMany(mappedBy = "business", cascade = CascadeType.ALL)
     private Set<Lesson> lessons = new LinkedHashSet<>();
 
+    @JsonBackReference(value = "businesses_owners")
+    @OneToMany(mappedBy = "business", cascade = CascadeType.ALL)
+    private Set<Owner> owners = new LinkedHashSet<>();
+
+    @JsonBackReference(value = "businesses_members")
+    @OneToMany(mappedBy = "business", cascade = CascadeType.ALL)
+    private Set<Member> members = new LinkedHashSet<>();
 
     public Business() {
     }
 
-    public Business(String name, Long balance, Set<BusinessesOwner> businessesOwners, Set<BusinessesMember> businessesMembers, Set<Lesson> lessons) {
+    public Business(String name, Long balance, Set<Lesson> lessons, Set<Owner> owners, Set<Member> members) {
         this.name = name;
         this.balance = balance;
-        this.businessesOwners = businessesOwners;
-        this.businessesMembers = businessesMembers;
         this.lessons = lessons;
+        this.owners = owners;
+        this.members = members;
     }
 
-    public Business(Long id, String name, Long balance, Set<BusinessesOwner> businessesOwners, Set<BusinessesMember> businessesMembers, Set<Lesson> lessons) {
+    public Business(Long id, String name, Long balance, Set<Lesson> lessons, Set<Owner> owners, Set<Member> members) {
         this.id = id;
         this.name = name;
         this.balance = balance;
-        this.businessesOwners = businessesOwners;
-        this.businessesMembers = businessesMembers;
         this.lessons = lessons;
-    }
-
-    public Set<BusinessesMember> getBusinessesMembers() {
-        return businessesMembers;
-    }
-
-    public void setBusinessesMembers(Set<BusinessesMember> businessesMembers) {
-        this.businessesMembers = businessesMembers;
+        this.owners = owners;
+        this.members = members;
     }
 
     public Long getId() {
@@ -85,19 +77,27 @@ public class Business {
         this.balance = balance;
     }
 
-    public Set<BusinessesOwner> getBusinessesOwners() {
-        return businessesOwners;
-    }
-
-    public void setBusinessesOwners(Set<BusinessesOwner> businessesOwners) {
-        this.businessesOwners = businessesOwners;
-    }
-
     public Set<Lesson> getLessons() {
         return lessons;
     }
 
     public void setLessons(Set<Lesson> lessons) {
         this.lessons = lessons;
+    }
+
+    public Set<Owner> getOwners() {
+        return owners;
+    }
+
+    public void setOwners(Set<Owner> owners) {
+        this.owners = owners;
+    }
+
+    public Set<Member> getMembers() {
+        return members;
+    }
+
+    public void setMembers(Set<Member> members) {
+        this.members = members;
     }
 }

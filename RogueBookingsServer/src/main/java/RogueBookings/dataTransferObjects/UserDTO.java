@@ -1,6 +1,6 @@
 package RogueBookings.dataTransferObjects;
 
-import RogueBookings.models.businessOwner.BusinessesOwner;
+import RogueBookings.models.Owner;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,7 +12,7 @@ public class UserDTO {
     private String lastName;
     private String email;
 
-    private List<BusinessesOwner> businessesOwned;
+    private List<Owner> businesses;
 
     public UserDTO() {
     }
@@ -41,11 +41,11 @@ public class UserDTO {
         this.email = email;
     }
 
-    public List<BusinessesOwner> getBusinessesOwned() {
-        return businessesOwned;
+    public List<Owner> getBusinesses() {
+        return businesses;
     }
 
-    public void setBusinessesOwned(List<BusinessesOwner> businessesOwned) {
-        this.businessesOwned = businessesOwned;
+    public void setBusinesses(List<Owner> businesses) {
+        this.businesses = businesses;
     }
 }

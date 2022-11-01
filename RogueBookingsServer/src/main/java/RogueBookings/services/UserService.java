@@ -1,7 +1,9 @@
 package RogueBookings.services;
 
 import RogueBookings.converters.DTOConverter;
-import RogueBookings.models.user.User;
+import RogueBookings.models.User;
+import RogueBookings.models.userLogs.UserLogs;
+import RogueBookings.repositories.UserLogsRepository;
 import RogueBookings.repositories.UserRepository;
 import RogueBookings.dataTransferObjects.UserDTO;
 import org.modelmapper.ModelMapper;
@@ -16,26 +18,29 @@ import java.util.List;
 public class UserService {
 
     UserRepository userRepository;
-    UserDTO userDTO;
     ModelMapper modelMapper;
     DTOConverter<UserDTO, User> dtoConverter;
     Type userDTOType = new TypeToken<UserDTO>() {}.getType();
     Type userType = new TypeToken<User>() {}.getType();
+    UserLogsRepository userLogsRepository;
+
 
     @Autowired
-    public UserService(UserRepository userRepository, UserDTO userDTO, DTOConverter<UserDTO, User> dtoConverter) {
+    public UserService(UserRepository userRepository, DTOConverter<UserDTO, User> dtoConverter, UserLogsRepository userLogsRepository) {
         this.userRepository = userRepository;
-        this.userDTO = userDTO;
         this.dtoConverter = dtoConverter;
+        this.userLogsRepository = userLogsRepository;
         this.modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setSkipNullEnabled(true);
     }
-
 
     public List<UserDTO> getAllUsers() {
         return dtoConverter.entityToDTO(userRepository.findAll(), userDTOType);
     }
     public void addNewUser(User user) {
+        UserLogs userLogs = new UserLogs();
+        userLogs.setUser(user);
+        user.setUserLogs(userLogs);
         userRepository.save(user);
     }
 

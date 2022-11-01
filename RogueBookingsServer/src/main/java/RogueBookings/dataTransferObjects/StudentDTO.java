@@ -1,6 +1,5 @@
 package RogueBookings.dataTransferObjects;
 
-import RogueBookings.models.Lesson.Lesson;
 import org.springframework.stereotype.Component;
 
 @Component
