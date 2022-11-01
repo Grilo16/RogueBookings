@@ -28,4 +28,9 @@ public class TeacherController {
         return teacherService.addTeacherToLesson(teacher, teacherId, lessonId);
     }
 
+
+    @PutMapping(path = "/{teacherId}/leave")
+    public void removeTeacherFromLesson(@PathVariable Long teacherId){
+        teacherService.removeTeacherFromLessonByTeacherId(teacherId);
+    }
 }

@@ -4,6 +4,7 @@ import RogueBookings.models.Lesson;
 import RogueBookings.models.Teacher;
 import RogueBookings.models.User;
 import RogueBookings.models.userLogs.LessonLog;
+import RogueBookings.repositories.LessonLogRepository;
 import RogueBookings.repositories.LessonRepository;
 import RogueBookings.repositories.TeacherRepository;
 import RogueBookings.repositories.UserRepository;
@@ -20,13 +21,16 @@ public class TeacherService {
     private TeacherRepository teacherRepository;
     private LessonRepository lessonRepository;
 
+    private LessonLogRepository lessonLogRepository;
+
 
 
     @Autowired
-    public TeacherService(UserRepository userRepository, TeacherRepository teacherRepository, LessonRepository lessonRepository) {
+    public TeacherService(UserRepository userRepository, TeacherRepository teacherRepository, LessonRepository lessonRepository, LessonLogRepository lessonLogRepository) {
         this.userRepository = userRepository;
         this.teacherRepository = teacherRepository;
         this.lessonRepository = lessonRepository;
+        this.lessonLogRepository = lessonLogRepository;
     }
 
 
@@ -42,13 +46,26 @@ public class TeacherService {
         user.getUserLogs().getLessonLogs().add(lessonLog);
         teacher.setLesson(lesson);
         teacherRepository.save(teacher);
-
-
         return teacher;
 
     }
 
     public List<Teacher> getAllLessonTeachers() {
         return teacherRepository.findAll();
+    }
+
+    public void removeTeacherFromLessonByTeacherId(Long teacherId){
+        Teacher teacher = teacherRepository.findById(teacherId).get();
+        Lesson lesson = teacher.getLesson();
+        User user = teacher.getTeacher();
+        LessonLog lessonLog = new LessonLog();
+        lessonLog.setLessonName(lesson.getName());
+        lessonLog.setRole("teacher");
+        lessonLog.setAction("Left teaching job found a new purpoise in life");
+        lessonLog.setUserLogs(user.getUserLogs());
+        teacherRepository.delete(teacher);
+        lessonLogRepository.save(lessonLog);
+
+
     }
 }
