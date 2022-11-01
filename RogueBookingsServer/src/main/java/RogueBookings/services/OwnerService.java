@@ -50,4 +50,8 @@ public class OwnerService {
         ownerRepository.save(owner);
     }
 
+    public void removeOwnerFromBusiness(Long ownerId) {
+        Owner owner = ownerRepository.findById(ownerId).get();
+        ownerRepository.delete(owner);
+    }
 }

@@ -39,4 +39,9 @@ public class MemberService {
         member.setBusiness(business);
         memberRepository.save(member);
     }
+
+    public void removeMemberFromBusiness(Long memberId) {
+        Member member = memberRepository.findById(memberId).get();
+        memberRepository.delete(member);
+    }
 }

@@ -24,8 +24,13 @@ public class OwnerController {
         return ownerService.getAllBusinessOwners();
     }
 
-    @PostMapping(value = "/{ownerId}/business/{businessId}")
-    public void addOwnerToBusiness(@PathVariable Long ownerId, @PathVariable Long businessId){
-        ownerService.addNewOwnerToBusiness(ownerId, businessId);
+    @PostMapping(value = "/{userId}/business/{businessId}")
+    public void addOwnerToBusiness(@PathVariable Long userId, @PathVariable Long businessId){
+        ownerService.addNewOwnerToBusiness(userId, businessId);
+    }
+
+    @PutMapping(path = "/{ownerId}/leave")
+    public void removeOwnerFromBusiness(@PathVariable Long ownerId){
+        ownerService.removeOwnerFromBusiness(ownerId);
     }
 }

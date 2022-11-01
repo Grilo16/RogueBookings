@@ -25,8 +25,13 @@ public class MemberController {
         return memberService.getAllBusinessMembers();
     }
 
-    @PostMapping(path = "/{memberId}/business/{businessId}")
-    public void addMemberToBusiness(@PathVariable Long memberId, @PathVariable Long businessId){
-        memberService.addMemberToBusiness(memberId, businessId);
+    @PostMapping(path = "/{userId}/business/{businessId}")
+    public void addMemberToBusiness(@PathVariable Long userId, @PathVariable Long businessId){
+        memberService.addMemberToBusiness(userId, businessId);
+    }
+
+    @PutMapping(path = "/{memberId}/leave")
+    public void removeMemberFromBusiness(@PathVariable Long memberId){
+        memberService.removeMemberFromBusiness(memberId);
     }
 }
