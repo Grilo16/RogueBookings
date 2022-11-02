@@ -1,53 +1,66 @@
-import { createContext, useEffect, useReducer } from "react";
-import UserDisplayBox from "./components/UserDisplayBox";
-import userRepo from "../repositories/userRepo";
-import businessRepo from "../repositories/businessRepo";
-import lessonRepo from "../repositories/lessonRepo";
-import memberRepo from "../repositories/memberRepo";
+import { createContext, useEffect, useReducer } from "react"
 import ownerRepo from "../repositories/ownerRepo";
-import studentRepo from "../repositories/studentRepo";
-import teacherRepo from "../repositories/teacherRepo";
+import userRepo from "../repositories/userRepo";
+import TabDisplayContent from "./components/TabDisplayContents"
+import UserDisplayBox from "./components/UserDisplayBox"
 
-export const HolderContext = createContext() 
+export const HolderContext = createContext(null)
 
-const reducer = (state, action) => {
+
+const reducer = (state, action)=>{
+
+
+
     switch(action.type){
-
         case "LoadData":
-            return {...state, data:[...action.data]}
+            return {...state, data:[action.data]}
 
-        default:
+        case "LoadMoreData":
+            return {...state, newState:["something"]}
+
+        case "LoadAllUsers":
+            return {...state, users:[action.user]}
+
+        case "AddToGreen": 
+            return {...state, green: state.green + 10}
+
+        default: 
             return state
     }
+
 };
 
-const HolderPage = function(){
+
+const HolderPage = ()=> {
 
     const states = {
         data: [],
+        red: 100,
+        blue : 100,
+        green : 1,
     }
-
     const [state, dispatch] = useReducer(reducer, states)
+    
+useEffect(()=>{
+ 
+    userRepo.getAllUsers().then((users)=>{ dispatch({type: "LoadAllUsers", users})})
+    userRepo.editUserById()
+    const a = {a: 1}
+   
+    dispatch({type : "LoadData", data: a })
+    dispatch({type : "LoadMoreData"})
+
+}, [])
 
 
-    useEffect(()=>{
-
-        // businessRepo.getAllBusinesss().then((data) => {dispatch({type: "LoadData", data})})
-        // lessonRepo.getAllLessons().then((data) => {dispatch({type: "LoadData", data})})
-        // memberRepo.getAllMembers().then((data) => {dispatch({type: "LoadData", data})})
-        // ownerRepo.getAllOwners().then((data) => {dispatch({type: "LoadData", data})})
-        // studentRepo.getAllStudents().then((data) => {dispatch({type: "LoadData", data})})
-        // teacherRepo.getAllTeachers().then((data) => {dispatch({type: "LoadData", data})})
-        // userRepo.getAllUsers().then((data) => {dispatch({type : "LoadData", data})})
-
-    },[])
 
 
     return (
         <HolderContext.Provider value={{state, dispatch}}>
-            <h1>Holder page</h1>
+            <UserDisplayBox/>
+
+
         </HolderContext.Provider>
     )
 }
-
-export default HolderPage;
+export default HolderPage
