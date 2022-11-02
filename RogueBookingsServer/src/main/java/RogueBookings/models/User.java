@@ -12,6 +12,11 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User {
+    @PrePersist
+    public void prePersist() {
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq")
     @SequenceGenerator(name = "users_seq", allocationSize = 1)
@@ -24,7 +29,7 @@ public class User {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "email", nullable = false, length = 319)
+    @Column(name = "email", nullable = false, unique = true, length = 319)
     private String email;
 
     @Column(name = "credits", nullable = false)
