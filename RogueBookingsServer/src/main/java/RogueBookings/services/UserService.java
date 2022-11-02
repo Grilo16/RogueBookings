@@ -27,8 +27,6 @@ public class UserService {
     Type userDTOType = new TypeToken<UserDTO>() {}.getType();
     Type userType = new TypeToken<User>() {}.getType();
 
-    private User user;
-    private UserLogs userLogs;
     UserLogsRepository userLogsRepository;
 
 
@@ -46,8 +44,8 @@ public class UserService {
         return dtoConverter.entityToDTO(userRepository.findAll(), userDTOType);
     }
     public UserDTO addNewUser(UserDTO userDTO) {
-        user = dtoConverter.DTOtoEntity(userDTO, userType);
-        userLogs = new UserLogs();
+        User user = dtoConverter.DTOtoEntity(userDTO, userType);
+        UserLogs userLogs = new UserLogs();
         userLogs.setUser(user);
         user.setUserLogs(userLogs);
         try {
