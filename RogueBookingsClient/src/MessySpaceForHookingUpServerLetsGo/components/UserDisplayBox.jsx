@@ -1,25 +1,29 @@
-import { useContext } from "react"
-import { HolderContext } from "../HolderPage"
-import styled from "styled-components"
+import { useContext } from "react";
+import { HolderContext } from "../HolderPage";
+import styled from "styled-components";
 
-const UserDiv = styled.div`
-    text-align: center;
-    background-color: rgb(255, 0, 100);
-    height : 50vh;
-    width : 50%;
-`
+const UserDiv = styled.div.attrs(({red, blue, green})=>({
+    style: {
+        background : `rgb(${red},${blue},${green})`,
+        left : green
+    }
+}))`
+  position: absolute;  
+  text-align: center;
+  height: 50vh;
+  width: 50%;
+`;
 
 const UserDisplayBox = () => {
+  const { state, dispatch } = useContext(HolderContext);
 
-    const {state, dispatch} = useContext(HolderContext)
+  return (
+    <UserDiv red={state.red} blue={state.blue} green={state.green}>
+      <h2>user will be here</h2>
+      <button onClick={()=>{dispatch({type: "AddToGreen"})}}> add to green</button>
 
+    </UserDiv>
+  );
+};
 
-    return (
-        <UserDiv>
-            <h2>user will be here</h2>
-        </UserDiv>
-
-    )
-}
-
-export default UserDisplayBox
+export default UserDisplayBox;
