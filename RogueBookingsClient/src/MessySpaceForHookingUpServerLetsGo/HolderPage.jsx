@@ -1,14 +1,20 @@
 import { createContext, useEffect, useReducer } from "react";
 import UserDisplayBox from "./components/UserDisplayBox";
-import userRepo from "../repositories/userRepository/userRepo";
+import userRepo from "../repositories/userRepo";
+import businessRepo from "../repositories/businessRepo";
+import lessonRepo from "../repositories/lessonRepo";
+import memberRepo from "../repositories/memberRepo";
+import ownerRepo from "../repositories/ownerRepo";
+import studentRepo from "../repositories/studentRepo";
+import teacherRepo from "../repositories/teacherRepo";
 
 export const HolderContext = createContext() 
 
 const reducer = (state, action) => {
     switch(action.type){
 
-        case "LoadUsers":
-            return {...state, users:[...action.user]}
+        case "LoadData":
+            return {...state, data:[...action.data]}
 
         default:
             return state
@@ -18,7 +24,7 @@ const reducer = (state, action) => {
 const HolderPage = function(){
 
     const states = {
-        users: [],
+        data: [],
     }
 
     const [state, dispatch] = useReducer(reducer, states)
@@ -26,8 +32,13 @@ const HolderPage = function(){
 
     useEffect(()=>{
 
-        userRepo.getAllUsers().then((user) => {dispatch({type : "LoadUsers", user})})
-
+        // businessRepo.getAllBusinesss().then((data) => {dispatch({type: "LoadData", data})})
+        // lessonRepo.getAllLessons().then((data) => {dispatch({type: "LoadData", data})})
+        // memberRepo.getAllMembers().then((data) => {dispatch({type: "LoadData", data})})
+        // ownerRepo.getAllOwners().then((data) => {dispatch({type: "LoadData", data})})
+        // studentRepo.getAllStudents().then((data) => {dispatch({type: "LoadData", data})})
+        // teacherRepo.getAllTeachers().then((data) => {dispatch({type: "LoadData", data})})
+        // userRepo.getAllUsers().then((data) => {dispatch({type : "LoadData", data})})
 
     },[])
 
@@ -35,9 +46,6 @@ const HolderPage = function(){
     return (
         <HolderContext.Provider value={{state, dispatch}}>
             <h1>Holder page</h1>
-            <UserDisplayBox/>
-
-            
         </HolderContext.Provider>
     )
 }

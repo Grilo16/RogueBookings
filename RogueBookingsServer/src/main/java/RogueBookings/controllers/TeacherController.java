@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(value = "http://localhost:3000/")
 @RequestMapping(path = "teachers")
 public class TeacherController {
 
@@ -23,7 +24,7 @@ public class TeacherController {
         return teacherService.getAllLessonTeachers();
     }
 
-    @PostMapping(path = "/{teacherId}/new/{lessonId}")
+    @PostMapping(path = "/{teacherId}/lesson/{lessonId}")
     public Teacher addTeacherToLesson(@RequestBody Teacher teacher, @PathVariable Long teacherId, @PathVariable Long lessonId){
         return teacherService.addTeacherToLesson(teacher, teacherId, lessonId);
     }

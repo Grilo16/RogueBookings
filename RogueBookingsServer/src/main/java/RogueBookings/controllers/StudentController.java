@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(value = "http://localhost:3000/")
 @RequestMapping(path = "students")
 public class StudentController {
 
@@ -24,12 +25,12 @@ public class StudentController {
         return studentService.getAllLessonStudents();
     }
 
-    @PostMapping(value = "/{studentId}/lesson/{lessonId}")
-    public void addStudentToLesson(@PathVariable Long studentId, @PathVariable Long lessonId){
-        studentService.addStudentToLesson(studentId, lessonId);
+    @PostMapping(value = "/{userId}/lesson/{lessonId}")
+    public void addStudentToLesson(@PathVariable Long userId, @PathVariable Long lessonId){
+        studentService.addStudentToLesson(userId, lessonId);
     }
 
-    @PutMapping(value = "/{studentId}")
+    @PutMapping(value = "/{studentId}/leave")
     public void removeStudentFromLessonById(@PathVariable Long studentId){
         studentService.removeStudentFromLessonByStudentId(studentId);
     }

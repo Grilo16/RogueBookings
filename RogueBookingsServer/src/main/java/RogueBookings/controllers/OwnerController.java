@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(value = "http://localhost:3000/")
 @RequestMapping(path = "owners")
 public class OwnerController {
 

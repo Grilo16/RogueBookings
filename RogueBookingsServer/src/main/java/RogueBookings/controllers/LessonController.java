@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(value = "http://localhost:3000/")
 @RequestMapping(path = "lessons")
 public class LessonController {
 
@@ -31,13 +32,13 @@ public class LessonController {
     }
 
     @DeleteMapping(value = "/{lessonId}")
-    public void deleteBusinessById(@PathVariable Long lessonId){
+    public void deleteLessonById(@PathVariable Long lessonId){
         lessonService.deleteLessonById(lessonId);
     }
 
 
     @PatchMapping(path = "/{lessonId}")
-    public Lesson editUser(@RequestBody LessonDTO lessonDTO, @PathVariable Long lessonId){
+    public Lesson editLesson(@RequestBody LessonDTO lessonDTO, @PathVariable Long lessonId){
         return lessonService.editLesson(lessonDTO, lessonId);
     }
 

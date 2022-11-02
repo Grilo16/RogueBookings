@@ -14,19 +14,9 @@ const UserDisplayBox = () => {
     const {state, dispatch} = useContext(HolderContext)
 
 
-    const users = state.users.map((user)=>{
-
-        return (
-                <h1>{user.firstName}</h1>
-            )
-
-    })
-
-
     return (
         <UserDiv>
             <h2>user will be here</h2>
-            {users}
         </UserDiv>
 
     )
