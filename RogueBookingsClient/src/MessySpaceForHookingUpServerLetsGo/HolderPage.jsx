@@ -20,7 +20,7 @@ const reducer = (state, action)=>{
 
 const HolderPage = ()=> {
 
-    const userId = 2
+    const userId = 5
     const states = {
         id: null,
         firstName: null,
@@ -38,13 +38,13 @@ useEffect(()=>{
 
 const addUserToDb = ()=>{
     const user = {
-        firstName : "IT DIIID",
+        firstName : "with stringfy",
         lastName : "Yeeah",
-        email: "sfasdf@gmaASDaaafilasd.com",
-        userLayout: '{"backgroundColor": {"red": 100, "blue": 50, "green": 255}}'
+        email: "sfasdf@7qasdfasdfeasdqwe.com",
+        userLayout: JSON.stringify({"backgroundColor": {"red": 110, "blue": 150, "green": 100}})
     }
     
-        userRepo.addNewUser(user)
+        userRepo.addNewUser(user).then((user)=>{ dispatch({type: "LoadUserById", user})})
     }
 
 
