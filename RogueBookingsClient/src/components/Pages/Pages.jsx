@@ -7,8 +7,10 @@ import Users from "./Users";
 import Classes from "./Classes/Classes";
 import Businesses from "./Businesses";
 import HolderPage from "../../MessySpaceForHookingUpServerLetsGo/HolderPage";
-import NewUserForm from "./Users/NewUserForm";
-import Login from "./Users/Login"
+import NewUser from "./Users/NewUser";
+import Login from "./Users/Login";
+import UserDashboard from "../UserDashboard/UserDashboard";
+import Profile from "../UserDashboard/ContentContainer/Profile/Profile";
 
 function Pages() {
   return (
@@ -16,9 +18,13 @@ function Pages() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/users" element={<Users />} />
-        <Route path="/users/new" element={<NewUserForm/>}/>
-        
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/users/new" element={<NewUser />} />
+        <Route path="/dashboard" element={<UserDashboard user="user" />} />
+        <Route
+          path="/dashboard/Profile"
+          element={<UserDashboard user="user" content={<Profile />} />}
+        />
+        <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/classes" element={<Classes />} />
