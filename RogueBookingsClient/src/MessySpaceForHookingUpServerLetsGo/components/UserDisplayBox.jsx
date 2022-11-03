@@ -2,10 +2,11 @@ import { useContext, useEffect } from "react";
 import { HolderContext } from "../HolderPage";
 import styled from "styled-components";
 import userRepo from "../../repositories/userRepo";
+import AddNewUserForm from "./AddNewUserForm";
 
-const UserDiv = styled.div.attrs(({red, blue, green})=>({
+const UserDiv = styled.div.attrs(({backgroundColor})=>({
     style: {
-        backgroundColor : "rgb(" + red +"," + blue + "," +green +")",
+        backgroundColor : backgroundColor
     }
 }))`
   position: absolute;  
@@ -17,14 +18,33 @@ const UserDiv = styled.div.attrs(({red, blue, green})=>({
 const UserDisplayBox = () => {
   const { state, dispatch, addUserToDb } = useContext(HolderContext);
 
+  const users = state.allUsers.map((user)=>{
+    return (
+        <option key={user.id} value={user.id}>{user.firstName}</option>
+    )
+  })
+
+  const handleChangeUser = (e) =>{
+    userRepo.getUserById(e.target.value).then((user)=>{dispatch({type: "LoadSelectedUser", user})})
+    console.log(e.target.value)
+  }
+
+
   return (
-    <UserDiv red={state.userLayout.backgroundColor.red} blue={state.userLayout.backgroundColor.blue} green={state.userLayout.backgroundColor.green}>
+    <UserDiv backgroundColor={state.selectedUser.userLayout.backgroundColor}>
 
-        <h1>{state.id}</h1>
-        <h1>{state.firstName + state.lastName}</h1>
-        <h1>{state.email}</h1>
-        <button onClick={()=>addUserToDb()}>new user</button>
+        <h1>{state.selectedUser.id}</h1>
+        <h1>{state.selectedUser.firstName + state.selectedUser.lastName}</h1>
+        <h1>{state.selectedUser.email}</h1>
 
+        <form action="">
+            <select onChange={handleChangeUser} name="" id="">
+                <option value=""></option>
+                {users}
+            </select>
+        </form>
+
+        <AddNewUserForm/>
    
 
     </UserDiv>
