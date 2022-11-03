@@ -10,7 +10,7 @@ const memberRepo = {
     async addMemberToBusinessByIds(userId, businessId){
         const response = await fetch(memberURL + `${userId}/business/${businessId}`, {
             method: "POST",
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" }
         })
         return response.json()
     },
@@ -18,7 +18,7 @@ const memberRepo = {
     async removeMemberFromBusinessByMembersId(memberId){
         const response = await fetch(memberURL + `${memberId}/leave`, {
             method: "PUT",
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" }
         })
         return response.json()
     },

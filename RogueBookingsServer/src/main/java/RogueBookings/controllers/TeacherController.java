@@ -26,9 +26,9 @@ public class TeacherController {
         return teacherService.getAllLessonTeachers();
     }
 
-    @PostMapping(path = "/{teacherId}/lesson/{lessonId}")
-    public TeacherDTO addTeacherToLesson(@RequestBody Teacher teacher, @PathVariable Long teacherId, @PathVariable Long lessonId){
-        return teacherService.addTeacherToLesson(teacher, teacherId, lessonId);
+    @PostMapping(path = "/{memberId}/lesson/{lessonId}")
+    public TeacherDTO addTeacherToLesson(@RequestBody Teacher teacher, @PathVariable Long memberId, @PathVariable Long lessonId){
+        return teacherService.addTeacherToLesson(teacher, memberId, lessonId);
     }
 
     @PutMapping(path = "/{teacherId}/leave")

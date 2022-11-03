@@ -7,11 +7,11 @@ const businessRepo = {
         return response.json()
     },
 
-    async addNewBusiness(businessObject){
-        const response = await fetch(businessURL, {
+    async createNewBusinessByUserId(businessObject, userId){
+        const response = await fetch(businessURL+`owner/${userId}`, {
             method: "POST",
             body: JSON.stringify(businessObject),
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" }
         })
         return response.json()
     },
@@ -19,7 +19,7 @@ const businessRepo = {
     async deleteBusinessById(businessId){
         const response = await fetch(businessURL + `${businessId}`, {
             method: "DELETE",
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" }
         })
         return response.json()
     },
@@ -28,7 +28,7 @@ const businessRepo = {
         const response = await fetch(businessURL + `${businessId}`, {
             method: "PATCH",
             body : JSON.stringify(patchObject),
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" }
         })
         return response.json()
     },

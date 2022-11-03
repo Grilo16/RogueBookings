@@ -7,10 +7,10 @@ const studentRepo = {
         return response.json()
     },
 
-    async addStudentToLessonByIds(userId, lessonId){
-        const response = await fetch(studentURL + `${userId}/lesson/${lessonId}`, {
+    async addStudentToLessonByIds(memberId, lessonId){
+        const response = await fetch(studentURL + `${memberId}/lesson/${lessonId}`, {
             method: "POST",
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" }
         })
         return response.json()
     },
@@ -18,7 +18,7 @@ const studentRepo = {
     async removeStudentFromLessonByStudentsId(studentId){
         const response = await fetch(studentURL + `${studentId}/leave`, {
             method: "PUT",
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" }
         })
         return response.json()
     },

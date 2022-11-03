@@ -27,9 +27,9 @@ public class StudentController {
         return studentService.getAllLessonStudents();
     }
 
-    @PostMapping(value = "/{userId}/lesson/{lessonId}")
-    public StudentDTO addStudentToLesson(@PathVariable Long userId, @PathVariable Long lessonId){
-        return studentService.addStudentToLesson(userId, lessonId);
+    @PostMapping(value = "/{memberId}/lesson/{lessonId}")
+    public StudentDTO addStudentToLesson(@PathVariable Long memberId, @PathVariable Long lessonId){
+        return studentService.addStudentToLesson(memberId, lessonId);
     }
 
     @PutMapping(value = "/{studentId}/leave")
