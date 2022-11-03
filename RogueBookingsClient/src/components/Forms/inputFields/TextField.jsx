@@ -1,7 +1,7 @@
 function TextField({ fieldName }) {
   return (
     <>
-    <label for={fieldName}>{fieldName}</label>
+    <label htmlFor={fieldName}>{fieldName}</label>
       <input
         type="text"
         id={fieldName}
