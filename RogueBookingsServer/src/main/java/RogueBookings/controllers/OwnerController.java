@@ -4,6 +4,7 @@ package RogueBookings.controllers;
 import RogueBookings.dataTransferObjects.OwnerDTO;
 import RogueBookings.services.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,12 +27,12 @@ public class OwnerController {
     }
 
     @PostMapping(value = "/{userId}/business/{businessId}")
-    public void addOwnerToBusiness(@PathVariable Long userId, @PathVariable Long businessId){
-        ownerService.addNewOwnerToBusiness(userId, businessId);
+    public OwnerDTO addOwnerToBusiness(@PathVariable Long userId, @PathVariable Long businessId){
+        return ownerService.addNewOwnerToBusiness(userId, businessId);
     }
 
     @PutMapping(path = "/{ownerId}/leave")
-    public void removeOwnerFromBusiness(@PathVariable Long ownerId){
-        ownerService.removeOwnerFromBusiness(ownerId);
+    public ResponseEntity<String> removeOwnerFromBusiness(@PathVariable Long ownerId){
+        return ownerService.removeOwnerFromBusiness(ownerId);
     }
 }

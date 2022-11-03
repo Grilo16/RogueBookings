@@ -1,9 +1,12 @@
 package RogueBookings.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "businesses_members")
@@ -20,20 +23,32 @@ public class Member {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    private User member;
+    private User user;
+
+    @JsonBackReference(value = "lessons_students")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private Set<Student> students = new LinkedHashSet<>();
+
+    @JsonBackReference(value = "lessons_teachers")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private Set<Teacher> teachers = new LinkedHashSet<>();
 
     public Member() {
     }
 
-    public Member(Business business, User member) {
+    public Member(Business business, User user, Set<Student> students, Set<Teacher> teachers) {
         this.business = business;
-        this.member = member;
+        this.user = user;
+        this.students = students;
+        this.teachers = teachers;
     }
 
-    public Member(Long id, Business business, User member) {
+    public Member(Long id, Business business, User user, Set<Student> students, Set<Teacher> teachers) {
         this.id = id;
         this.business = business;
-        this.member = member;
+        this.user = user;
+        this.students = students;
+        this.teachers = teachers;
     }
 
     public Long getId() {
@@ -52,12 +67,28 @@ public class Member {
         this.business = business;
     }
 
-    public User getMember() {
-        return member;
+    public User getUser() {
+        return user;
     }
 
-    public void setMember(User member) {
-        this.member = member;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
+
+    public Set<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(Set<Teacher> teachers) {
+        this.teachers = teachers;
     }
 
     @Override

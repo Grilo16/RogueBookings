@@ -34,17 +34,11 @@ public class User {
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private Set<Owner> businesses = new LinkedHashSet<>();
 
-    @JsonBackReference(value = "lessons_teachers")
-    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
-    private Set<Teacher> teachers = new LinkedHashSet<>();
 
     @JsonBackReference(value = "businesses_members")
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Member> memberships = new LinkedHashSet<>();
 
-    @JsonBackReference(value = "lessons_students")
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    private Set<Student> students = new LinkedHashSet<>();
 
     @JsonBackReference("user_logs")
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, optional = false)
@@ -53,28 +47,24 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, Long credits, Set<Owner> businesses, Set<Teacher> teachers, Set<Member> memberships, Set<Student> students, UserLogs userLogs) {
+    public User(String firstName, String lastName, String email, Long credits, Set<Owner> businesses, Set<Member> memberships, UserLogs userLogs) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.credits = credits;
         this.businesses = businesses;
-        this.teachers = teachers;
         this.memberships = memberships;
-        this.students = students;
         this.userLogs = userLogs;
     }
 
-    public User(Long id, String firstName, String lastName, String email, Long credits, Set<Owner> businesses, Set<Teacher> teachers, Set<Member> memberships, Set<Student> students, UserLogs userLogs) {
+    public User(Long id, String firstName, String lastName, String email, Long credits, Set<Owner> businesses, Set<Member> memberships, UserLogs userLogs) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.credits = credits;
         this.businesses = businesses;
-        this.teachers = teachers;
         this.memberships = memberships;
-        this.students = students;
         this.userLogs = userLogs;
     }
 
@@ -126,28 +116,12 @@ public class User {
         this.businesses = businesses;
     }
 
-    public Set<Teacher> getTeachers() {
-        return teachers;
-    }
-
-    public void setTeachers(Set<Teacher> teachers) {
-        this.teachers = teachers;
-    }
-
     public Set<Member> getMemberships() {
         return memberships;
     }
 
     public void setMemberships(Set<Member> memberships) {
         this.memberships = memberships;
-    }
-
-    public Set<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(Set<Student> students) {
-        this.students = students;
     }
 
     public UserLogs getUserLogs() {

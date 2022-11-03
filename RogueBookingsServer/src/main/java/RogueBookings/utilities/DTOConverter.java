@@ -1,4 +1,4 @@
-package RogueBookings.converters;
+package RogueBookings.utilities;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Component
 public class DTOConverter<DTO, Entity> {

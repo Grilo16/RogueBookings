@@ -3,8 +3,8 @@ package RogueBookings.controllers;
 
 import RogueBookings.dataTransferObjects.LessonDTO;
 import RogueBookings.services.LessonService;
-import RogueBookings.models.Lesson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,18 +27,18 @@ public class LessonController {
     }
 
     @PostMapping(value = "/{businessId}/new")
-    public void createNewLessonByBusinessId(@PathVariable Long businessId, @RequestBody Lesson lesson){
-        lessonService.createNewLesson(businessId, lesson);
+    public LessonDTO createNewLessonByBusinessId(@PathVariable Long businessId, @RequestBody LessonDTO lessonDTO){
+        return lessonService.createNewLessonBusinessId(businessId, lessonDTO);
     }
 
     @DeleteMapping(value = "/{lessonId}")
-    public void deleteLessonById(@PathVariable Long lessonId){
-        lessonService.deleteLessonById(lessonId);
+    public ResponseEntity<String> deleteLessonById(@PathVariable Long lessonId){
+        return lessonService.deleteLessonById(lessonId);
     }
 
 
     @PatchMapping(path = "/{lessonId}")
-    public Lesson editLesson(@RequestBody LessonDTO lessonDTO, @PathVariable Long lessonId){
+    public LessonDTO editLesson(@RequestBody LessonDTO lessonDTO, @PathVariable Long lessonId){
         return lessonService.editLesson(lessonDTO, lessonId);
     }
 
