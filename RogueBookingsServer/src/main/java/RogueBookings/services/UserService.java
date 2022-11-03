@@ -1,6 +1,5 @@
 package RogueBookings.services;
 
-import RogueBookings.models.UserLayout;
 import RogueBookings.utilities.DTOConverter;
 import RogueBookings.oopsies.OopsieRequestException;
 import RogueBookings.models.User;

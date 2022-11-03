@@ -18,7 +18,6 @@ const userRepo = {
             method: "POST",
             body: JSON.stringify(userObject),
             headers: { "Content-Type": "application/json" },
-
         })
         return response.json()
     },
@@ -26,7 +25,7 @@ const userRepo = {
     async deleteUserById(userId){
         const response = await fetch(userURL + `${userId}`, {
             method: "DELETE",
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" },
         })
         return response.json()
     },
@@ -35,7 +34,7 @@ const userRepo = {
         const response = await fetch(userURL + `${userId}`, {
             method: "PATCH",
             body : JSON.stringify(patchObject),
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" },
         })
         return response.json()
     },
