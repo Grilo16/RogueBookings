@@ -29,7 +29,7 @@ public class OwnerService {
 
     DTOConverter<OwnerDTO, Owner> dtoConverter;
     Type ownerDTOType = new TypeToken<OwnerDTO>() {}.getType();
-    Type OwnerType = new TypeToken<Owner>() {}.getType();
+    Type ownerType = new TypeToken<Owner>() {}.getType();
 
     @Autowired
     public OwnerService(OwnerRepository ownerRepository, UserRepository userRepository, BusinessRepository businessRepository, DTOConverter<OwnerDTO, Owner> dtoConverter) {
