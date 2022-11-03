@@ -41,9 +41,9 @@ const AddNewUserForm = () => {
 
     return (
         <form>
-            <input onChange={handleFirstName} type="text" value={firstName} />
-            <input onChange={handleLastName} type="text" value={lastName} />
-            <input onChange={handleEmail} type="text" value={email} />
+            <input placeholder="first name" onChange={handleFirstName} type="text" value={firstName} />
+            <input placeholder="last name" onChange={handleLastName} type="text" value={lastName} />
+            <input placeholder="email@email.com" onChange={handleEmail} type="text" value={email} />
 
             <button onClick={addUserToDb}>new user</button>
 
