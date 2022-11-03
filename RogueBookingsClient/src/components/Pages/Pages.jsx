@@ -11,6 +11,7 @@ import NewUser from "./Users/NewUser";
 import Login from "./Users/Login";
 import UserDashboard from "../UserDashboard/UserDashboard";
 import Profile from "../UserDashboard/ContentContainer/Profile/Profile";
+import Calendar from "../UserDashboard/ContentContainer/Calendar/Calendar";
 
 function Pages() {
   return (
@@ -21,9 +22,14 @@ function Pages() {
         <Route path="/users/new" element={<NewUser />} />
         <Route path="/dashboard" element={<UserDashboard user="user" />} />
         <Route
-          path="/dashboard/Profile"
+          path="/dashboard/profile"
           element={<UserDashboard user="user" content={<Profile />} />}
         />
+        <Route
+          path="/dashboard/calendar"
+          element={<UserDashboard user="user" content={<Calendar/>} />}
+        />
+        <Route path ="/dashboard/businesses/:businessId" element={<UserDashboard user="user" content={<Profile/>}/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/bookings" element={<Bookings />} />

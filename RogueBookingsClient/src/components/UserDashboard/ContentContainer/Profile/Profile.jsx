@@ -1,8 +1,11 @@
+import UserDetails from "./UserDetails/UserDetails";
+
 function Profile(){
     return(
         <>
-        <h2>Profile Container Component</h2>
-        <p>I will contain lots of jolly profile components</p>
+        <p>Profile</p>
+        <UserDetails/>
+
         </>
     )
 };
