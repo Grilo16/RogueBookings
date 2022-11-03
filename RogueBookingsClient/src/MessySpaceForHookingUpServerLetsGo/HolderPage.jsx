@@ -1,7 +1,5 @@
 import { createContext, useEffect, useReducer } from "react"
-import ownerRepo from "../repositories/ownerRepo";
 import userRepo from "../repositories/userRepo";
-import TabDisplayContent from "./components/TabDisplayContents"
 import UserDisplayBox from "./components/UserDisplayBox"
 
 export const HolderContext = createContext(null)

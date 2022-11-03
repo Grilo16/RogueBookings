@@ -1,8 +1,15 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+
 function Homepage(){
     return(
         <>
-        <h2>Homepage</h2>
-        <p>If user not signed in, display Homepage. If user signed in, display UserDashboard.</p>
+        <header>Rogue Bookings Homepage</header>
+        <h2>Welcome</h2>
+        <button><Link to="/users/new">Sign up</Link></button>
+        <button><Link to="/login">Log In</Link></button>
+        
         </>
     )
 };
