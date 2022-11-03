@@ -1,8 +1,6 @@
 package RogueBookings.controllers;
 
 
-import RogueBookings.exception.OopsieRequestException;
-import RogueBookings.models.User;
 import RogueBookings.dataTransferObjects.UserDTO;
 import RogueBookings.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin(value = "http://localhost:3000/")

@@ -2,7 +2,7 @@ package RogueBookings.services;
 
 import RogueBookings.utilities.DTOConverter;
 import RogueBookings.dataTransferObjects.LessonDTO;
-import RogueBookings.exception.OopsieRequestException;
+import RogueBookings.oopsies.OopsieRequestException;
 import RogueBookings.models.Business;
 import RogueBookings.models.Lesson;
 import RogueBookings.repositories.BusinessRepository;

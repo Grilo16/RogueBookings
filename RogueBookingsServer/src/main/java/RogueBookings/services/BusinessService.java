@@ -1,12 +1,11 @@
 package RogueBookings.services;
 
-import RogueBookings.models.Lesson;
 import RogueBookings.models.Owner;
 import RogueBookings.models.User;
 import RogueBookings.repositories.UserRepository;
 import RogueBookings.utilities.DTOConverter;
 import RogueBookings.dataTransferObjects.BusinessDTO;
-import RogueBookings.exception.OopsieRequestException;
+import RogueBookings.oopsies.OopsieRequestException;
 import RogueBookings.models.Business;
 import RogueBookings.repositories.BusinessRepository;
 import org.modelmapper.ModelMapper;

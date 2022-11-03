@@ -1,7 +1,7 @@
 package RogueBookings.services;
 
 
-import RogueBookings.exception.OopsieRequestException;
+import RogueBookings.oopsies.OopsieRequestException;
 import RogueBookings.utilities.DTOConverter;
 import RogueBookings.dataTransferObjects.OwnerDTO;
 import RogueBookings.models.Business;
@@ -43,8 +43,8 @@ public class OwnerService {
         return dtoConverter.entityToDTO(ownerRepository.findAll(), ownerDTOType);
     }
 
-    public OwnerDTO addNewOwnerToBusiness(Long ownerId, Long businessId){
-        Optional<User> user = userRepository.findById(ownerId);
+    public OwnerDTO addNewOwnerToBusiness(Long userId, Long businessId){
+        Optional<User> user = userRepository.findById(userId);
         if (user.isEmpty()) {
             throw new OopsieRequestException("User no exist, try some other id");
         }

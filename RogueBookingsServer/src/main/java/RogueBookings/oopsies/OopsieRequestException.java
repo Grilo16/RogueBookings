@@ -1,4 +1,4 @@
-package RogueBookings.exception;
+package RogueBookings.oopsies;
 
 public class OopsieRequestException extends RuntimeException{
     public OopsieRequestException(String message) {

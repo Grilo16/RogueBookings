@@ -1,25 +1,37 @@
 package RogueBookings.dataTransferObjects;
 
+import RogueBookings.models.Business;
+import RogueBookings.models.User;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MemberDTO {
 
 
-    String memberName;
+    Business business;
+    User user;
 
     public MemberDTO() {
     }
 
-    public MemberDTO(String memberName) {
-        this.memberName = memberName;
+    public MemberDTO(Business business, User user) {
+        this.business = business;
+        this.user = user;
     }
 
-    public String getMemberName() {
-        return memberName;
+    public Business getBusiness() {
+        return business;
     }
 
-    public void setMemberName(String memberName) {
-        this.memberName = memberName;
+    public void setBusiness(Business business) {
+        this.business = business;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

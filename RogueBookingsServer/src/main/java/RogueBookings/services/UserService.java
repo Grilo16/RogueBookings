@@ -1,7 +1,7 @@
 package RogueBookings.services;
 
 import RogueBookings.utilities.DTOConverter;
-import RogueBookings.exception.OopsieRequestException;
+import RogueBookings.oopsies.OopsieRequestException;
 import RogueBookings.models.User;
 import RogueBookings.models.userLogs.UserLogs;
 import RogueBookings.repositories.UserLogsRepository;

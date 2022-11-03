@@ -1,9 +1,11 @@
 package RogueBookings.controllers;
 
 
+import RogueBookings.dataTransferObjects.MemberDTO;
 import RogueBookings.models.Member;
 import RogueBookings.services.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,12 +29,12 @@ public class MemberController {
     }
 
     @PostMapping(path = "/{userId}/business/{businessId}")
-    public void addMemberToBusiness(@PathVariable Long userId, @PathVariable Long businessId){
-        memberService.addMemberToBusiness(userId, businessId);
+    public MemberDTO addMemberToBusiness(@PathVariable Long userId, @PathVariable Long businessId){
+        return memberService.addMemberToBusiness(userId, businessId);
     }
 
     @PutMapping(path = "/{memberId}/leave")
-    public void removeMemberFromBusiness(@PathVariable Long memberId){
-        memberService.removeMemberFromBusiness(memberId);
+    public ResponseEntity<String> removeMemberFromBusiness(@PathVariable Long memberId){
+        return memberService.removeMemberFromBusiness(memberId);
     }
 }

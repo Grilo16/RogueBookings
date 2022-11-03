@@ -1,4 +1,4 @@
-package RogueBookings.exception;
+package RogueBookings.oopsies;
 
 import org.springframework.http.HttpStatus;
 

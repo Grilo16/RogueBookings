@@ -1,7 +1,7 @@
 package RogueBookings.services;
 
 import RogueBookings.dataTransferObjects.TeacherDTO;
-import RogueBookings.exception.OopsieRequestException;
+import RogueBookings.oopsies.OopsieRequestException;
 import RogueBookings.models.*;
 import RogueBookings.models.userLogs.LessonLog;
 import RogueBookings.repositories.LessonLogRepository;
