@@ -6,7 +6,9 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "lessons_students")
+@Table(name = "lessons_students", uniqueConstraints = {
+        @UniqueConstraint(name = "uc_student_member_id", columnNames = {"member_id", "lesson_id"})
+})
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "lessons_students_gen")

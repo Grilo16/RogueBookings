@@ -1,9 +1,11 @@
 package RogueBookings.controllers;
 
 
+import RogueBookings.dataTransferObjects.StudentDTO;
 import RogueBookings.services.StudentService;
 import RogueBookings.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,13 +28,13 @@ public class StudentController {
     }
 
     @PostMapping(value = "/{userId}/lesson/{lessonId}")
-    public void addStudentToLesson(@PathVariable Long userId, @PathVariable Long lessonId){
-        studentService.addStudentToLesson(userId, lessonId);
+    public StudentDTO addStudentToLesson(@PathVariable Long userId, @PathVariable Long lessonId){
+        return studentService.addStudentToLesson(userId, lessonId);
     }
 
     @PutMapping(value = "/{studentId}/leave")
-    public void removeStudentFromLessonById(@PathVariable Long studentId){
-        studentService.removeStudentFromLessonByStudentId(studentId);
+    public ResponseEntity<String> removeStudentFromLessonById(@PathVariable Long studentId){
+        return studentService.removeStudentFromLessonByStudentId(studentId);
     }
 
 }
