@@ -7,11 +7,11 @@ const lessonRepo = {
         return response.json()
     },
     
-    async addNewLesson(lessonObject){
-        const response = await fetch(lessonURL, {
+    async addNewLessonToBusiness(lessonObject, businessId){
+        const response = await fetch(lessonURL + `${businessId}/new`, {
             method: "POST",
             body: JSON.stringify(lessonObject),
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" }
         })
         return response.json()
     },
@@ -19,7 +19,7 @@ const lessonRepo = {
     async deleteLessonById(lessonId){
         const response = await fetch(lessonURL + `${lessonId}`, {
             method: "DELETE",
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" }
         })
         return response.json()
     },
@@ -28,7 +28,7 @@ const lessonRepo = {
         const response = await fetch(lessonURL + `${lessonId}`, {
             method: "PATCH",
             body : JSON.stringify(patchObject),
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" }
         })
         return response.json()
     },

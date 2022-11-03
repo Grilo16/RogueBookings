@@ -10,7 +10,7 @@ const ownerRepo = {
     async addOwnerToBusinessByIds(userId, businessId){
         const response = await fetch(ownerURL + `${userId}/business/${businessId}`, {
             method: "POST",
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" }
         })
         return response.json()
     },
@@ -18,7 +18,7 @@ const ownerRepo = {
     async removeOwnerFromBusinessByOwnersId(ownerId){
         const response = await fetch(ownerURL + `${ownerId}/leave`, {
             method: "PUT",
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" }
         })
         return response.json()
     },

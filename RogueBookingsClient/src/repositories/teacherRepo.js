@@ -7,11 +7,11 @@ const teacherRepo = {
         return response.json()
     },
 
-    async addTeacherToLessonByIds(userId, lessonId, teacherObject){
-        const response = await fetch(teacherURL + `${userId}/lesson/${lessonId}`, {
+    async addTeacherToLessonByIds(memberId, lessonId, teacherObject){
+        const response = await fetch(teacherURL + `${memberId}/lesson/${lessonId}`, {
             method: "POST",
             body: JSON.stringify(teacherObject),
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" }
         })
         return response.json()
     },
@@ -19,7 +19,7 @@ const teacherRepo = {
     async removeTeacherFromLessonByTeachersId(teacherId){
         const response = await fetch(teacherURL + `${teacherId}/leave`, {
             method: "PUT",
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" }
         })
         return response.json()
     },
