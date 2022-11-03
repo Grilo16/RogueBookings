@@ -28,7 +28,7 @@ const reducer = (state, action)=>{
 
 };
 
-
+gfgfgfaaajkll;ksadjfl;asdkfjslad;kfjldsk;jflsdkfj
 const HolderPage = ()=> {
 
     const states = {
