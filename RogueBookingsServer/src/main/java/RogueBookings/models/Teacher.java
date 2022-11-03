@@ -26,25 +26,25 @@ public class Teacher {
     private Lesson lesson;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "user_id")
-    private User teacher;
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     public Teacher() {
     }
 
-    public Teacher(Boolean admin, Long payment, Lesson lesson, User teacher) {
+    public Teacher(Boolean admin, Long payment, Lesson lesson, Member member) {
         this.admin = admin;
         this.payment = payment;
         this.lesson = lesson;
-        this.teacher = teacher;
+        this.member = member;
     }
 
-    public Teacher(Long id, Boolean admin, Long payment, Lesson lesson, User teacher) {
+    public Teacher(Long id, Boolean admin, Long payment, Lesson lesson, Member member) {
         this.id = id;
         this.admin = admin;
         this.payment = payment;
         this.lesson = lesson;
-        this.teacher = teacher;
+        this.member = member;
     }
 
     public Long getId() {
@@ -79,12 +79,12 @@ public class Teacher {
         this.lesson = lesson;
     }
 
-    public User getTeacher() {
-        return teacher;
+    public Member getMember() {
+        return member;
     }
 
-    public void setTeacher(User teacher) {
-        this.teacher = teacher;
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     @Override

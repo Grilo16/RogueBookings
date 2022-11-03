@@ -35,7 +35,7 @@ public class MemberService {
         User user = userRepository.findById(memberId).get();
         Business business = businessRepository.findById(businessId).get();
         Member member = new Member();
-        member.setMember(user);
+        member.setUser(user);
         member.setBusiness(business);
         memberRepository.save(member);
     }

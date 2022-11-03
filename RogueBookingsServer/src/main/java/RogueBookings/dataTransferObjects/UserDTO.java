@@ -14,31 +14,17 @@ public class UserDTO {
 
     private List<Owner> businesses;
 
-    private List<Student> students;
-
     private List<Member> memberships;
-
-    private List<Teacher> teachers;
 
     public UserDTO() {
     }
 
-    public UserDTO(String firstName, String lastName, String email, List<Owner> businesses, List<Student> students, List<Member> memberships, List<Teacher> teachers) {
+    public UserDTO(String firstName, String lastName, String email, List<Owner> businesses, List<Member> memberships) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.businesses = businesses;
-        this.students = students;
         this.memberships = memberships;
-        this.teachers = teachers;
-    }
-
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
     }
 
     public String getFirstName() {
@@ -79,13 +65,5 @@ public class UserDTO {
 
     public void setMemberships(List<Member> memberships) {
         this.memberships = memberships;
-    }
-
-    public List<Teacher> getTeachers() {
-        return teachers;
-    }
-
-    public void setTeachers(List<Teacher> teachers) {
-        this.teachers = teachers;
     }
 }

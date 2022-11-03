@@ -1,6 +1,6 @@
 package RogueBookings.services;
 
-import RogueBookings.converters.DTOConverter;
+import RogueBookings.utilities.DTOConverter;
 import RogueBookings.exception.OopsieRequestException;
 import RogueBookings.models.User;
 import RogueBookings.models.userLogs.UserLogs;
@@ -48,6 +48,9 @@ public class UserService {
         UserLogs userLogs = new UserLogs();
         userLogs.setUser(user);
         user.setUserLogs(userLogs);
+        if (userRepository.existsByEmailIgnoreCase(user.getEmail())){
+            throw new OopsieRequestException("This email has been taken already soz");
+        }
         try {
             return dtoConverter.entityToDTO(userRepository.save(user), userDTOType);
         }catch (Exception e){

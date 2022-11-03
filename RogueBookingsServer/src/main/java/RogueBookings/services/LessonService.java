@@ -1,6 +1,6 @@
 package RogueBookings.services;
 
-import RogueBookings.converters.DTOConverter;
+import RogueBookings.utilities.DTOConverter;
 import RogueBookings.dataTransferObjects.LessonDTO;
 import RogueBookings.exception.OopsieRequestException;
 import RogueBookings.models.Business;
@@ -41,7 +41,7 @@ public class LessonService {
         return dtoConverter.entityToDTO(lessonRepository.findAll(), lessonDTOType);
     }
 
-    public LessonDTO createNewLesson(Long businessId, LessonDTO lessonDTO) {
+    public LessonDTO createNewLessonBusinessId(Long businessId, LessonDTO lessonDTO) {
         Lesson lesson = dtoConverter.DTOtoEntity(lessonDTO, lessonType);
         Optional<Business> business = businessRepository.findById(businessId);
         if (business.isEmpty()){

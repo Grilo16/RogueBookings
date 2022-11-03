@@ -1,16 +1,24 @@
 package RogueBookings.services;
 
-import RogueBookings.converters.DTOConverter;
+import RogueBookings.models.Lesson;
+import RogueBookings.models.Owner;
+import RogueBookings.models.User;
+import RogueBookings.repositories.UserRepository;
+import RogueBookings.utilities.DTOConverter;
 import RogueBookings.dataTransferObjects.BusinessDTO;
+import RogueBookings.exception.OopsieRequestException;
 import RogueBookings.models.Business;
 import RogueBookings.repositories.BusinessRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BusinessService {
@@ -19,6 +27,7 @@ public class BusinessService {
 
     BusinessRepository businessRepository;
 
+    private UserRepository userRepository;
     DTOConverter<BusinessDTO, Business> dtoConverter;
 
     Type businessDTOType = new TypeToken<BusinessDTO>() {}.getType();
@@ -30,8 +39,9 @@ public class BusinessService {
 
 
     @Autowired
-    public BusinessService( BusinessRepository businessRepository, DTOConverter<BusinessDTO, Business> dtoConverter) {
+    public BusinessService(BusinessRepository businessRepository, UserRepository userRepository, DTOConverter<BusinessDTO, Business> dtoConverter) {
         this.businessRepository = businessRepository;
+        this.userRepository = userRepository;
         this.dtoConverter = dtoConverter;
         this.modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setSkipNullEnabled(true);
@@ -41,19 +51,47 @@ public class BusinessService {
         return dtoConverter.entityToDTO(businessRepository.findAll(), businessDTOType);
     }
 
-    public void createNewBusiness(Business business) {
-        businessRepository.save(business);
+    public BusinessDTO createNewBusinessByUserId(BusinessDTO businessDTO, Long userId) {
+        Business business = dtoConverter.DTOtoEntity(businessDTO, businessType);
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isEmpty()){
+            throw new OopsieRequestException("loool user donsnt exist, do try again tho");
+        } else if (businessRepository.existsByNameIgnoreCase(business.getName())) {
+            throw new OopsieRequestException("oooohh nono copycat, another business already has this name");
+        }
+        Owner owner = new Owner();
+        owner.setBusiness(business);
+        owner.setOwner(user.get());
+        business.getOwners().add(owner);
+        try{
+            return dtoConverter.entityToDTO(businessRepository.save(business), businessDTOType);
+        }catch (Exception e){
+            throw new OopsieRequestException("I dont think you sent the correct data to create a business");
+        }
     }
 
-    public void deleteBusinessByid(Long id) {
-        businessRepository.deleteById(id);
+    public ResponseEntity<String> deleteBusinessByid(Long businessid) {
+        if (!businessRepository.existsById(businessid)){
+            throw new OopsieRequestException("Oopsie This business doesnt exist sadge");
+        }
+        businessRepository.deleteById(businessid);
+        return new ResponseEntity<>("Successfully deleted business", HttpStatus.OK);
     }
 
-    public Business editBusiness(BusinessDTO businessDTO, Long businessId) {
-        Business patchObj = dtoConverter.DTOtoEntity(businessDTO, businessType);
-        Business business = businessRepository.findById(businessId).get();
-        modelMapper.map(patchObj, business);
-        businessRepository.save(business);
-        return business;
+    public BusinessDTO editBusiness(BusinessDTO businessDTO, Long businessId) {
+        Optional<Business> business = businessRepository.findById(businessId);
+        if (business.isPresent()){
+            Business businessToUpdate = business.get();
+            Business updatedBusiness;
+            try {
+                Business patchObject = dtoConverter.DTOtoEntity(businessDTO, businessType);
+                modelMapper.map(patchObject, businessToUpdate);
+                updatedBusiness = businessRepository.save(businessToUpdate);
+            }catch (Exception e){
+                throw new OopsieRequestException("no good nope, try editing something else");
+            }
+            return dtoConverter.entityToDTO(updatedBusiness, businessDTOType);
+        }
+        throw new OopsieRequestException("Oopsie This lesson doesnt exist sadge");
     }
 }

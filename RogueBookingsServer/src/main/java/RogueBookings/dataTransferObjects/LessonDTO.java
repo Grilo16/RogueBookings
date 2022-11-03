@@ -1,6 +1,6 @@
 package RogueBookings.dataTransferObjects;
 
-import RogueBookings.converters.DTOConverter;
+import RogueBookings.utilities.DTOConverter;
 import RogueBookings.models.Business;
 import RogueBookings.models.Teacher;
 import RogueBookings.models.User;

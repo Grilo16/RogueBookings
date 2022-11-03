@@ -3,7 +3,6 @@ package RogueBookings.controllers;
 
 import RogueBookings.dataTransferObjects.LessonDTO;
 import RogueBookings.services.LessonService;
-import RogueBookings.models.Lesson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +28,7 @@ public class LessonController {
 
     @PostMapping(value = "/{businessId}/new")
     public LessonDTO createNewLessonByBusinessId(@PathVariable Long businessId, @RequestBody LessonDTO lessonDTO){
-        return lessonService.createNewLesson(businessId, lessonDTO);
+        return lessonService.createNewLessonBusinessId(businessId, lessonDTO);
     }
 
     @DeleteMapping(value = "/{lessonId}")

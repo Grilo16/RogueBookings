@@ -1,23 +1,15 @@
 package RogueBookings.dataTransferObjects;
 
-import RogueBookings.converters.DTOConverter;
 import RogueBookings.models.Owner;
 import RogueBookings.models.Member;
-import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Type;
 import java.util.Set;
 
 @Component
 public class BusinessDTO {
 
-
-    DTOConverter<MemberDTO, Member> memberDTOConverter = new DTOConverter<>();
-
-    Type memberDTOType = new TypeToken<MemberDTO>() {}.getType();
-
-    private String businessName;
+    private String name;
 
     private Long balance;
 
@@ -28,19 +20,19 @@ public class BusinessDTO {
     public BusinessDTO() {
     }
 
-    public BusinessDTO(String businessName, Long balance, Set<Member> members, Set<Owner> owners) {
-        this.businessName = businessName;
+    public BusinessDTO(String name, Long balance, Set<Member> members, Set<Owner> owners) {
+        this.name = name;
         this.balance = balance;
         this.members = members;
         this.owners = owners;
     }
 
-    public String getBusinessName() {
-        return businessName;
+    public String getName() {
+        return name;
     }
 
-    public void setBusinessName(String businessName) {
-        this.businessName = businessName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getBalance() {

@@ -4,6 +4,7 @@ import RogueBookings.dataTransferObjects.BusinessDTO;
 import RogueBookings.models.Business;
 import RogueBookings.services.BusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,18 +28,18 @@ public class BusinessController {
         return businessService.getAllBusinesses();
     }
 
-    @PostMapping
-    public void createNewBusiness(@RequestBody Business business){
-        businessService.createNewBusiness(business);
+    @PostMapping(value = "/owner/{userId}")
+    public BusinessDTO createNewBusiness(@RequestBody BusinessDTO businessDTO, @PathVariable Long userId){
+        return businessService.createNewBusinessByUserId(businessDTO, userId);
     }
 
     @DeleteMapping(value = "/{businessId}")
-    public void deleteBusinessById(@PathVariable Long businessId){
-        businessService.deleteBusinessByid(businessId);
+    public ResponseEntity<String> deleteBusinessById(@PathVariable Long businessId){
+        return businessService.deleteBusinessByid(businessId);
     }
 
     @PatchMapping(path = "/{businessId}")
-    public Business editBusiness(@RequestBody BusinessDTO businessDTO, @PathVariable Long businessId){
+    public BusinessDTO editBusiness(@RequestBody BusinessDTO businessDTO, @PathVariable Long businessId){
         return businessService.editBusiness(businessDTO, businessId);
     }
 }

@@ -1,7 +1,7 @@
 package RogueBookings.services;
 
 
-import RogueBookings.converters.DTOConverter;
+import RogueBookings.utilities.DTOConverter;
 import RogueBookings.dataTransferObjects.OwnerDTO;
 import RogueBookings.models.Business;
 import RogueBookings.models.Owner;

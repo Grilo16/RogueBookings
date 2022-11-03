@@ -16,8 +16,8 @@ public class Student {
 
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User student;
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "lesson_id", nullable = false)
@@ -26,14 +26,14 @@ public class Student {
     public Student() {
     }
 
-    public Student(User student, Lesson lesson) {
-        this.student = student;
+    public Student(Member member, Lesson lesson) {
+        this.member = member;
         this.lesson = lesson;
     }
 
-    public Student(Long id, User student, Lesson lesson) {
+    public Student(Long id, Member member, Lesson lesson) {
         this.id = id;
-        this.student = student;
+        this.member = member;
         this.lesson = lesson;
     }
 
@@ -45,12 +45,12 @@ public class Student {
         this.id = id;
     }
 
-    public User getStudent() {
-        return student;
+    public Member getMember() {
+        return member;
     }
 
-    public void setStudent(User student) {
-        this.student = student;
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     public Lesson getLesson() {
