@@ -74,8 +74,12 @@ public class BusinessService {
         if (!businessRepository.existsById(businessid)){
             throw new OopsieRequestException("Oopsie This business doesnt exist sadge");
         }
-        businessRepository.deleteById(businessid);
-        return new ResponseEntity<>("Successfully deleted business", HttpStatus.OK);
+        try {
+            businessRepository.deleteById(businessid);
+            return new ResponseEntity<>("Successfully deleted business", HttpStatus.OK);
+        } catch (Exception e){
+            throw new OopsieRequestException("deletion failed, so did my creativity for funny delete messages");
+        }
     }
 
     public BusinessDTO editBusiness(BusinessDTO businessDTO, Long businessId) {

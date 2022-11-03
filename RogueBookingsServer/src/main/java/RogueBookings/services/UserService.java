@@ -62,8 +62,12 @@ public class UserService {
         if (!userRepository.existsById(userId)) {
             throw new OopsieRequestException("Oopsie This user doesnt exist sadge");
         }
-        userRepository.deleteById(userId);
-        return new ResponseEntity<>("Successfully deleted user", HttpStatus.OK);
+        try {
+            userRepository.deleteById(userId);
+            return new ResponseEntity<>("Successfully deleted user", HttpStatus.OK);
+        } catch (Exception e){
+            throw new OopsieRequestException("Deletion did not work idk why tho");
+        }
     }
 
     public UserDTO editUser(UserDTO userDTO, Long userId) {

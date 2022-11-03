@@ -60,8 +60,12 @@ public class LessonService {
         if (!lessonRepository.existsById(lessonId)){
             throw new OopsieRequestException("Oopsie This lesson doesnt exist sadge");
         }
-        lessonRepository.deleteById(lessonId);
-        return new ResponseEntity<>("Successfully deleted lesson", HttpStatus.OK);
+        try {
+            lessonRepository.deleteById(lessonId);
+            return new ResponseEntity<>("Successfully deleted lesson", HttpStatus.OK);
+        } catch (Exception e){
+            throw new OopsieRequestException("Deletion what lesson? it didnt work try again.");
+        }
 
     }
 
