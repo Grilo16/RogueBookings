@@ -2,13 +2,22 @@ package RogueBookings.models;
 
 import RogueBookings.models.userLogs.UserLogs;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.core.io.JsonStringEncoder;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonStringFormatVisitor;
+import com.vladmihalcea.hibernate.type.json.JsonType;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.TypeDefs;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@TypeDefs({
+        @TypeDef(name = "json", typeClass = JsonType.class)
+})
 @Entity
 @Table(name = "users")
 public class User {
@@ -44,10 +53,15 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, optional = false)
     private UserLogs userLogs;
 
+    @Type(type = "json")
+    @Column(columnDefinition = "json")
+    private String userLayout;
+
+
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, Long credits, Set<Owner> businesses, Set<Member> memberships, UserLogs userLogs) {
+    public User(String firstName, String lastName, String email, Long credits, Set<Owner> businesses, Set<Member> memberships, UserLogs userLogs, String userLayout) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -55,9 +69,10 @@ public class User {
         this.businesses = businesses;
         this.memberships = memberships;
         this.userLogs = userLogs;
+        this.userLayout = userLayout;
     }
 
-    public User(Long id, String firstName, String lastName, String email, Long credits, Set<Owner> businesses, Set<Member> memberships, UserLogs userLogs) {
+    public User(Long id, String firstName, String lastName, String email, Long credits, Set<Owner> businesses, Set<Member> memberships, UserLogs userLogs, String userLayout) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -66,6 +81,7 @@ public class User {
         this.businesses = businesses;
         this.memberships = memberships;
         this.userLogs = userLogs;
+        this.userLayout = userLayout;
     }
 
     public Long getId() {
@@ -131,6 +147,15 @@ public class User {
     public void setUserLogs(UserLogs userLogs) {
         this.userLogs = userLogs;
     }
+
+    public String getUserLayout() {
+        return userLayout;
+    }
+
+    public void setUserLayout(String userLayout) {
+        this.userLayout = userLayout;
+    }
+
 
     @Override
     public boolean equals(Object o) {

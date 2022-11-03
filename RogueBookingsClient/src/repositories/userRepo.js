@@ -7,11 +7,18 @@ const userRepo = {
         return response.json()
     },
 
+
+    async getUserById(userId){
+        const response = await fetch(userURL + `${userId}`)
+        return response.json()
+    },
+
     async addNewUser(userObject){
         const response = await fetch(userURL, {
             method: "POST",
             body: JSON.stringify(userObject),
-            headers: "Content-Type: application/json"
+            headers: { "Content-Type": "application/json" },
+
         })
         return response.json()
     },
