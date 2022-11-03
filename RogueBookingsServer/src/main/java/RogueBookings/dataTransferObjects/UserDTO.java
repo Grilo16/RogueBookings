@@ -1,6 +1,9 @@
 package RogueBookings.dataTransferObjects;
 
 import RogueBookings.models.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -8,23 +11,30 @@ import java.util.List;
 @Component
 public class UserDTO {
 
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
 
-    private List<Owner> businesses;
-
-    private List<Member> memberships;
+    private String userLayout;
 
     public UserDTO() {
     }
 
-    public UserDTO(String firstName, String lastName, String email, List<Owner> businesses, List<Member> memberships) {
+    public UserDTO(Long id, String firstName, String lastName, String email, String userLayout) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.businesses = businesses;
-        this.memberships = memberships;
+        this.userLayout = userLayout;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -51,19 +61,13 @@ public class UserDTO {
         this.email = email;
     }
 
-    public List<Owner> getBusinesses() {
-        return businesses;
+    public JsonNode getUserLayout() throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode = objectMapper.readTree(this.userLayout);
+        return jsonNode;
     }
 
-    public void setBusinesses(List<Owner> businesses) {
-        this.businesses = businesses;
-    }
-
-    public List<Member> getMemberships() {
-        return memberships;
-    }
-
-    public void setMemberships(List<Member> memberships) {
-        this.memberships = memberships;
+    public void setUserLayout(String userLayout) {
+        this.userLayout = userLayout;
     }
 }

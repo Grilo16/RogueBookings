@@ -10,52 +10,48 @@ const reducer = (state, action)=>{
 
 
     switch(action.type){
-        case "LoadData":
-            return {...state, data:[action.data]}
-
-        case "LoadMoreData":
-            return {...state, newState:["something"]}
-
-        case "LoadAllUsers":
-            return {...state, users:[action.user]}
-
-        case "AddToGreen": 
-            return {...state, green: state.green + 10}
-
+        case "LoadUserById":
+            return {...state, ...action.user}
         default: 
             return state
     }
 
 };
 
-
 const HolderPage = ()=> {
 
+    const userId = 2
     const states = {
-        data: [],
-        red: 100,
-        blue : 100,
-        green : 1,
+        id: null,
+        firstName: null,
+        lastName: null,
+        email: null,
+        userLayout: {backgroundColor: {blue: 0, green: 0, red: 0}}
     }
     const [state, dispatch] = useReducer(reducer, states)
     
 useEffect(()=>{
  
-    userRepo.getAllUsers().then((users)=>{ dispatch({type: "LoadAllUsers", users})})
-    userRepo.editUserById()
-    const a = {a: 1}
-   
-    dispatch({type : "LoadData", data: a })
-    dispatch({type : "LoadMoreData"})
-
+    userRepo.getUserById(userId).then((user)=>{ dispatch({type: "LoadUserById", user})})
+    
 }, [])
 
-
+const addUserToDb = ()=>{
+    const user = {
+        firstName : "IT DIIID",
+        lastName : "Yeeah",
+        email: "sfasdf@gmaASDaaafilasd.com",
+        userLayout: '{"backgroundColor": {"red": 100, "blue": 50, "green": 255}}'
+    }
+    
+        userRepo.addNewUser(user)
+    }
 
 
     return (
-        <HolderContext.Provider value={{state, dispatch}}>
+        <HolderContext.Provider value={{state, dispatch, addUserToDb}}>
             <UserDisplayBox/>
+            
 
 
         </HolderContext.Provider>

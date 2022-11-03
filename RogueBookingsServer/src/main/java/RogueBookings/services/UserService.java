@@ -1,5 +1,6 @@
 package RogueBookings.services;
 
+import RogueBookings.models.UserLayout;
 import RogueBookings.utilities.DTOConverter;
 import RogueBookings.oopsies.OopsieRequestException;
 import RogueBookings.models.User;
@@ -43,11 +44,28 @@ public class UserService {
     public List<UserDTO> getAllUsers() {
         return dtoConverter.entityToDTO(userRepository.findAll(), userDTOType);
     }
+
+    public UserDTO getUserById(Long userId){
+        Optional<User> user = userRepository.findById(userId);
+        UserDTO userDTO;
+        if (user.isEmpty()){
+            throw new OopsieRequestException("user doesnt exist soz");
+        }
+        try {
+            userDTO = dtoConverter.entityToDTO(user.get(), userDTOType);
+        } catch (Exception e){
+            throw new OopsieRequestException("ahh that didnt work no know why");
+        }
+        return userDTO;
+    }
+
     public UserDTO addNewUser(UserDTO userDTO) {
         User user = dtoConverter.DTOtoEntity(userDTO, userType);
         UserLogs userLogs = new UserLogs();
         userLogs.setUser(user);
         user.setUserLogs(userLogs);
+//        UserLayout userLayout = new UserLayout();
+//        user.setUserLayout("{\"backgroundColor\": {\"red\": 100, \"blue\": 0, \"green\": 255}}");
         if (userRepository.existsByEmailIgnoreCase(user.getEmail())){
             throw new OopsieRequestException("This email has been taken already soz");
         }

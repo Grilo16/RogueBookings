@@ -1,11 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { HolderContext } from "../HolderPage";
 import styled from "styled-components";
+import userRepo from "../../repositories/userRepo";
 
 const UserDiv = styled.div.attrs(({red, blue, green})=>({
     style: {
-        background : `rgb(${red},${blue},${green})`,
-        left : green
+        backgroundColor : "rgb(" + red +"," + blue + "," +green +")",
     }
 }))`
   position: absolute;  
@@ -15,12 +15,17 @@ const UserDiv = styled.div.attrs(({red, blue, green})=>({
 `;
 
 const UserDisplayBox = () => {
-  const { state, dispatch } = useContext(HolderContext);
+  const { state, dispatch, addUserToDb } = useContext(HolderContext);
 
   return (
-    <UserDiv red={state.red} blue={state.blue} green={state.green}>
-      <h2>user will be here</h2>
-      <button onClick={()=>{dispatch({type: "AddToGreen"})}}> add to green</button>
+    <UserDiv red={state.userLayout.backgroundColor.red} blue={state.userLayout.backgroundColor.blue} green={state.userLayout.backgroundColor.green}>
+
+        <h1>{state.id}</h1>
+        <h1>{state.firstName + state.lastName}</h1>
+        <h1>{state.email}</h1>
+        <button onClick={()=>addUserToDb()}>new user</button>
+
+   
 
     </UserDiv>
   );
