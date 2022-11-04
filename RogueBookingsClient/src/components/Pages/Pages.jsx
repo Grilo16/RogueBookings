@@ -10,7 +10,7 @@ import Login from "./Users/Login";
 import UserDashboard from "../UserDashboard/UserDashboard";
 import Profile from "../UserDashboard/ContentContainer/Profile/Profile";
 import Calendar from "../UserDashboard/ContentContainer/Calendar/Calendar";
-import ContextPage from "../ContextPage";
+import NewUser from "./Users/NewUser";
 
 function Pages() {
   return (
@@ -18,7 +18,7 @@ function Pages() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/users" element={<Users />} />
-        <Route path="/users/new" element={<ContextPage />} />
+        <Route path="/users/new" element={<NewUser/>} />
         <Route path="/dashboard" element={<UserDashboard user="user" />} />
         <Route
           path="/dashboard/profile"
@@ -28,10 +28,10 @@ function Pages() {
           path="/dashboard/calendar"
           element={<UserDashboard user="user" content={<Calendar />} />}
         />
-        <Route
+        {/* <Route
           path="/dashboard/businesses/:businessId"
-          element={<UserDashboard user="user" content={<Profile />} />}
-        />
+          element={<UserDashboard user="user" content={<Profile />} />} */}
+        
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/bookings" element={<Bookings />} />
