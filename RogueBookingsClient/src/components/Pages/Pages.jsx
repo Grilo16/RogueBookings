@@ -5,13 +5,12 @@ import About from "./About/About";
 import Bookings from "./Bookings";
 import Users from "./Users";
 import Classes from "./Classes/Classes";
-import Businesses from "./Businesses";
 import HolderPage from "../../MessySpaceForHookingUpServerLetsGo/HolderPage";
-import NewUser from "./Users/NewUser";
 import Login from "./Users/Login";
 import UserDashboard from "../UserDashboard/UserDashboard";
 import Profile from "../UserDashboard/ContentContainer/Profile/Profile";
 import Calendar from "../UserDashboard/ContentContainer/Calendar/Calendar";
+import ContextPage from "../ContextPage";
 
 function Pages() {
   return (
@@ -19,7 +18,7 @@ function Pages() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/users" element={<Users />} />
-        <Route path="/users/new" element={<NewUser />} />
+        <Route path="/users/new" element={<ContextPage />} />
         <Route path="/dashboard" element={<UserDashboard user="user" />} />
         <Route
           path="/dashboard/profile"
@@ -27,14 +26,16 @@ function Pages() {
         />
         <Route
           path="/dashboard/calendar"
-          element={<UserDashboard user="user" content={<Calendar/>} />}
+          element={<UserDashboard user="user" content={<Calendar />} />}
         />
-        <Route path ="/dashboard/businesses/:businessId" element={<UserDashboard user="user" content={<Profile/>}/>}/>
+        <Route
+          path="/dashboard/businesses/:businessId"
+          element={<UserDashboard user="user" content={<Profile />} />}
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/classes" element={<Classes />} />
-        <Route path="/businesses" element={<Businesses />} />
         <Route path="/messypage" element={<HolderPage />} />
 
         <Route path="*" element={<ErrorPage />} />

@@ -6,7 +6,7 @@ function UserDashboard({content}) {
 
 
     <>
-      <h2>User Dashboard</h2>
+      <h1>User Dashboard</h1>
       <div><TabContainer/></div>
       <div><ContentContainer content={content}/></div>
     </>

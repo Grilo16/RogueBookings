@@ -1,4 +1,5 @@
 import TextField from "../../Forms/inputFields/TextField";
+import { Link } from "react-router-dom";
 
 function Login() {
   return (
@@ -6,6 +7,7 @@ function Login() {
       <h2>A happy little login page</h2>
       <TextField fieldName="Email"/>
       <TextField fieldName="Password"/>
+      <Link to="/dashboard">dashboard</Link>
     </>
   );
 }

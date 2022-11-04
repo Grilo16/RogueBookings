@@ -1,9 +1,14 @@
+//The page that loads all the data
+//and provides context to the rest of the app,
+//for now...
+
 import { createContext, useEffect, useReducer } from "react";
 import userRepo from "../repositories/userRepo";
-import PageEditor from "./components/PageEditor";
-import UserDisplayBox from "./components/UserDisplayBox";
+import NewUser from "./Pages/Users/NewUser";
+import UserDashboard from "./UserDashboard/UserDashboard";
 
-export const HolderContext = createContext(null);
+
+export const RogueContext = createContext(null);
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -11,21 +16,12 @@ const reducer = (state, action) => {
       return { ...state, allUsers: [...action.users] };
     case "LoadSelectedUser":
       return { ...state, selectedUser: { ...action.user } };
-
-    case "ChangeBackgroundColor":
-      return {
-        ...state,
-        selectedUser: {
-          ...state.selectedUser,
-          userLayout: { ...state.userLayout, backgroundColor: action.color },
-        },
-      };
     default:
       return state;
   }
 };
 
-const HolderPage = () => {
+const ContextPage = () => {
   const userId = 1;
   const states = {
     allUsers: [],
@@ -49,14 +45,12 @@ const HolderPage = () => {
   }, []);
 
   return (
-    <HolderContext.Provider value={{ state, dispatch }}>
-      <div>
-        <PageEditor />
-      </div>
-      <div>
-        <UserDisplayBox />
-      </div>
-    </HolderContext.Provider>
+    <RogueContext.Provider value={{ state, dispatch }}>
+    <NewUser/>
+    
+    </RogueContext.Provider>
   );
 };
-export default HolderPage;
+
+
+export default ContextPage;
