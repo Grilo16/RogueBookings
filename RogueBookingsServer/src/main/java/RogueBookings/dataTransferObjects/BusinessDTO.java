@@ -1,5 +1,6 @@
 package RogueBookings.dataTransferObjects;
 
+import RogueBookings.models.Lesson;
 import RogueBookings.models.Owner;
 import RogueBookings.models.Member;
 import org.springframework.stereotype.Component;
@@ -9,6 +10,7 @@ import java.util.Set;
 @Component
 public class BusinessDTO {
 
+    private Long id;
     private String name;
 
     private Long balance;
@@ -17,14 +19,26 @@ public class BusinessDTO {
 
     private Set<Owner> owners;
 
+    private Set<Lesson> lessons;
+
     public BusinessDTO() {
     }
 
-    public BusinessDTO(String name, Long balance, Set<Member> members, Set<Owner> owners) {
+    public BusinessDTO(Long id, String name, Long balance, Set<Member> members, Set<Owner> owners, Set<Lesson> lessons) {
+        this.id = id;
         this.name = name;
         this.balance = balance;
         this.members = members;
         this.owners = owners;
+        this.lessons = lessons;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -57,5 +71,13 @@ public class BusinessDTO {
 
     public void setMembers(Set<Member> members) {
         this.members = members;
+    }
+
+    public Set<Lesson> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(Set<Lesson> lessons) {
+        this.lessons = lessons;
     }
 }

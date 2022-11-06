@@ -78,4 +78,8 @@ public class MemberService {
             throw new OopsieRequestException("Sorry deletion failed for some reason");
         }
     }
+
+    public List<MemberDTO> getAllMembersByUserId(Long userId) {
+        return dtoConverter.entityToDTO(memberRepository.findMembershipsByUser_Id(userId), memberDTOType);
+    }
 }

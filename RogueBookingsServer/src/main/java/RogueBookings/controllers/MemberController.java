@@ -1,6 +1,7 @@
 package RogueBookings.controllers;
 
 
+import RogueBookings.dataTransferObjects.BusinessDTO;
 import RogueBookings.dataTransferObjects.MemberDTO;
 import RogueBookings.models.Member;
 import RogueBookings.services.MemberService;
@@ -27,6 +28,12 @@ public class MemberController {
 
         return memberService.getAllBusinessMembers();
     }
+
+    @GetMapping(value = "/user/{userId}")
+    public List<MemberDTO> getAllMembersByUserId(@PathVariable Long userId){
+        return memberService.getAllMembersByUserId(userId);
+    }
+
 
     @PostMapping(path = "/{userId}/business/{businessId}")
     public MemberDTO addMemberToBusiness(@PathVariable Long userId, @PathVariable Long businessId){

@@ -28,6 +28,16 @@ public class BusinessController {
         return businessService.getAllBusinesses();
     }
 
+    @GetMapping(value = "/{businessId}")
+    public BusinessDTO getBusinessByBusinessId(@PathVariable Long businessId){
+        return businessService.getBusinessById(businessId);
+    }
+
+    @GetMapping(value = "/user/{userId}")
+    public List<BusinessDTO> getAllBusinessesByUserId(@PathVariable Long userId){
+        return businessService.getAllBusinessesByUserId(userId);
+    }
+    
     @PostMapping(value = "/owner/{userId}")
     public BusinessDTO createNewBusiness(@RequestBody BusinessDTO businessDTO, @PathVariable Long userId){
         return businessService.createNewBusinessByUserId(businessDTO, userId);

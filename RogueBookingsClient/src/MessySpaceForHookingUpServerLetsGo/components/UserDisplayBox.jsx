@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { HolderContext } from "../HolderPage";
+import { HolderContext } from "../MasterContainer";
 import styled from "styled-components";
 import userRepo from "../../repositories/userRepo";
 import AddNewUserForm from "./AddNewUserForm";

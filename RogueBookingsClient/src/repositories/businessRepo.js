@@ -7,6 +7,16 @@ const businessRepo = {
         return response.json()
     },
 
+    async getBusinessByBusinessId(businessId){
+        const response = await fetch(businessURL + `${businessId}`)
+        return response.json()
+    },
+
+    async getAllBusinessesByUserId(userId){
+        const response = await fetch(businessURL + `user/${userId}`)
+        return response.json()
+    },
+    
     async createNewBusinessByUserId(businessObject, userId){
         const response = await fetch(businessURL+`owner/${userId}`, {
             method: "POST",

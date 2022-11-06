@@ -1,5 +1,6 @@
 package RogueBookings.services;
 
+import RogueBookings.dataTransferObjects.UserDTO;
 import RogueBookings.models.Owner;
 import RogueBookings.models.User;
 import RogueBookings.repositories.UserRepository;
@@ -50,6 +51,22 @@ public class BusinessService {
         return dtoConverter.entityToDTO(businessRepository.findAll(), businessDTOType);
     }
 
+    public BusinessDTO getBusinessById(Long businessId){
+        Optional<Business> business = businessRepository.findById(businessId);
+        BusinessDTO businessDTO;
+        if (business.isEmpty()){
+            throw new OopsieRequestException("business doesnt exist soz");
+        }
+        try {
+            businessDTO = dtoConverter.entityToDTO(business.get(), businessDTOType);
+        } catch (Exception e){
+            throw new OopsieRequestException("ahh that didnt work no know why");
+        }
+        return businessDTO;
+    }
+
+
+
     public BusinessDTO createNewBusinessByUserId(BusinessDTO businessDTO, Long userId) {
         Business business = dtoConverter.DTOtoEntity(businessDTO, businessType);
         Optional<User> user = userRepository.findById(userId);
@@ -96,5 +113,9 @@ public class BusinessService {
             return dtoConverter.entityToDTO(updatedBusiness, businessDTOType);
         }
         throw new OopsieRequestException("Oopsie This lesson doesnt exist sadge");
+    }
+
+    public List<BusinessDTO> getAllBusinessesByUserId(Long userId) {
+        return dtoConverter.entityToDTO(businessRepository.findByOwners_Owner_Id(userId), businessDTOType);
     }
 }

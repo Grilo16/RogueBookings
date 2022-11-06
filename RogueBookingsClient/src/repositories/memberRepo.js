@@ -7,6 +7,11 @@ const memberRepo = {
         return response.json()
     },
 
+    async getAllMembershipsByUserId(userId){
+        const response = await fetch(memberURL + `user/${userId}`)
+        return response.json()
+    },
+
     async addMemberToBusinessByIds(userId, businessId){
         const response = await fetch(memberURL + `${userId}/business/${businessId}`, {
             method: "POST",
