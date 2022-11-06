@@ -6,7 +6,7 @@ import NavbarItem from "./Button/NavbarItem";
 
 const NavDiv = styled.div`
 position: absolute;
-background-color: #282838;
+background-color: #4a499e;
 margin: 0px;
 padding: 0px;
 min-width: 16vw;
@@ -29,7 +29,7 @@ const {state, dispatch} = useContext(MasterContext)
 const colors = ["#4a499e", "#7775c9", "#9594dc", "#b0afe8", "#cccbf8", ]
     
 let cycler = false
-let counter = 2
+let counter = 3
 const memberships = state.myMemberships.map((membership, index) => {
     if (counter === 4){
         cycler = true
@@ -44,7 +44,7 @@ const memberships = state.myMemberships.map((membership, index) => {
           
     })
 
-const navItemList = [{name: user.firstName, fill: "#4a499e", type: "dashboard"}, {name: "Join a Studio", fill: "#7775c9", type: "join-business"}, ...memberships]
+const navItemList = [{name: user.firstName, fill: "#4a499e", type: "dashboard"}, {name: "My bookings", fill: "#7775c9", type: "join-business"}, {name: "Join a Studio", fill: "#9594dc", type: "join-business"}, ...memberships]
 
 
 

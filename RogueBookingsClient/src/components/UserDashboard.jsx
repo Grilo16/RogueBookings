@@ -5,6 +5,11 @@ import { MasterContext } from "../containers/MasterContainer";
 import BusinessSummaryPage from "./BusinessSummaryPage";
 import BusinessTile from "./BusinessTile";
 import CreateBusinessForm from "./Forms/CreateBusinessForm";
+import UserBusinesses from "./UserBusinesses";
+import UserDetailsTable from "./UserDetailsTable";
+
+
+
 
 
 
@@ -22,59 +27,19 @@ const CreateBusinessDiv = styled.div`
 `
 function UserDashboard() {
 
-  const [showSelected, setShowSelected] = useState(false)
 
   const {state, dispatch} = useContext(MasterContext)
 
-  const [selectedBusiness, setSelectedBusiness] = useState({})
 
- 
-
-  const handleSelectBusiness = (business) => {
-    setSelectedBusiness(business)
-    setShowSelected(!showSelected)
-    
-    console.log(business)
-};
   
-  const businesses = state.myBusinesses.map((business, index) => {
-    return (
-      <BusinessTile key={index} business={business} handleSelectBusiness={handleSelectBusiness}/>
-      )
-    })
-    
-    const memberships = state.myMemberships.map((membership, index) => {
-      return(
-        <h4 key={index}>{membership.business.name}</h4>
-        ) 
-  })
 
 
   return ( 
     <ContentDiv className="scroll-within">
-      <h3>Welcome!</h3>
-      <h2>{state.user.firstName + " " + state.user.lastName}</h2>
-      <hr />
-      <h3>Create a business</h3>
-      <CreateBusinessForm/>
-      <hr />
+      <h2>Welcome, {state.user.firstName}!</h2>
+      <UserDetailsTable/>
 
-      <h2>My Businesses: </h2>
-      <MyBusinessesDiv>
-      {showSelected
-            ? <BusinessSummaryPage business={selectedBusiness} showSelected={showSelected} setShowSelected={setShowSelected} owner={true}/>
-            : null
-            }
-      {businesses}
-      </MyBusinessesDiv>
-      <hr />
-
-      <h2>My memberships: </h2>
-      {memberships}
-      <hr />
-      <h2>My classes : </h2>
-
-
+      <UserBusinesses/>
     
 
     </ContentDiv>
@@ -84,3 +49,23 @@ function UserDashboard() {
 };
 
 export default UserDashboard;
+{/* <h2></h2>
+<hr />
+<h3>Create a business</h3>
+<CreateBusinessForm/>
+<hr />
+
+<h2>My Businesses: </h2>
+<MyBusinessesDiv>
+{showSelected
+      ? <BusinessSummaryPage business={selectedBusiness} showSelected={showSelected} setShowSelected={setShowSelected} owner={true}/>
+      : null
+      }
+{businesses}
+</MyBusinessesDiv>
+<hr />
+
+<h2>My memberships: </h2>
+{memberships}
+<hr />
+<h2>My classes : </h2> */}

@@ -27,7 +27,7 @@ left: ${(props)=> props.left ? props.left : "1.2vw"};
 height: ${(props)=> props.height ? props.height : "90vh"};
 width:  ${(props)=> props.width ? props.width : "82.5vw"};
 border-radius: 5vh;
-background-color: grey;
+background-color: white;
 text-align: center;
 overflow-y: scroll;
 `

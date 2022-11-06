@@ -2,24 +2,45 @@ import styled from "styled-components";
 import InputFieldComponent from "./Forms/InputFieldComponent";
 
 const BusinessTileDiv = styled.div`
-background-color: #4d4d6b;
+background-color: #ffffff;
 border-radius: 2vw;
-height: 25vh;
+height: 7.5vh;
+display: flex;
+`
+
+const StyledH4 = styled.h4`
+margin-left: 1vw;
+min-width: 15vw;
 
 `
-const BusinessTile = ({business, handleSelectBusiness}) => {
+// (to center, #5e5ea2, #d4d4f0, #7d7dd5 , #8f8fd3 );
+const UserTag = styled.div`
+background-image: radial-gradient(#4f4db6, #8280be);
+margin-top: 2vh;
+margin-left: 1vw;
+height: 2.7vh;
+width: 7.8vw;
+border-radius: 2vw;
+font-size: 1vw;
+color: white;
+text-align: center;
+padding-top: 0.7vh;
+`
 
+
+const BusinessTile = ({business, handleSelectBusiness, tag}) => {
 
 
     return (
         <BusinessTileDiv onClick={()=> handleSelectBusiness(business)}>
         <img
-        src="https://via.placeholder.com/120"
+        src="https://via.placeholder.com/50"
           alt=""
-          style={{marginTop: "3vh", borderRadius: "25%" }}
+          style={{marginTop: "1.4vh", borderRadius: "50%" }}
         />
-        <h4>{business.name}</h4>
-   
+        <StyledH4>{business.name}</StyledH4>
+        <UserTag>{tag}</UserTag>
+        <UserTag>View details</UserTag>
         </BusinessTileDiv>
         
     )
