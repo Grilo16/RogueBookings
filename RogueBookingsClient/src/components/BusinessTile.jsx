@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import InputField from "./Forms/InputField";
+import InputFieldComponent from "./Forms/InputFieldComponent";
 
 const BusinessTileDiv = styled.div`
 background-color: #4d4d6b;

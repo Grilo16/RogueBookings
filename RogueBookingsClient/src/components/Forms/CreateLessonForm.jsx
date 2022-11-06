@@ -1,5 +1,5 @@
 import { useState } from "react";
-import InputField from "./InputField";
+import InputFieldComponent from "./InputFieldComponent";
 import lessonRepo from "../../repositories/lessonRepo"
 
 const CreateLessonForm = ({business}) => {
@@ -25,11 +25,11 @@ const CreateLessonForm = ({business}) => {
 
     return (
         <form >
-            <InputField placeholder="Lesson name" state={lessonName} setState={setLessonName}/>
-            <InputField placeholder="Date" state={date} setState={setDate}/>
-            <InputField placeholder="Capacity" state={capacity} setState={setCapacity}/>
-            <InputField placeholder="Description" state={description} setState={setDescription}/>
-            <InputField placeholder="Price" state={price} setState={setPrice}/>
+            <InputFieldComponent placeholder="Lesson name" state={lessonName} setState={setLessonName}/>
+            <InputFieldComponent placeholder="Date" state={date} setState={setDate}/>
+            <InputFieldComponent placeholder="Capacity" state={capacity} setState={setCapacity}/>
+            <InputFieldComponent placeholder="Description" state={description} setState={setDescription}/>
+            <InputFieldComponent placeholder="Price" state={price} setState={setPrice}/>
             <button onClick={handleCreateLesson} >Create lesson</button>
         </form>
 

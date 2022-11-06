@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
 import { MasterContext } from "../../containers/MasterContainer";
 import userRepo from "../../repositories/userRepo";
-import InputField from "./InputField";
+import ButtonComponent from "./ButtonComponent";
+import InputFieldComponent from "./InputFieldComponent";
 
-const SignUpForm = () => {
+const SignUpForm = ({setShowPage}) => {
 
     const {state, dispatch} = useContext(MasterContext)
 
@@ -13,7 +14,6 @@ const SignUpForm = () => {
     const [password, setPassword] = useState("")
     
     const handleUserSignUp = (e) => {
-        e.preventDefault()
         const userObject = {
             firstName: firstName,
             lastName: lastName,
@@ -23,14 +23,20 @@ const SignUpForm = () => {
         userRepo.addNewUser(userObject).then((user) => {dispatch({type: "LoadLoggedInUser", user})})
     };
 
+    const handleSwapPage = () => {
+        setShowPage("login")
+        
+    };
+
     return (
 
         <form >    
-            <InputField placeholder={"First Name"} setState={setFirstName} state={firstName}/>
-            <InputField placeholder={"Last Name"} setState={setLastName} state={lastName}/>
-            <InputField placeholder={"Email"} setState={setEmail} state={email}/>
-            <InputField placeholder={"Password"} setState={setPassword} state={password}/>
-            <button onClick={handleUserSignUp}>Sign Up</button>
+            <InputFieldComponent placeholder={"First Name"} setState={setFirstName} state={firstName}/>
+            <InputFieldComponent placeholder={"Last Name"} setState={setLastName} state={lastName}/>
+            <InputFieldComponent placeholder={"Email"} setState={setEmail} state={email}/>
+            <InputFieldComponent placeholder={"Password"} setState={setPassword} state={password} type={"password"}/>
+            <ButtonComponent clickFunction={handleUserSignUp} label={"Create account"} activated={true} marginLeft="1.5vw"/>
+            <ButtonComponent clickFunction={handleSwapPage} label={"Sign in"} activated={false} marginLeft=" -0.4vw"/>
         </form>
     )
 };

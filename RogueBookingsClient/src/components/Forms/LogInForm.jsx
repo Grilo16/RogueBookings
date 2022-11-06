@@ -3,9 +3,13 @@ import { MasterContext } from "../../containers/MasterContainer";
 import businessRepo from "../../repositories/businessRepo";
 import memberRepo from "../../repositories/memberRepo";
 import userRepo from "../../repositories/userRepo";
+import ButtonComponent from "./ButtonComponent";
+import InputFieldComponent from "./InputFieldComponent";
 
-const LogInForm = () => {
+const LogInForm = ({setShowPage}) => {
 
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
     const [userId, setUserId] = useState()  
 
     const {state, dispatch} = useContext(MasterContext)
@@ -16,12 +20,14 @@ const LogInForm = () => {
     })
 
     const handleLogIn = (e) => {
-        e.preventDefault()
-        userRepo.getUserById(userId).then((user)=>{
+       const user =  userRepo.getUserByEmail(email).then((user)=>{
+        //    if (!user){
+        //        return
+        //    }
             dispatch({type: "LoadLoggedInUser", user})
-            businessRepo.getAllBusinessesByUserId(userId).then((businesses) =>{
+            businessRepo.getAllBusinessesByUserId(user.id).then((businesses) =>{   
                 dispatch({type: "LoadMyBusinesses", businesses})
-                memberRepo.getAllMembershipsByUserId(userId).then((memberships)=>{
+                memberRepo.getAllMembershipsByUserId(user.id).then((memberships)=>{
                     dispatch({type: "LoadMyMemberships", memberships})
                 })
                 
@@ -33,15 +39,22 @@ const LogInForm = () => {
         setUserId(e.target.value)
     };
 
+    const handleSwapPage = () => {
+        setShowPage("signUp")
+        
+    };
+
     return (
         <form >
-            <select onChange={handleSelectChange}>
+            {/* <select onChange={handleSelectChange}>
                 <option value=""></option>
            {users}
-
             </select>
-            <br />
-            <button onClick={handleLogIn}>Log in</button>
+            <br /> */}
+            <InputFieldComponent placeholder={"Email"} setState={setEmail} state={email}/>
+            <InputFieldComponent placeholder={"Password"} setState={setPassword} state={password} type={"password"}/>
+            <ButtonComponent clickFunction={handleSwapPage} label={"Create account"} activated={false} marginLeft="1.6vw"/>
+            <ButtonComponent clickFunction={handleLogIn} label={"Sign in"} activated={true} marginLeft="-0.4vw "/>
         </form>
     )
 };

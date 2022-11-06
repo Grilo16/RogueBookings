@@ -13,6 +13,11 @@ const userRepo = {
         return response.json()
     },
 
+    async getUserByEmail(userEmail){
+        const response = await fetch(userURL + `email/${userEmail}`)
+        return response.json()
+    },
+
     async addNewUser(userObject){
         const response = await fetch(userURL, {
             method: "POST",

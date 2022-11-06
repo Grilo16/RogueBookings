@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { MasterContext } from "../../containers/MasterContainer";
 import businessRepo from "../../repositories/businessRepo";
-import InputField from "./InputField";
+import InputFieldComponent from "./InputFieldComponent";
 
 const CreateBusinessForm = () => {
     
@@ -21,7 +21,7 @@ const CreateBusinessForm = () => {
 
     return (
         <form >
-            <InputField state={businessName} setState={setBusinessName} placeholder={"Business Name"}/>   
+            <InputFieldComponent state={businessName} setState={setBusinessName} placeholder={"Business Name"}/>   
 
             <button onClick={handleClick}>Create new business</button>     
         </form>
