@@ -12,7 +12,6 @@ const DisplayContainerDiv = styled.div`
   height: 100vh;
   width: 84.8vw; 
   padding-left: 1.4vw;
-  font-size: 1.2vw;
   transition: background-color 0.5s ease;
 `;
 

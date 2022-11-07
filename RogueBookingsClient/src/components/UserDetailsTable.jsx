@@ -12,7 +12,8 @@ const TableHeader = styled.h4`
 text-align: left;
 margin-left: 1vw;
 background-color: white;
-margin-bottom: 0.8vh;
+margin-bottom: 0.8vw;
+font-size: 1vw;
 
 `
 const TableDataDiv = styled.div`
@@ -23,13 +24,14 @@ overflow: hidden;
 const TableRowContainer = styled.div`
 background-color: ${(props)=> props.color ? props.color: "#f5f4ff"};
 display : flex;
-height: 4.8vh;
-padding-top: 0.8vh;
+height: 1.8vw;
+padding-top: 0.8vw;
 `
 
 const TableData = styled.p`
-padding: 1vh;
 margin: 0;
+margin-top: -1vw;
+padding: 1vw;
 margin-left: 1.5vw;
 text-align: left;
 min-width: 5vw;

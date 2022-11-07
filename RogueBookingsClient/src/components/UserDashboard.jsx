@@ -36,7 +36,7 @@ function UserDashboard() {
 
   return ( 
     <ContentDiv className="scroll-within">
-      <h2>Welcome, {state.user.firstName}!</h2>
+      <h1>Welcome, {state.user.firstName}!</h1>
       <UserDetailsTable/>
 
       <UserBusinesses/>
@@ -52,11 +52,11 @@ export default UserDashboard;
 {/* <h2></h2>
 <hr />
 <h3>Create a business</h3>
-<CreateBusinessForm/>
 <hr />
 
 <h2>My Businesses: </h2>
 <MyBusinessesDiv>
+<CreateBusinessForm/>
 {showSelected
       ? <BusinessSummaryPage business={selectedBusiness} showSelected={showSelected} setShowSelected={setShowSelected} owner={true}/>
       : null

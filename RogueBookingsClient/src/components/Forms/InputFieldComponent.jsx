@@ -1,11 +1,11 @@
 import styled from "styled-components"
 
 const InputStyled = styled.input`
-height: 7.5vh;
+height: 3.9vw;
 border-radius: 25vw;
 width: 23vw;
 border-style: none;
-margin-bottom: 2vh;
+margin-bottom: 1.2vw;
 font-family: 'Jua', sans-serif;
 font-size: 1.5vw;
 text-indent: 2vw;

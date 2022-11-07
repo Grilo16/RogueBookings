@@ -3,11 +3,11 @@ import styled from "styled-components"
 
 const StyledButton = styled.button`
 background-color : ${(props)=>props.activated? "#ffcf7e": "transparent"}; 
-height: 7.5vh;
+height: 3.9vw;
 max-width: max-content;
 padding-left 2.4vw;
 padding-right 2.4vw;
-border-radius: 30vh;
+border-radius: 30vw;
 margin: 1vw;
 font-size: 1.4vw;
 color: white;

@@ -8,46 +8,38 @@ import placeholderArt from "../images/placeholderArt.png"
 
 
 const GuestPageDiv = styled.div`
-text-align: center;
 display: flex;
-background-image: linear-gradient(to bottom right, #5e5ea2, #7d7dd5 , #8f8fd3, #d4d4f0);
+text-align: center;
 height: 100vh;
-width: 100vw;
-position: fixed;
 `
 
-const LogInContainer = styled.div`
-margin-top: 10vh;
+const LogInContainerDiv = styled.div`
+background-image: linear-gradient(to bottom right, #7d7dd5 , #8f8fd3, #d4d4f0);
 color: white;
-width: 40vw;
+width: 50vw;
 `
 
-
-const CreateAccountDiv = styled.div`
-
-`
-
-const LogInDiv = styled.div`
-`
-
-const GraphicsDiv = styled.div`
+const GraphicsContainerDiv = styled.div`
 background-color: white;
-height: 100vh;
-width: 60vw;
+width: 50vw;
 `
 
 const StyledH1 = styled.h1`
+margin-top: 10vw;
 font-size: 5vw;
-font-weight: lighter;
-margin-bottom: 10vh;
+margin-bottom: 3vw;
 `
 
-const GuestHeaderDiv = styled.div`
-margin-top: 0px;
-height: 15vh;
-padding: 1px;
+const LogoImg = styled.img`
+height: 4.5vw;
+width: 14.5vw;
+padding-right: 35vw;
 `
 
+const HeroImg = styled.img`
+height: 42vw;
+margin-top: 2vw;
+`
 
 const GuestPageContainer = () => {
     const {state, dispatch} = useContext(MasterContext)
@@ -56,36 +48,24 @@ const GuestPageContainer = () => {
 
 
     return (
-        <GuestPageDiv>
-    <GraphicsDiv>
-        <GuestHeaderDiv> 
-                <img src={logo} alt="" height="100" style={{marginLeft: "-42vw"}}/>
-        </GuestHeaderDiv>
-        <div>
-            <img src={placeholderArt} height="690" alt="" style={{marginTop: "-6.2vh"}}/>
-        </div>
+<GuestPageDiv>
+    <GraphicsContainerDiv>
+            <LogoImg src={logo}/>
+            <HeroImg src={placeholderArt} />
+    </GraphicsContainerDiv>
         
-    </GraphicsDiv>
-    <LogInContainer>
+    <LogInContainerDiv>
         <StyledH1>Welcome !</StyledH1>
 
-        {showPage === "login"
-        ? <LogInDiv>
-            <LogInForm setShowPage={setShowPage} />
-         </LogInDiv>
-        : showPage ==="signUp"
-        ?<CreateAccountDiv>
-            <SignUpForm setShowPage={setShowPage}/>
-            
-        </CreateAccountDiv>
-        : null        
-    }
-    </LogInContainer>
+            {showPage === "login"
+            ?<LogInForm setShowPage={setShowPage} />
+            : showPage ==="signUp"
+            ?<SignUpForm setShowPage={setShowPage}/>
+            : null        
+            }
+    </LogInContainerDiv>
+</GuestPageDiv>
 
-
-
-
-        </GuestPageDiv>
     )
 };
 
