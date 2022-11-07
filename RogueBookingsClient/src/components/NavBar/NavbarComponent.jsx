@@ -4,21 +4,15 @@ import { MasterContext } from "../../containers/MasterContainer";
 import NavbarItem from "./Button/NavbarItem";
 
 
-const NavDiv = styled.div`
-position: absolute;
+const NavDivContainer = styled.div`
+position: relative;
 background-color: #4a499e;
 margin: 0px;
 padding: 0px;
-min-width: 16vw;
-max-width: 16vw;
-min-height: 100vh;
-max-height: 100vh;
+height: 100vh;
 overflow-y: scroll;
-`
-
-const NavUl = styled.ul`
-margin: 0;
-padding: 0px;
+min-width: 14.6vw;
+font-size: 1.2vw;
 `
 
 
@@ -48,24 +42,17 @@ const navItemList = [{name: user.firstName, fill: "#4a499e", type: "dashboard"},
 
 
 
-let topPosition = -9
-const navItems = navItemList.map((item)=>{
-    
-    const zIndex = navItemList.length - navItemList.indexOf(item)
-    let position = topPosition
-    topPosition += 120
+const navItems = navItemList.map((item, index)=>{
     return (
-        <NavbarItem position={position} item={item} zIndex={zIndex} maxIndex={navItemList.length} id={navItemList.indexOf(item)} key={navItemList.indexOf(item)}/>
+        <NavbarItem item={item}  id={index} key={index}/>
         )
 })
 
 
     return (
-        <NavDiv className="scroll-within">
-            <NavUl >
+        <NavDivContainer className="scroll-within">
                 {navItems}
-            </NavUl>
-        </NavDiv>
+        </NavDivContainer>
         
     )
 };

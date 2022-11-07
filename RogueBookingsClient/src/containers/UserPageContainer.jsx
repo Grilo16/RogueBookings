@@ -8,18 +8,30 @@ import headerLogo from "../images/headerLogo.png"
 
 
 const HeaderDiv = styled.div`
-position: absolute;
-width: 100vw;
 background-color : #9795e1;
-text-align: right;
-max-height: 1vw;
-padding-right: 0.5vw;
-margin-left: -0.5vw;
-padding-top: 2vh;
-padding-bottom: 1vh;
+position: absolute;
+display: flex;
+width: 100vw;
+height: 1.5vw;
+padding-bottom: 0.6vw;
 z-index: 1000 ;
-margin-top: -1vh;
+justify-content: space-between;
 `
+
+const StyledImg = styled.img`
+height: 2vw;
+`
+
+const StyledLogOut = styled.a`
+margin-top: 0.5vw;
+margin-right: 0.5vw;
+font-size: 0.9vw;
+`
+
+const UserPageDiv = styled.div`
+display: flex;
+`
+
 
 const UserPageContainer = () => {
     
@@ -28,13 +40,16 @@ const UserPageContainer = () => {
     return (
         <>
         <HeaderDiv> 
-            <img src={headerLogo} alt="" height={30} style={{position: "absolute", right: "91vw", top: "1.2vh"}} />
-            <a href="/">Log out</a>
+            <StyledImg src={headerLogo} alt="" />
+            <StyledLogOut href="/">Log out</StyledLogOut>
         </HeaderDiv>
+        <UserPageDiv> 
+
         
         <NavbarComponent user={state.user} />
-
         <DisplayPageContainer/>
+
+        </UserPageDiv>
         </>
         
         

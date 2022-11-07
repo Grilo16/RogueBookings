@@ -6,27 +6,22 @@ import UserDashboard from "../components/UserDashboard";
 import BusinessPage from "../components/BusinessPage";
 
 
-const DisplayDiv = styled.div`
-  position: absolute;
+const DisplayContainerDiv = styled.div`
   background-color: ${(props) => props.backgroundColor};
-  min-height: 100vh;
-  max-height: 100vh;
-  min-width: 84.8vw; 
-  max-width: 84.8vw;
+  color: black;
+  height: 100vh;
+  width: 84.8vw; 
+  padding-left: 1.4vw;
   font-size: 1.2vw;
   transition: background-color 0.5s ease;
-  color: black;
-  right: 0vw;
 `;
 
 export const ContentDiv = styled.div`
-position: absolute;
-right: 50vw;
-top: ${(props)=> props.top ? props.top : "6.9vh"};
-left: ${(props)=> props.left ? props.left : "1.2vw"};
+margin-top: 3.5vw;
+margin-right: 1vw;
 height: ${(props)=> props.height ? props.height : "90vh"};
 width:  ${(props)=> props.width ? props.width : "82.5vw"};
-border-radius: 5vh;
+border-radius: 1.5vw;
 background-color: white;
 text-align: center;
 overflow-y: scroll;
@@ -40,7 +35,7 @@ const DisplayPageContainer = () => {
 
   
   return (
-    <DisplayDiv backgroundColor={state.pageColor}>
+    <DisplayContainerDiv backgroundColor={state.pageColor}>
       {state.selectedTabType === "dashboard"
       ? <UserDashboard/>
       : state.selectedTabType === "join-business"
@@ -51,7 +46,7 @@ const DisplayPageContainer = () => {
       }
       
       
-    </DisplayDiv>
+    </DisplayContainerDiv>
   );
 };
 
