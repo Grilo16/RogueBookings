@@ -45,11 +45,11 @@ const UserPageContainer = () => {
         </HeaderDiv>
         <UserPageDiv> 
 
-        
         <NavbarComponent user={state.user} />
         <DisplayPageContainer/>
-
+        
         </UserPageDiv>
+
         </>
         
         

@@ -15,6 +15,11 @@ const DisplayContainerDiv = styled.div`
   transition: background-color 0.5s ease;
 `;
 
+export const MenuDiv = styled.div`
+background-color: white; 
+
+`
+
 export const ContentDiv = styled.div`
 margin-top: 3.5vw;
 margin-right: 1vw;
