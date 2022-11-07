@@ -35,7 +35,7 @@ const SignUpForm = ({setShowPage}) => {
             <InputFieldComponent placeholder={"Last Name"} setState={setLastName} state={lastName}/>
             <InputFieldComponent placeholder={"Email"} setState={setEmail} state={email}/>
             <InputFieldComponent placeholder={"Password"} setState={setPassword} state={password} type={"password"}/>
-            <ButtonComponent clickFunction={handleUserSignUp} label={"Create account"} activated={true} marginLeft="1.5vw"/>
+            <ButtonComponent clickFunction={handleUserSignUp} label={"Create account"} activated={true} marginLeft="1.5vw" />
             <ButtonComponent clickFunction={handleSwapPage} label={"Sign in"} activated={false} marginLeft=" -0.4vw"/>
         </form>
     )

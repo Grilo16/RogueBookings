@@ -35,6 +35,11 @@ const LogInForm = ({setShowPage}) => {
             })
     };
 
+    const handleEnterLogin = (e) => {
+        e.preventDefault()
+        handleLogIn()
+    }
+
     const handleSelectChange = (e) => {
         setUserId(e.target.value)
     };
@@ -43,18 +48,20 @@ const LogInForm = ({setShowPage}) => {
         setShowPage("signUp")
         
     };
+    
 
     return (
         <form >
+            <InputFieldComponent placeholder={"Email"} setState={setEmail} state={email}/>
+            <InputFieldComponent placeholder={"Password"} setState={setPassword} state={password} type={"password"}/>
+            <button hidden type="submit" onClick={handleEnterLogin}/>
+            <ButtonComponent clickFunction={handleSwapPage} label={"Create account"} activated={false} marginLeft="1.6vw" />
+            <ButtonComponent clickFunction={handleLogIn} label={"Sign in"} activated={true} marginLeft="-0.4vw "/>
             {/* <select onChange={handleSelectChange}>
                 <option value=""></option>
            {users}
             </select>
             <br /> */}
-            <InputFieldComponent placeholder={"Email"} setState={setEmail} state={email}/>
-            <InputFieldComponent placeholder={"Password"} setState={setPassword} state={password} type={"password"}/>
-            <ButtonComponent clickFunction={handleSwapPage} label={"Create account"} activated={false} marginLeft="1.6vw"/>
-            <ButtonComponent clickFunction={handleLogIn} label={"Sign in"} activated={true} marginLeft="-0.4vw "/>
         </form>
     )
 };
