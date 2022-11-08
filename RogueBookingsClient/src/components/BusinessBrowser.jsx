@@ -5,6 +5,7 @@ import businessRepo from "../repositories/businessRepo";
 import TableComponent from "./BusinessPages/HelperComponents/TableComponent";
 import BusinessSummaryPage from "./BusinessSummaryPage";
 import BusinessTile from "./BusinessTile";
+import CalendarComponent from "./CalendarComponents/CalendarComponent";
 import { ContentDiv } from "./UserDashboard";
 
 
@@ -38,8 +39,6 @@ const BusinessBrowser = () => {
     const handleSelectBusiness = (business) => {
         setSelectedBusiness(business)
         setShowSelected(!showSelected)
-        
-        console.log(business)
     };
 
 
@@ -50,24 +49,15 @@ const BusinessBrowser = () => {
       })
 
 
-      const student = {name : "mhairi", lesson: "Coffeee drinking", petsName: "woody"}
-
-
-      const extra = {title: "HEHEHEH", content: "fhl jf  alskjdf asdfkjla shdfkasld jfhaskldjf hasdkjf hasdlkjf hasdklfj hdfaksjlddfh aslkdj hf quack"}
-
-      let students = []
-      for (let i = 0 ; i < 10 ; i++ ){
-        students.push(student)
-      }
 
 
       return (
         <ContentDiv className="scroll-within">
 
 
+<CalendarComponent/>
 
 
-        <TableComponent tableData={student} headings={true} footings={true} noHeadLabels={true} tableWidth={"max-content"}  invertColors={true}/>
 
 
 
