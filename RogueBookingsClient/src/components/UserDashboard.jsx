@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
-import { ContentDiv } from "../containers/DisplayPageContainer";
 import { MasterContext } from "../containers/MasterContainer";
 import BusinessSummaryPage from "./BusinessSummaryPage";
 import BusinessTile from "./BusinessTile";
@@ -10,8 +9,21 @@ import UserDetailsTable from "./UserDetailsTable";
 
 
 
+export const ContentContainerDiv = styled.div`
+display: flex
+`
 
 
+
+export const ContentDiv = styled.div`
+margin-top: 3.3vw;
+height: ${(props)=> props.height ? props.height : "46.9vw"};
+width:  ${(props)=> props.width ? props.width : "83vw"};
+border-radius: 1.5vw;
+background-color: white;
+text-align: center;
+overflow-y: scroll;
+`
 
 const MyBusinessesDiv = styled.div`
 display: grid;
@@ -35,14 +47,15 @@ function UserDashboard() {
 
 
   return ( 
+
     <ContentDiv className="scroll-within">
       <h1>Welcome, {state.user.firstName}!</h1>
       <UserDetailsTable/>
-
       <UserBusinesses/>
+    </ContentDiv>
+
     
 
-    </ContentDiv>
 
 
   );

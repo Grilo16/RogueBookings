@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { MasterContext } from "../containers/MasterContainer";
 import memberRepo from "../repositories/memberRepo";
-import { ContentDiv } from "../containers/DisplayPageContainer"
 import CreateLessonForm from "./Forms/CreateLessonForm";
+import { ContentDiv } from "./UserDashboard";
 
 const BusinessSummaryPage = ({showSelected, setShowSelected, business, owner}) => {
 

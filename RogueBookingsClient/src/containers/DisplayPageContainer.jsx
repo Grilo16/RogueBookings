@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { MasterContext } from "./MasterContainer";
 import BusinessBrowser from "../components/BusinessBrowser";
 import UserDashboard from "../components/UserDashboard";
-import BusinessPage from "../components/BusinessPage";
+import BusinessPage from "../components/BusinessPages/BusinessPage";
 
 
 const DisplayContainerDiv = styled.div`
@@ -15,21 +15,7 @@ const DisplayContainerDiv = styled.div`
   transition: background-color 0.5s ease;
 `;
 
-export const MenuDiv = styled.div`
-background-color: white; 
 
-`
-
-export const ContentDiv = styled.div`
-margin-top: 3.5vw;
-margin-right: 1vw;
-height: ${(props)=> props.height ? props.height : "90vh"};
-width:  ${(props)=> props.width ? props.width : "82.5vw"};
-border-radius: 1.5vw;
-background-color: white;
-text-align: center;
-overflow-y: scroll;
-`
 
 const DisplayPageContainer = () => {
   
@@ -48,8 +34,6 @@ const DisplayPageContainer = () => {
       ? <BusinessPage/>
       : null
       }
-      
-      
     </DisplayContainerDiv>
   );
 };

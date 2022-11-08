@@ -4,7 +4,7 @@ import { MasterContext } from "../containers/MasterContainer";
 import businessRepo from "../repositories/businessRepo";
 import BusinessSummaryPage from "./BusinessSummaryPage";
 import BusinessTile from "./BusinessTile";
-import { ContentDiv } from "../containers/DisplayPageContainer";
+import { ContentDiv } from "./UserDashboard";
 
 
 const BrowserDiv = styled.div`

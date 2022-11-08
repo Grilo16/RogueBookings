@@ -11,7 +11,7 @@ margin: 0px;
 padding: 0px;
 height: 100vh;
 overflow-y: scroll;
-min-width: 14.6vw;
+min-width: 14.0vw;
 font-size: 1.2vw;
 `
 

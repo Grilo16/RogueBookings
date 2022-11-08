@@ -11,23 +11,21 @@ const NavItemDiv = styled.div`
   top: 2.1vw;
   height: 6.6vw;
   margin-bottom: -0.9vw;
-  margin-left: -0.4vw;
 `;
 
 const NavDivBackground = styled.svg`
-margin-top: -8.5vw;
+margin-top: -8vw;
 position: relative;
-width: 15.18vw;
+height: 11vw;
 z-index: 0;
 `
 const NavContentContainer = styled.div`
 display: flex;
 position: relative;
-margin-top: 0vw;
 padding-top: 1vw;
 padding-left: 2vw;
 height: 4.4vw;
-width: 13vw;
+width: 12.5vw;
 z-index: 1;
 
 `

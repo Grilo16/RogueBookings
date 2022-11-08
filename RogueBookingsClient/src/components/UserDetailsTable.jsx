@@ -5,7 +5,7 @@ import { MasterContext } from "../containers/MasterContainer";
 
 const TableDiv = styled.div`
 width: 30vw;
-margin-left: 27vw;
+margin-left: 26vw;
 
 `
 const TableHeader = styled.h4`
