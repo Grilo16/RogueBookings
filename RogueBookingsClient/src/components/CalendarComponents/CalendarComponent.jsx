@@ -29,7 +29,7 @@ const reducer = (cState, action)  => {
 };
 
 
-const CalendarComponent = () => {
+const CalendarComponent = ({marginTop, marginLeft, calendarWidth, cellHeight, cellWidth, cellColor}) => {
 
     const calendarState = {
         year: 2022,
@@ -58,10 +58,9 @@ const CalendarComponent = () => {
 
 
 const MainCalendarContainer = styled.div`
-height: 28vw;
-width: 75vw;
-margin-top: 13.5vw;
-margin-left: 2vw;
+width: max-content;
+margin-top: 24.5vw;
+margin-left: 22vw;
 `
 
 

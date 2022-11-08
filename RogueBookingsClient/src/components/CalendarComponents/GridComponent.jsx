@@ -62,8 +62,6 @@ const firstWeekDayIndex = (((Math.floor((cState.year%100)/4) + (cState.year%100)
     )
 };
 const CalendarGridDiv = styled.div`
-width: 42.69vw;
-margin-left: 18vw;
 `
 
 

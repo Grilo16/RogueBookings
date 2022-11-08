@@ -31,19 +31,12 @@ const handleGoNext = () => {
 };
 
 const ArrowsDiv = styled.div`
-position: relative;
-z-index: 1;
 `
 
 
 const MonthSelectorDiv = styled.div`
-position: relative;
-height: 4vw;
-width: 42.69vw;
-margin-left: 17.8vw;
 display: flex;
 justify-content: space-between;
-z-index: 0;
 `
 
 export default MonthSelector;
