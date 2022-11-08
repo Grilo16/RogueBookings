@@ -5,7 +5,7 @@ import { MasterContext } from "../../containers/MasterContainer";
 import MiniMenu from "./MiniMenu";
 import RevenuePage from "./pages/RevenuePage";
 import SchedulePage from "./pages/SchedulePage";
-import SettingsPage from "./pages/SettingsPage";
+import SettingsPage from "./pages/SettingsPages/SettingsPage";
 import StudentsPage from "./pages/StudentsPage";
 import TeachersPage from "./pages/teachersPage/TeachersPage";
 

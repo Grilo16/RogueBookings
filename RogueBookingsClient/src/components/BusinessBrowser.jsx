@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { MasterContext } from "../containers/MasterContainer";
 import businessRepo from "../repositories/businessRepo";
+import TableComponent from "./BusinessPages/HelperComponents/TableComponent";
 import BusinessSummaryPage from "./BusinessSummaryPage";
 import BusinessTile from "./BusinessTile";
 import { ContentDiv } from "./UserDashboard";
@@ -49,20 +50,48 @@ const BusinessBrowser = () => {
       })
 
 
+      const student = {name : "mhairi", lesson: "Coffeee drinking", petsName: "woody"}
+
+
+      const extra = {title: "HEHEHEH", content: "fhl jf  alskjdf asdfkjla shdfkasld jfhaskldjf hasdkjf hasdlkjf hasdklfj hdfaksjlddfh aslkdj hf quack"}
+
+      let students = []
+      for (let i = 0 ; i < 10 ; i++ ){
+        students.push(student)
+      }
+
 
       return (
         <ContentDiv className="scroll-within">
-            <h1>Browse businesses</h1>
-            {showSelected
-            ? <BusinessSummaryPage business={selectedBusiness} showSelected={showSelected} setShowSelected={setShowSelected}/>
-            : null
-            }
-            <BrowserDiv> 
-                {businesses}            
-            </BrowserDiv>
+
+
+
+
+        <TableComponent tableData={student} headings={true} footings={true} noHeadLabels={true} tableWidth={"max-content"}  invertColors={true}/>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </ContentDiv>
     )
 };
 
+{/* <h1>Browse businesses</h1>
+{showSelected
+? <BusinessSummaryPage business={selectedBusiness} showSelected={showSelected} setShowSelected={setShowSelected}/>
+: null
+}
+<BrowserDiv> 
+    {businesses}            
+</BrowserDiv> */}
 export default BusinessBrowser;

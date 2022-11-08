@@ -1,3 +1,4 @@
+import FilterBar from "../../filterBar/FilterBar";
 import TableComponent from "../HelperComponents/TableComponent";
 
 const SchedulePage = () => {
@@ -9,8 +10,17 @@ const SchedulePage = () => {
     return (
     <div>
         <h1>I'm the SchedulePage page</h1>
+        <FilterBar />
+        <TableComponent tableData={mockClassData} headings={true} footings={false} tdTxtAlign={"right"} col2Align={"left"} marginLeft={"24.2vw"} tableWidth={"max-content"} tdPaddingLeft={"-4.5vw"} tdPaddingRight={"5.5vw"}>
 
-        <TableComponent tableData={mockClassData} headings={true} footings={false} tdTxtAlign={"right"} col2Align={"left"} marginLeft={"24.2vw"} tableWidth={"max-content"} tdPaddingLeft={"-4.5vw"} tdPaddingRight={"5.5vw"}/>
+        <tbody>
+            <tr><td><p>hello</p></td></tr>            
+
+        </tbody>
+        
+        </TableComponent>
+
+
     </div>
     )
 }; 
