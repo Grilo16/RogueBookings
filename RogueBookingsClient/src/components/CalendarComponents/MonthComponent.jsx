@@ -11,8 +11,6 @@ const {cState, cDispatch} = useContext(CalendarContext)
 
 
 
-
-
     return (
         <MonthCalendarDiv>
             <MonthSelector/>
@@ -25,6 +23,6 @@ const {cState, cDispatch} = useContext(CalendarContext)
 
 const MonthCalendarDiv = styled.div`
 font-size: 0.7vw;
-width: 35vw;
+width: 30vw;
 `
 export default MonthComponent

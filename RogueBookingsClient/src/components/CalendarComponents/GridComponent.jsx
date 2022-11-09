@@ -47,7 +47,6 @@ const firstWeekDayIndex = (((Math.floor((cState.year%100)/4) + (cState.year%100)
             
 
         calendar.push(week)
-        week=[]
     }
     const weeks = calendar.map((week, index)=>{
         return (
