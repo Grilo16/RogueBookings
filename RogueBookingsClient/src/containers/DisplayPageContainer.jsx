@@ -4,6 +4,7 @@ import { MasterContext } from "./MasterContainer";
 import BusinessBrowser from "../components/BusinessBrowser";
 import UserDashboard from "../components/UserDashboard";
 import BusinessPage from "../components/BusinessPages/BusinessPage";
+import CreateBusinessPage from "../components/BusinessPages/CreateBusinessPage";
 
 
 const DisplayContainerDiv = styled.div`
@@ -32,7 +33,9 @@ const DisplayPageContainer = () => {
       ? <BusinessBrowser/>
       : state.selectedTabType === "business"
       ? <BusinessPage/>
-      : null
+      : state.selectedTabType === "create-business"
+      ?<CreateBusinessPage/>
+      :null
       }
     </DisplayContainerDiv>
   );

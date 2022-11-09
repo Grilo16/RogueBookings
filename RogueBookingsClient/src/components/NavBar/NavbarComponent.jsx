@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import styled from "styled-components"
 import { MasterContext } from "../../containers/MasterContainer";
+import ButtonComponent from "../Forms/ButtonComponent";
 import NavbarItem from "./Button/NavbarItem";
+import SpecialHoverButton from "./SpecialHoverButton";
 
 
 const NavDivContainer = styled.div`
@@ -13,6 +15,7 @@ height: 100vh;
 overflow-y: scroll;
 min-width: 14.0vw;
 font-size: 1.2vw;
+
 `
 
 
@@ -38,7 +41,7 @@ const memberships = state.myMemberships.map((membership, index) => {
           
     })
 
-const navItemList = [{name: user.firstName, fill: "#4a499e", type: "dashboard"}, {name: "My bookings", fill: "#7775c9", type: "join-business"}, {name: "Join a Studio", fill: "#9594dc", type: "join-business"}, ...memberships]
+const navItemList = [{name: user.firstName, fill: "#4a499e", type: "dashboard"}, {name: "My bookings", fill: "#7775c9", type: "join-business"}, ...memberships]
 
 
 
@@ -49,9 +52,11 @@ const navItems = navItemList.map((item, index)=>{
 })
 
 
+
     return (
         <NavDivContainer className="scroll-within">
                 {navItems}
+               <SpecialHoverButton navItems={navItems}/>
         </NavDivContainer>
         
     )

@@ -15,17 +15,23 @@ const TeacherComponent = () => {
 
     return (
       <TeacherDiv>
-      <TeacherImg src="https://via.placeholder.com/69" />  
+        <div>
+          <TeacherImg src="https://via.placeholder.com/69" />  
+        </div>
+
       <h2>Teacher Name</h2>
       <br />
-      <ButtonComponent newColor="#9897e3" height={"1.5vw"} marginLeft={"1.4vw"} marginTop={"-2.2vw"} label={"Bio"} fontSize={"0.8vw"} clickFunction={handleShowBio}/>
+      <div>
+      <ButtonComponent newColor="#9897e3" height={"1.5vw"}  width={"max-content"} label={"Bio"} fontSize={"0.8vw"} clickFunction={handleShowBio}/>
+      </div>
       </TeacherDiv>  
     )
 };
 
 const TeacherDiv = styled.div`
-text-align: center;
-margin-top: 2vw;
+display: flex;
+flex-direction: column;
+justify-content: center;
 `
 
 const TeacherImg = styled.img`

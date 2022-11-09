@@ -16,6 +16,7 @@ const TableComponent = ({
   col2Align,
   tableWidth,
   tableData,
+  fontSize,
 }) => {
   let specialSpan;
   if (!tableData) {
@@ -235,7 +236,7 @@ const TableComponent = ({
   }
 
   return (
-    <TableDiv marginLeft={marginLeft} marginRight={marginRight}>
+    <TableDiv marginLeft={marginLeft} marginRight={marginRight} fontSize={fontSize}>
       <StyledTable tableWidth={tableWidth}>
         {headings ? (
           <StyledTHead>
@@ -276,7 +277,7 @@ const TableComponent = ({
 };
 
 const TableDiv = styled.div`
-  font-size: 1vw;
+  font-size: ${(props)=> props.fontSize? props.fontSize: "1vw"};
   border-radius: 1.5vw;
   width: max-content;
   height: max-content;
@@ -291,7 +292,7 @@ border-radius: 1.5vw;
 overflow: hidden;
 display: block;
 width: ${(props) => (props.tableWidth ? props.tableWidth : "min-content")};
-box-shadow: 0.2vw 0.2vw 0.6vw rgba(0, 0, 0, 0.6);
+box-shadow: 0.2vw 0.2vw 0.6vw rgba(0, 0, 0, 0.2);
 `;
 
 const StyledTBody = styled.tbody`

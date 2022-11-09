@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { BusinessContext } from "./BusinessPage";
 
 const MenuItem = styled.h4`
+text-align: center;
 background-color: ${(props) => props.changeColor ? "#e6e6fe" : "#ffffff"};
 margin: 0;
 margin-left: 1.5vw;

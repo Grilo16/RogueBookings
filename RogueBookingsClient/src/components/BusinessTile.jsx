@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ButtonComponent from "./Forms/ButtonComponent";
 import InputFieldComponent from "./Forms/InputFieldComponent";
 
 const BusinessTileDiv = styled.div`
@@ -38,6 +39,8 @@ const BusinessTile = ({business, handleSelectBusiness, tag}) => {
           alt=""
           style={{marginTop: "1.4vh", borderRadius: "50%" }}
         />
+
+        <ButtonComponent activated={true}height={"1.5vw"}marginLeft={"10vw"}>join</ButtonComponent>
         <StyledH4>{business.name}</StyledH4>
         <UserTag>{tag}</UserTag>
         <UserTag>View details</UserTag>

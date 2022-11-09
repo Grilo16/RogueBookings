@@ -15,14 +15,12 @@ const DayComponent = ({ day }) => {
 
     useEffect(()=>{
 
-        let time = console.log(day)
-
         if (day !== "sozz" && day.bookings.length > 0){
             day.bookings.map((booking)=>{
                 if (booking.type === "study"){
-                    setColor("pink")
+                    setColor("#b0afe8")
                 }else if (booking.type === "teach"){
-                    setColor("green")
+                    setColor("#ffcf7e")
                 }
             })
 

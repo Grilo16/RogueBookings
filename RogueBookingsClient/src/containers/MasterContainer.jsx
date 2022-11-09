@@ -31,6 +31,9 @@ const reducer = (state, action) => {
         
         case "SetSelectedBusiness": 
             return {...state, selectedBusiness: action.business}
+        
+        case "SetSelectedBusinessMembership": 
+            return {...state, selectedBusinessMembership: action.membershipId}
 
 
         case "SetPageColor":
@@ -49,6 +52,7 @@ const MasterContainer = () => {
         selectedTabType: "dashboard", 
         pageColor: "#4a499e",
         selectedBusiness: {id: null, name: null, balance: null ,members:[], lessons:[], owners:[]},
+        selectedBusinessMembership : {id: null, business:{}, user:{}},
         user: {
             id: null,
             firstName: null,
@@ -72,7 +76,6 @@ const MasterContainer = () => {
             
         },[])
         
-        const test = console.log(state)
 
     return (
         <MasterContext.Provider value={{state, dispatch}} >

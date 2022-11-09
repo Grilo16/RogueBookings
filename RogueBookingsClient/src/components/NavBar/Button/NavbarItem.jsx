@@ -18,6 +18,7 @@ margin-top: -8vw;
 position: relative;
 height: 11vw;
 z-index: 0;
+
 `
 const NavContentContainer = styled.div`
 display: flex;
@@ -34,7 +35,7 @@ position: relative;
 border-radius: 3vw;
 height: 3.5vw;
 width: 3.5vw;
-
+box-shadow: 0 0.2vw 0.3vw rgba(0, 0, 0, 0.2);
 `
 const NavH4 = styled.h4`
 position: relative;
@@ -44,6 +45,8 @@ padding: 0vw;
 margin-left: 1vw;
 font-size: 1vw;
 overflow-x: hidden;
+height: 4vw;
+
 `;
 
 const NavbarItem = ({ item, id }) => {
@@ -70,7 +73,8 @@ const NavbarItem = ({ item, id }) => {
   });
 
   return (
-    <NavItemDiv  >
+
+<NavItemDiv  >
       
       
         <NavContentContainer  onClick={handleClick}  > 
@@ -80,7 +84,7 @@ const NavbarItem = ({ item, id }) => {
                 alt=""
                 />
 
-              <NavH4
+              <NavH4 className="scroll-within"
               >
                 {item.name}
               </NavH4>

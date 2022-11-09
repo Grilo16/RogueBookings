@@ -8,6 +8,7 @@ const TeachersPage = () => {
 
     const {bState, bDispatch} = useContext(BusinessContext)
 
+
 const teachers = [1, 2, 3, 4, 5, 6, 7].map((teacher, index)=>{
     return (
         <TeacherComponent key={index}/>

@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import styled from "styled-components";
 import { MasterContext } from "../../containers/MasterContainer";
 import businessRepo from "../../repositories/businessRepo";
 import memberRepo from "../../repositories/memberRepo";
@@ -55,8 +56,10 @@ const LogInForm = ({setShowPage}) => {
             <InputFieldComponent placeholder={"Email"} setState={setEmail} state={email}/>
             <InputFieldComponent placeholder={"Password"} setState={setPassword} state={password} type={"password"}/>
             <button hidden type="submit" onClick={handleEnterLogin}/>
-            <ButtonComponent clickFunction={handleSwapPage} label={"Create account"} activated={false} marginLeft="1.6vw" />
-            <ButtonComponent clickFunction={handleLogIn} label={"Sign in"} activated={true} marginLeft="-0.4vw "/>
+            <ButtonsDiv>
+            <ButtonComponent clickFunction={handleSwapPage} label={"Create account"} activated={false}   paddingRight={"2vw"} paddingLeft={"2vw"}/>
+            <ButtonComponent clickFunction={handleLogIn} label={"Sign in"} activated={true} paddingRight={"2vw"} paddingLeft={"2vw"}/>
+            </ButtonsDiv>
             {/* <select onChange={handleSelectChange}>
                 <option value=""></option>
            {users}
@@ -65,5 +68,14 @@ const LogInForm = ({setShowPage}) => {
         </form>
     )
 };
+
+
+export const ButtonsDiv = styled.div`
+display: flex;
+justify-content: space-between;
+width: 23.25vw;
+margin-left: 13.4vw;
+
+`
 
 export default LogInForm;

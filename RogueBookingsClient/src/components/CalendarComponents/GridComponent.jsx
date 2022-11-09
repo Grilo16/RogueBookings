@@ -33,10 +33,8 @@ const firstWeekDayIndex = (((Math.floor((cState.year%100)/4) + (cState.year%100)
                     continue
                 }else{
                     week.push({date: dayCounter, bookings: cState.bookings.filter((booking)=>{
-                        console.log(new Date(booking.date).getMonth() === cState.selectedMonth.monthIndex)
                         return new Date(booking.date).getMonth() === cState.selectedMonth.monthIndex -1
                     }).filter((booking) => {
-                        console.log("this is booking", parseInt(new Date(booking.date).getDay()) === dayCounter)
                         return parseInt(new Date(booking.date).getDay()) === dayCounter
                     }) })
                 }

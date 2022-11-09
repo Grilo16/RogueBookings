@@ -5,6 +5,7 @@ import SignUpForm from "../components/Forms/SignUpForm";
 import LogInForm from "../components/Forms/LogInForm";
 import logo from "../images/Logo.png"
 import placeholderArt from "../images/placeholderArt.png"
+import actualArt from "../images/actualArt.png"
 
 
 const GuestPageDiv = styled.div`
@@ -38,7 +39,8 @@ padding-right: 35vw;
 
 const HeroImg = styled.img`
 height: 42vw;
-margin-top: 2vw;
+margin-left: 4vw;
+margin-top: 0vw;
 `
 
 const GuestPageContainer = () => {
@@ -51,7 +53,7 @@ const GuestPageContainer = () => {
 <GuestPageDiv>
     <GraphicsContainerDiv>
             <LogoImg src={logo}/>
-            <HeroImg src={placeholderArt} />
+            <HeroImg src={actualArt} />
     </GraphicsContainerDiv>
         
     <LogInContainerDiv>

@@ -7,14 +7,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class MemberDTO {
 
-
-    Business business;
-    User user;
+    private Long id;
+    private Business business;
+    private User user;
 
     public MemberDTO() {
     }
 
-    public MemberDTO(Business business, User user) {
+    public MemberDTO(Long id, Business business, User user) {
+        this.id = id;
         this.business = business;
         this.user = user;
     }
@@ -33,5 +34,13 @@ public class MemberDTO {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

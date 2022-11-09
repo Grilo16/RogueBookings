@@ -118,7 +118,7 @@ margin-top: 3.3vw;
 width: 69.8vw;
 border-radius: 1.5vw;
 overflow: scroll;
-
+box-shadow: 0 0.2vw 0.3vw rgba(0, 0, 0, 0.2);
 `
 
 const DisplayMenuDiv = styled.div`

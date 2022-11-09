@@ -3,6 +3,7 @@ import { MasterContext } from "../../containers/MasterContainer";
 import userRepo from "../../repositories/userRepo";
 import ButtonComponent from "./ButtonComponent";
 import InputFieldComponent from "./InputFieldComponent";
+import { ButtonsDiv } from "./LogInForm";
 
 const SignUpForm = ({setShowPage}) => {
 
@@ -35,8 +36,11 @@ const SignUpForm = ({setShowPage}) => {
             <InputFieldComponent placeholder={"Last Name"} setState={setLastName} state={lastName}/>
             <InputFieldComponent placeholder={"Email"} setState={setEmail} state={email}/>
             <InputFieldComponent placeholder={"Password"} setState={setPassword} state={password} type={"password"}/>
-            <ButtonComponent clickFunction={handleUserSignUp} label={"Create account"} activated={true} marginLeft="1.5vw" />
-            <ButtonComponent clickFunction={handleSwapPage} label={"Sign in"} activated={false} marginLeft=" -0.4vw"/>
+<ButtonsDiv>
+
+            <ButtonComponent clickFunction={handleUserSignUp} label={"Create account"} activated={true} paddingRight={"2vw"} paddingLeft={"2vw"}/>
+            <ButtonComponent clickFunction={handleSwapPage} label={"Sign in"} activated={false} paddingRight={"2vw"} paddingLeft={"2vw"}/>
+</ButtonsDiv>
         </form>
     )
 };
