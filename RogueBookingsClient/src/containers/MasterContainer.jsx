@@ -62,15 +62,17 @@ const MasterContainer = () => {
      
         }
 
-
-    const [state, dispatch] = useReducer(reducer, initialState)
-
-
-    useEffect(()=>{
-        userRepo.getAllUsers().then((users)=>{dispatch({type: "LoadAllUsers", users})})
-
-    },[])
-
+        
+        
+        const [state, dispatch] = useReducer(reducer, initialState)
+        
+        
+        useEffect(()=>{
+            userRepo.getAllUsers().then((users)=>{dispatch({type: "LoadAllUsers", users})})
+            
+        },[])
+        
+        const test = console.log(state)
 
     return (
         <MasterContext.Provider value={{state, dispatch}} >

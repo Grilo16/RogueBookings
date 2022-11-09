@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { CalendarContext } from "./CalendarComponent";
 
 const DayComponent = ({ day }) => {
-  const [color, setColor] = useState("orange");
+  const [color, setColor] = useState("");
 
   const { cState, cDispatch } = useContext(CalendarContext);
 
@@ -14,7 +14,19 @@ const DayComponent = ({ day }) => {
 
 
     useEffect(()=>{
-        setColor("pink")
+
+        let time = console.log(day)
+
+        if (day !== "sozz" && day.bookings.length > 0){
+            day.bookings.map((booking)=>{
+                if (booking.type === "study"){
+                    setColor("pink")
+                }else if (booking.type === "teach"){
+                    setColor("green")
+                }
+            })
+
+        }
     },[])
     
     const handleClick = () => {
