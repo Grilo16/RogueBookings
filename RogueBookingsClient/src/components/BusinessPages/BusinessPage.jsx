@@ -2,7 +2,7 @@ import { createContext, useReducer } from "react";
 import { useContext } from "react";
 import styled from "styled-components";
 import { MasterContext } from "../../containers_old/MasterContainer";
-import MiniMenu from "./MiniMenu";
+import MiniMenu from "./_oldMiniMenu";
 import RevenuePage from "./pages/RevenuePage";
 import SchedulePage from "./pages/SchedulePage";
 import SettingsPage from "./pages/SettingsPages/SettingsPage";
