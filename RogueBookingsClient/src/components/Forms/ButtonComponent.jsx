@@ -23,6 +23,7 @@ const StyledButton = styled.button`
   margin-right: ${(props) => (props.marginRight ? props.marginRight : "0vw")};
   margin-left: ${(props) => (props.marginLeft ? props.marginLeft : "0vw")};
   margin-top: ${(props) => (props.marginTop ? props.marginTop : "0vw")};
+  margin-bottom: ${(props) => (props.marginBottom ? props.marginBottom : "0vw")};
   font-family: "Jua", sans-serif;
   box-shadow: 0 0.2vw 0.3vw rgba(0, 0, 0, 0.2);
   border-style: ${(props) =>

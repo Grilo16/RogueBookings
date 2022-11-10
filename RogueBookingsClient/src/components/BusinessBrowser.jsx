@@ -1,14 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import { MasterContext } from "../containers_old/MasterContainer";
+import { MasterContext } from "../containers/MasterContainer";
 import businessRepo from "../repositories/businessRepo";
 import memberRepo from "../repositories/memberRepo";
 import TableComponent from "./BusinessPages/HelperComponents/TableComponent";
 import BusinessSummaryPage from "./BusinessSummaryPage";
-import BusinessTile from "./BusinessTile";
-import CalendarComponent from "./CalendarComponents/CalendarComponent";
 import ButtonComponent from "./Forms/ButtonComponent";
-import NavbarComponent from "./NavBar/NavbarComponent";
 import { ContentDiv } from "./UserDashboard";
 
 const BusinessBrowser = () => {

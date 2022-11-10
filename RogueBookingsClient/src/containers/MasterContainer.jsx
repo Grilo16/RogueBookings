@@ -7,6 +7,10 @@ import reducer from "./MasterReducer";
 import masterState from "./MasterState";
 import DefaultPage from "../components_refactored/basePages/DefaultPage";
 import BusinessDisplayPage from "../pages/businessPages/BusinessDisplayPage";
+import CreateBusinessPage from "../pages/businessPages/CreateBusinessPage";
+import BusinessBrowser from "../components/BusinessBrowser";
+import JoinBusinessPage from "../pages/businessPages/JoinBusinessPage";
+import ErrorPage from "../components/Pages/ErrorPage/ErrorPage";
 
 export const MasterContext = createContext(null);
 
@@ -15,12 +19,7 @@ const MasterContainer = () => {
   const [state, dispatch] = useReducer(reducer, masterState);
 
 
-  useEffect(() => {
-    userRepo.getAllUsers().then((users) => {
-      dispatch({ type: "LoadAllUsers", users });
-    });
-  }, []);
-
+ 
 
   
   return (
@@ -33,7 +32,11 @@ const MasterContainer = () => {
             ? <UserHomePage/>
             :  state.selectedTabType === "business" 
             ? <BusinessDisplayPage/>
-            : null
+            :  state.selectedTabType === "create-business" 
+            ? <CreateBusinessPage/>
+            : state.selectedTabType === "join-business"
+            ? <JoinBusinessPage/>
+            : <ErrorPage/>
           }
 
 

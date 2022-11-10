@@ -2,6 +2,7 @@ import styled from "styled-components";
 import TableComponent from "../../../components/BusinessPages/HelperComponents/TableComponent";
 import ButtonComponent from "../../../components/Forms/ButtonComponent";
 import CalendarComponent from "../../../components_refactored/calendarComponents/CalendarComponent";
+import PageTitle from "../../../components_refactored/UtilityComponents/PageTitle";
 
 const SchedulePage = () => {
     
@@ -37,9 +38,7 @@ const SchedulePage = () => {
 
 {/* <TableComponent tableData={mockClassData} headings={true} footings={false} tdTxtAlign={"right"} col2Align={"left"}  tableWidth={"max-content"} tdPaddingLeft={"-4.5vw"} tdPaddingRight={"5.5vw"}/> */}
 
-const PageTitle = styled.h1`
 
-`
 
 const ScheduleDiv = styled.div`
 display: flex;

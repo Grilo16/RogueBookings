@@ -21,7 +21,11 @@ const SignUpForm = ({setShowPage}) => {
             email: email,
             userLayout: JSON.stringify({backgroundColor: "#4a499e"}),
         }
-        userRepo.addNewUser(userObject).then((user) => {dispatch({type: "LoadLoggedInUser", user})})
+        userRepo.addNewUser(userObject).then((user) => {
+            if (!user){
+                window.alert("Sorry email is taken, try again")
+            }
+            dispatch({type: "LoadLoggedInUser", user})})
     };
 
     const handleSwapPage = () => {

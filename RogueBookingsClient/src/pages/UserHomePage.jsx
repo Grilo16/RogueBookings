@@ -24,13 +24,18 @@ const UserHomePage = ()=>{
     return (
         <DefaultUserView>
 
+<StyledDiv>
         <PageTitle title={pageTitle}/>
 
         <TableComponent  tdPaddingLeft={"1vw"} tdPaddingRight={"10vw"} tableData={userDetails} tdTxtAlign={"right"} col2Align={"left"} tableWidth={"32vw"}/>
-
+</StyledDiv>
         </DefaultUserView>
 
     )
 };
 
+
+const StyledDiv = styled.div`
+margin-bottom: 30vw
+`
 export default UserHomePage;

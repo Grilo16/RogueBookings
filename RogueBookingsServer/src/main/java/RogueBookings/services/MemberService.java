@@ -73,7 +73,7 @@ public class MemberService {
         }
         try{
             memberRepository.deleteById(memberId);
-            return new ResponseEntity<>("Successfully deleted member", HttpStatus.OK);
+            return new ResponseEntity<>( HttpStatus.OK);
         }catch (Exception e){
             throw new OopsieRequestException("Sorry deletion failed for some reason");
         }

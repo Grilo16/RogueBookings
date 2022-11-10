@@ -3,6 +3,8 @@ import styled from "styled-components";
 const TableComponent = ({
   marginLeft,
   marginRight,
+  marginBottom,
+  marginTop,
   invertColors,
   headings,
   noHeadLabels,
@@ -236,7 +238,7 @@ const TableComponent = ({
   }
 
   return (
-    <TableDiv marginLeft={marginLeft} marginRight={marginRight} fontSize={fontSize}>
+    <TableDiv marginLeft={marginLeft} marginRight={marginRight} fontSize={fontSize} marginBottom={marginBottom} marginTop={marginTop}>
       <StyledTable tableWidth={tableWidth}>
         {headings ? (
           <StyledTHead>
@@ -283,7 +285,9 @@ const TableDiv = styled.div`
   height: max-content;
   padding: 1px;
   margin-left: ${(props) => (props.marginLeft ? props.marginLeft : "1vw")};
-  margin-top: ${(props) => (props.marginRight ? props.marginRight : "1vw")};
+  margin-right: ${(props) => (props.marginRight ? props.marginRight : "1vw")};
+  margin-top: ${(props) => (props.marginTop ? props.marginTop : "1vw")};
+  margin-bottom:${(props) => (props.marginBottom ? props.marginBottom : null)}
 `;
 
 const StyledTable = styled.table`

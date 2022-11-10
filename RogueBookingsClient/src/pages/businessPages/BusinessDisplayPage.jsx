@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components";
+import ErrorPage from "../../components/Pages/ErrorPage/ErrorPage";
 import DefaultBusinessView from "../../components_refactored/basePages/DefaultBusinessView";
 import { MasterContext } from "../../containers/MasterContainer";
 import RevenuePage from "./SubPages/RevenuePage";
@@ -15,7 +16,6 @@ const BusinessDisplayPage = () => {
     return (
             <DefaultBusinessView>
 
-                <DisplayDetailDiv className="scroll-within"> 
             {
                 state.selectedPage === "Schedule"
                 ? <SchedulePage/>
@@ -27,9 +27,8 @@ const BusinessDisplayPage = () => {
                 ?<RevenuePage/>
                 : state.selectedPage === "Settings"
                 ? <SettingsPage/>
-                :null
+                :<ErrorPage/>
             }
-        </DisplayDetailDiv>
 
             </DefaultBusinessView>
         )

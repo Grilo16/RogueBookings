@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { MasterContext } from "../../containers_old/MasterContainer";
+import { MasterContext } from "../../containers/MasterContainer";
 import businessRepo from "../../repositories/businessRepo";
 import ButtonComponent from "./ButtonComponent";
 import InputFieldComponent from "./InputFieldComponent";
@@ -21,7 +21,7 @@ const CreateBusinessForm = () => {
     return (
         <form >
             <InputFieldComponent state={businessName} setState={setBusinessName} placeholder={"Business Name"}/>   
-            <ButtonComponent clickFunction={handleClick} label={"Create a business"} newColor={"#9291c5"}/>
+            <ButtonComponent clickFunction={handleClick} label={"Create a business"} newColor={"#9291c5"} marginLeft={"3.8vw"} marginRight={""}/>
         </form>
     )
 };

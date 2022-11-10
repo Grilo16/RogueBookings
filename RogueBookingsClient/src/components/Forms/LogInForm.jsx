@@ -22,11 +22,11 @@ const LogInForm = ({setShowPage}) => {
 
     const handleLogIn = (e) => {
        const user =  userRepo.getUserByEmail(email).then((user)=>{
-        //    if (!user){
-        //        return
-        //    }
+           if (!user){
+               return window.alert("Sorry email or password incorrect")
+           }
             dispatch({type: "LoadLoggedInUser", user})
-            businessRepo.getAllBusinessesByUserId(user.id).then((businesses) =>{   
+            businessRepo.getAllBusinessesByUserId(user.id).then((businesses) =>{
                 dispatch({type: "LoadMyBusinesses", businesses})
                 memberRepo.getAllMembershipsByUserId(user.id).then((memberships)=>{
                     dispatch({type: "LoadMyMemberships", memberships})

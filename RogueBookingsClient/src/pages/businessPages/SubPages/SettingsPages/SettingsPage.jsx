@@ -23,20 +23,16 @@ const colors = ["#7472bd", "#4894da", "#c4caa2", "#ce6f17", "#e1237f"].map((colo
 
     return (
         <SettingsDivContainer>
-        <br />
-        <br />
-        <br />
-        <br />
 
             <h1>Settings</h1>
 
         <SettingsForm> 
         <h2>Details</h2>
-        <ButtonComponent newColor="#9897e3" height={"1.5vw"} width={"4vw"} paddingLeft={"0vw"} paddingRight={"0vw"} marginLeft={"25vw"} marginTop={"1vw"}  label={"edit"} fontSize={"0.8vw"} position={"absolute"}/>
+        <ButtonComponent newColor="#9897e3" height={"1.5vw"} width={"4vw"} paddingLeft={"1.3vw"} paddingRight={"0vw"} marginLeft={"25vw"} marginTop={"1vw"}  label={"Edit"} fontSize={"0.8vw"} position={"absolute"}/>
 
          </SettingsForm>
 
-        <TableComponent tableData={displayData} tableWidth={"30vw"} tdTxtAlign={"left"} invertColors={true} col2Align={"left"} marginLeft={"19vw"}/>
+        <TableComponent tableData={displayData} tableWidth={"30vw"} tdTxtAlign={"left"} invertColors={true} col2Align={"left"}/>
 
         <ThemeSelectDiv>
         <h3>Theme:</h3>   
@@ -52,18 +48,21 @@ const colors = ["#7472bd", "#4894da", "#c4caa2", "#ce6f17", "#e1237f"].map((colo
 
 
 const SettingsDivContainer = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 text-align: center;
 `
 const SettingsForm = styled.form`
 display: flex;
-margin-left: 20vw;
 margin-bottom: -1.6vw;
+margin-left: -23.5vw;
+width: max-content;
 `
 
 const ThemeSelectDiv = styled.div`
 text-align: left;
-margin-top: 7vw;
-margin-left: 20vw;
 `
 
 const ColorDivContainer = styled.div`

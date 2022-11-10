@@ -16,13 +16,11 @@ const StudentsPage = () => {
 
     return (
         <StudentDiv>
-        <SearchStudentForm>
-        <InputFieldComponent placeholder={"search"} marginLeft={"5vw"}/>
-
-        </SearchStudentForm>
+        <InputFieldComponent placeholder={"search"}/>
 
 
-        <TableComponent tableData={students} tableWidth={"50vw"} marginLeft={"8.5vw"} headings={true} tdPaddingLeft={"4vw"} tdPaddingRight={"7.984vw"}/>
+
+        <TableComponent tableData={students} tableWidth={"50vw"}  headings={true} tdPaddingLeft={"4vw"} tdPaddingRight={"7.984vw"}/>
      
         
         </StudentDiv>
@@ -30,13 +28,11 @@ const StudentsPage = () => {
 }; 
 
 const StudentDiv = styled.div`
-
-
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-top: 13vw;
 `
-const SearchStudentForm = styled.form`
-margin-top: 3vw;
-margin-left : 21vw;
-`
-
 
 export default StudentsPage;

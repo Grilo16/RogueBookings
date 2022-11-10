@@ -15,7 +15,10 @@ const userRepo = {
 
     async getUserByEmail(userEmail){
         const response = await fetch(userURL + `email/${userEmail}`)
-        return response.json()
+        if (response.ok){
+            return response.json()
+        }
+        return false
     },
 
     async addNewUser(userObject){
@@ -24,7 +27,11 @@ const userRepo = {
             body: JSON.stringify(userObject),
             headers: { "Content-Type": "application/json" },
         })
-        return response.json()
+        if (response.ok){
+            return response.json()
+        }
+        return false
+    
     },
     
     async deleteUserById(userId){

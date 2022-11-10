@@ -36,6 +36,7 @@ text-align: center;
 `
 const TeacherGridDiv = styled.div`
 display: grid;
+gap: 7vw;
 grid-template-columns: 1fr 1fr 1fr 1fr;
 `
 
