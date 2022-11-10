@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
-import { MasterContext } from "../containers/MasterContainer";
+import { MasterContext } from "../containers_old/MasterContainer";
 import BusinessTile from "./BusinessTile";
 
 const UserBusinessesContainer = styled.div`

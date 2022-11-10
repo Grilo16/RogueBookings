@@ -1,91 +1,82 @@
 import { createContext, useEffect, useReducer } from "react";
-import userRepo from "../repositories/userRepo"
-import GuestPageContainer from "./GuestPageContainer";
-import UserPageContainer from "./UserPageContainer";
+import styled from "styled-components";
+import HomePage from "../pages/UserHomePage";
+import LogInCreateAccountPage from "../pages/LogInCreateAccountPage";
+import userRepo from "../repositories/userRepo";
+import reducer from "./MasterReducer";
+import masterState from "./MasterState";
 
-export const MasterContext = createContext(null)
-
-const reducer = (state, action) => {
-    switch(action.type){
-
-        case "LoadAllUsers": 
-            return {...state, AllUsers: [...action.users]}
-
-        case "LoadLoggedInUser":
-            return {...state, user: {...action.user}}
-
-        case "LoadMyBusinesses":
-            return {...state, myBusinesses:[...action.businesses] }
-
-        case "LoadMyMemberships":
-            return {...state, myMemberships:[...action.memberships] }
-
-        case "LoadMyStudyLessons":
-            return {...state, myStudyLessons: [...action.studyLessons]}
-
-        case "SelectNavTab": 
-            return {...state, selectedNavTab: action.selectedNavTab}
-
-        case "SetNavTabType": 
-            return {...state, selectedTabType: action.tabType }
-        
-        case "SetSelectedBusiness": 
-            return {...state, selectedBusiness: action.business}
-        
-        case "SetSelectedBusinessMembership": 
-            return {...state, selectedBusinessMembership: action.membershipId}
-
-
-        case "SetPageColor":
-            return {...state, pageColor: action.color}
-
-        default:
-            return state
-    }
-};
+export const MasterContext = createContext(null);
 
 const MasterContainer = () => {
 
-    const initialState = {
-        AllUsers : [],
-        selectedNavTab: 0,
-        selectedTabType: "dashboard", 
-        pageColor: "#4a499e",
-        selectedBusiness: {id: null, name: null, balance: null ,members:[], lessons:[], owners:[]},
-        selectedBusinessMembership : {id: null, business:{}, user:{}},
-        user: {
-            id: null,
-            firstName: null,
-            lastName: null,
-            email: null,
-            userLayout: {backgroundColor: "#ffffff"}
-            },
-        myBusinesses: [],
-        myMemberships: [], 
-        myStudyLessons: [], 
-     
-        }
+  const [state, dispatch] = useReducer(reducer, masterState);
 
-        
-        
-        const [state, dispatch] = useReducer(reducer, initialState)
-        
-        
-        useEffect(()=>{
-            userRepo.getAllUsers().then((users)=>{dispatch({type: "LoadAllUsers", users})})
-            
-        },[])
-        
 
-    return (
-        <MasterContext.Provider value={{state, dispatch}} >
-        {state.user.email
-        ?<UserPageContainer/>
-        :<GuestPageContainer/>
-        }
-        </MasterContext.Provider>
-    )
+  useEffect(() => {
+    userRepo.getAllUsers().then((users) => {
+      dispatch({ type: "LoadAllUsers", users });
+    });
+  }, []);
 
+
+
+  return (
+    <MasterContext.Provider value={{ state, dispatch }}>
+      {state.user.email ? <HomePage /> : <LogInCreateAccountPage />}
+    </MasterContext.Provider>
+  );
 };
+
+export const PageContainerDiv = styled.div`
+height: 100vh;
+width: 100vw;
+overflow hidden;
+`
+
+export const ViewportContainer = styled.div`
+position: relative;
+background-color: grey;
+display: flex;
+height: 100%;
+
+`
+export const ViewportDisplayBackground = styled.div`
+background-color: ${(props) => props.backgroundColor ? props.backgroundColor : "#4a499e"};
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100vw;
+transition: background-color 0.5s ease;
+
+`
+export const ViewportUserDisplay= styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+background-color: white;
+width : 98%;
+height: 93%;
+margin-bottom: 2.3vw;
+border-radius: 2vw;
+overflow-y: scroll;
+box-shadow: 0 0.2vw 0.3vw rgba(0, 0, 0, 0.2);
+
+`
+
+export const ViewportBusinessDisplay= styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+background-color: white;
+width : 98%;
+height: 93%;
+margin-bottom: 2.3vw;
+border-radius: 2vw;
+overflow-y: scroll;
+box-shadow: 0 0.2vw 0.3vw rgba(0, 0, 0, 0.2);
+`
 
 export default MasterContainer;

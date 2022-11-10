@@ -2,9 +2,9 @@ import { useContext, useState } from "react";
 import styled from "styled-components";
 import { animated, useSpring } from "@react-spring/web";
 import svgPaths from "./svgPaths";
-import { MasterContext } from "../../../containers/MasterContainer";
-import { UserContext } from "../../../containers/UserPageContainer";
+import { UserContext } from "../../../containers_old/UserPageContainer";
 import businessRepo from "../../../repositories/businessRepo";
+import { MasterContext } from "../../../containers/MasterContainer";
 
 const NavItemDiv = styled.div`
   position: relative;

@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ErrorPage from "./components/Pages/ErrorPage/ErrorPage";
+import UserDashboard from "./components/UserDashboard";
 import MasterContainer from "./containers/MasterContainer";
 
 
@@ -8,6 +9,7 @@ function App() {
     <Router>
     <Routes>
       <Route path="/" element={<MasterContainer/>}/>
+      <Route path="/new" element={<UserDashboard/>}/>
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   </Router>

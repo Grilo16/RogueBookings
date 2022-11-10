@@ -1,9 +1,9 @@
 /* Do not put Globals anywhere but here please and thank you <3 */
 
-body {
+
+body , html {
   margin: 0;
   font-family: 'Jua', sans-serif;
-  font-size: 125%;
 }
 
 code {

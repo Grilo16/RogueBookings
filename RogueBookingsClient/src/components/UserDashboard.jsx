@@ -1,11 +1,49 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
-import { MasterContext } from "../containers/MasterContainer";
+import { MasterContext } from "../containers_old/MasterContainer";
 import TableComponent from "./BusinessPages/HelperComponents/TableComponent";
 import BusinessSummaryPage from "./BusinessSummaryPage";
 import BusinessTile from "./BusinessTile";
+import CalendarComponent from "../components_refactored/calendarComponents/CalendarComponent"
+import MonthComponent from "./CalendarComponents/MonthComponent";
 import CreateBusinessForm from "./Forms/CreateBusinessForm";
 import UserBusinesses from "./UserBusinesses";
+
+
+
+function UserDashboard() {
+
+
+  const {state, dispatch} = useContext(MasterContext)
+
+
+  const userDetails = {
+      Name : state.user.firstName + " " + state.user.lastName,
+      Email: state.user.email, 
+      Password: "⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
+  }
+
+
+  return ( 
+
+    <ContentDiv className="scroll-within">
+
+      <PageTitle>Welcome, {state.user.firstName}!</PageTitle>
+
+      <TableContainerDiv>  
+      <TableHeader>My details </TableHeader>
+      <TableComponent tdPaddingLeft={"1vw"} tdPaddingRight={"10vw"} ma tableData={userDetails} tdTxtAlign={"right"} col2Align={"left"} tableWidth={"32vw"}/>
+      </TableContainerDiv>
+
+      <CalendarComponent/>
+
+
+      {/* <UserBusinesses/> */}
+    
+    </ContentDiv>
+
+  );
+};
 
 
 
@@ -58,42 +96,33 @@ margin-top: 5vw;
 `
 
 
-function UserDashboard() {
-
-
-  const {state, dispatch} = useContext(MasterContext)
-
-
-  const userDetails = {
-      Name : state.user.firstName + " " + state.user.lastName,
-      Email: state.user.email, 
-      Password: "⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
-  }
-
-
-  return ( 
-
-    <ContentDiv className="scroll-within">
-      <PageTitle>Welcome, {state.user.firstName}!</PageTitle>
-
-      <TableContainerDiv>  
-      <TableHeader>My details </TableHeader>
-      <TableComponent tdPaddingLeft={"1vw"} tdPaddingRight={"10vw"} ma tableData={userDetails} tdTxtAlign={"right"} col2Align={"left"} tableWidth={"32vw"}/>
-      </TableContainerDiv>
-
-
-
-      {/* <UserBusinesses/> */}
-    </ContentDiv>
-
-    
-
-
-
-  );
-};
-
 export default UserDashboard;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {/* <h2></h2>
 <hr />
 <h3>Create a business</h3>

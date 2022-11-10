@@ -13,9 +13,13 @@ const {cState, cDispatch} = useContext(CalendarContext)
 
     return (
         <MonthCalendarDiv>
+
             <MonthSelector/>
+            
             <MonthLabels/>
+
             <GridComponent/>
+
         </MonthCalendarDiv>
     )
 };

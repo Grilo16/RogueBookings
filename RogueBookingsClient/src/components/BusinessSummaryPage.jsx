@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { MasterContext } from "../containers/MasterContainer";
+import { MasterContext } from "../containers_old/MasterContainer";
 import memberRepo from "../repositories/memberRepo";
 import CreateLessonForm from "./Forms/CreateLessonForm";
 import { ContentDiv } from "./UserDashboard";

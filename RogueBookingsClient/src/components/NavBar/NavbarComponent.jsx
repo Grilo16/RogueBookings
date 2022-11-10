@@ -7,15 +7,14 @@ import SpecialHoverButton from "./SpecialHoverButton";
 
 
 const NavDivContainer = styled.div`
-position: relative;
 background-color: #4a499e;
 margin: 0px;
 padding: 0px;
-height: 100vh;
+margin-top: -2.2vw;
+min-height: 100%;
+min-width: 14.55vw;
 overflow-y: scroll;
-min-width: 14.0vw;
 font-size: 1.2vw;
-
 `
 
 
@@ -41,7 +40,7 @@ const memberships = state.myMemberships.map((membership, index) => {
           
     })
 
-const navItemList = [{name: user.firstName, fill: "#4a499e", type: "dashboard"}, {name: "My bookings", fill: "#7775c9", type: "join-business"}, ...memberships]
+const navItemList = [{name: state.user ? state.user.firstName: "No user selected" , fill: "#4a499e", type: "dashboard"}, {name: "My bookings", fill: "#7775c9", type: "join-business"}, ...memberships]
 
 
 
