@@ -1,41 +1,33 @@
 import { useContext } from "react";
-import styled from "styled-components";
-import TableComponent from "../components/BusinessPages/HelperComponents/TableComponent";
-import NavbarComponent from "../components/NavBar/NavbarComponent";
-import DefaultBusinessView from "../components_refactored/basePages/DefaultBusinessView";
-import DefaultUserView from "../components_refactored/basePages/DefaultUserView";
-import HeaderComponent from "../components_refactored/headerComponent/HeaderComponent";
-import PageTitle from "../components_refactored/UtilityComponents/PageTitle";
-import { MasterContext } from "../containers/MasterContainer";
+import TableComponent from "../components/tableComponents/TableComponent";
+import PageTitle from "../components/defaultPageComponents/PageTitle";
+import { ContentDiv, MasterContext } from "../containers/MasterContainer";
 
-const UserHomePage = ()=>{
+const UserHomePage = () => {
+  const { state, dispatch } = useContext(MasterContext);
 
+  const userDetails = {
+    Name: state.user.firstName + " " + state.user.lastName,
+    Email: state.user.email,
+    Password: "⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤",
+  };
 
-    const {state, dispatch} = useContext(MasterContext)
-    
-    const userDetails = {
-        Name : state.user.firstName + " " + state.user.lastName,
-        Email: state.user.email, 
-        Password: "⬤⬤⬤⬤⬤⬤⬤⬤⬤⬤"
-    }
-  
-    const pageTitle = "Welcome," + " " + state.user.firstName + "!"
+  const pageTitle = "Welcome," + " " + state.user.firstName + "!";
 
-    return (
-        <DefaultUserView>
+  return (
+    <ContentDiv>
+      <PageTitle title={pageTitle} />
 
-<StyledDiv>
-        <PageTitle title={pageTitle}/>
-
-        <TableComponent  tdPaddingLeft={"1vw"} tdPaddingRight={"10vw"} tableData={userDetails} tdTxtAlign={"right"} col2Align={"left"} tableWidth={"32vw"}/>
-</StyledDiv>
-        </DefaultUserView>
-
-    )
+      <TableComponent
+        tdPaddingLeft={"1vw"}
+        tdPaddingRight={"10vw"}
+        tableData={userDetails}
+        tdTxtAlign={"right"}
+        col2Align={"left"}
+        tableWidth={"32vw"}
+      />
+    </ContentDiv>
+  );
 };
 
-
-const StyledDiv = styled.div`
-margin-bottom: 30vw
-`
 export default UserHomePage;

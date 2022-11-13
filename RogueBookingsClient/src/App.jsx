@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import BusinessPage from "./components/BusinessPages/BusinessPage";
-import ErrorPage from "./components/Pages/ErrorPage/ErrorPage";
-import UserDashboard from "./components/UserDashboard";
 import MasterContainer from "./containers/MasterContainer";
+import ErrorPage from "./pages/ErrorPage";
 import UserHomePage from "./pages/UserHomePage";
 
 
@@ -12,7 +10,6 @@ function App() {
     <Routes>
       <Route path="/" element={<MasterContainer/>}/>
       <Route path="/home" element={<UserHomePage/>}/>
-      <Route path="/new" element={<UserDashboard/>}/>
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   </Router>

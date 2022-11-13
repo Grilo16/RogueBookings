@@ -1,16 +1,15 @@
 import { createContext, useEffect, useReducer } from "react";
 import styled from "styled-components";
 import UserHomePage from "../pages/UserHomePage";
-import LogInCreateAccountPage from "../pages/LogInCreateAccountPage";
+import LogInCreateAccountPage from "../pages/guestPages/LogInCreateAccountPage";
 import userRepo from "../repositories/userRepo";
 import reducer from "./MasterReducer";
 import masterState from "./MasterState";
-import DefaultPage from "../components_refactored/basePages/DefaultPage";
-import BusinessDisplayPage from "../pages/businessPages/BusinessDisplayPage";
-import CreateBusinessPage from "../pages/businessPages/CreateBusinessPage";
-import BusinessBrowser from "../components/BusinessBrowser";
-import JoinBusinessPage from "../pages/businessPages/JoinBusinessPage";
-import ErrorPage from "../components/Pages/ErrorPage/ErrorPage";
+import DefaultPage from "../components/defaultPageComponents/DefaultPage";
+import BusinessRoutingPage from "../pages/businessPages/BusinessRoutingPage";
+import CreateBusinessPage from "../pages/businessPages/SubPages/createJoin/CreateBusinessPage";
+import JoinBusinessPage from "../pages/businessPages/SubPages/createJoin/JoinBusinessPage";
+import ErrorPage from "../pages/ErrorPage";
 
 export const MasterContext = createContext(null);
 
@@ -26,22 +25,25 @@ const MasterContainer = () => {
     <MasterContext.Provider value={{ state, dispatch }}>
       {!state.user.email 
         ? <LogInCreateAccountPage />
-        : <DefaultPage > 
-          {
-            state.selectedTabType ==="dashboard"  
-            ? <UserHomePage/>
-            :  state.selectedTabType === "business" 
-            ? <BusinessDisplayPage/>
-            :  state.selectedTabType === "create-business" 
-            ? <CreateBusinessPage/>
-            : state.selectedTabType === "join-business"
-            ? <JoinBusinessPage/>
-            : <ErrorPage/>
-          }
+        : <DefaultPage>
+        {
+          state.selectedTabType ==="dashboard"  
+         ? <UserHomePage/>
+         :  state.selectedTabType === "business" 
+         ? <BusinessRoutingPage/>
+         :  state.selectedTabType === "create-business" 
+         ? <CreateBusinessPage/>
+         : state.selectedTabType === "join-business"
+         ? <JoinBusinessPage/>
+         : <ErrorPage/>
+        }
+
+          
+        </DefaultPage>
 
 
          
-         </DefaultPage>
+        //  </DefaultPage>
       }
       
 {/* 
@@ -67,63 +69,13 @@ const MasterContainer = () => {
   );
 };
 
-export const PageContainerDiv = styled.div`
-height: 100vh;
-width: 100vw;
-overflow hidden;
-`
-
-export const ViewportContainer = styled.div`
-position: relative;
-background-color: grey;
-display: flex;
-height: 100%;
-
-`
-export const ViewportDisplayBackground = styled.div`
-background-color: ${(props) => props.backgroundColor ? props.backgroundColor : "#4a499e"};
-display: flex;
-justify-content: center;
-align-items: center;
-width: 100vw;
-transition: background-color 0.5s ease;
-`
-export const ViewportUserDisplay= styled.div`
+export const ContentDiv = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
-background-color: white;
-width : 98%;
-height: 93%;
-margin-bottom: 2.3vw;
-border-radius: 2vw;
-overflow-y: scroll;
-box-shadow: 0 0.2vw 0.3vw rgba(0, 0, 0, 0.2);
+margin-top: ${(props)=>props.marginTop? props.marginTop : "0%"};
 
-`
-
-export const ViewportBusinessDisplay= styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-background-color: white;
-width : 83.61%;
-height: 99%;
-
-margin-bottom: 2.3vw;
-border-radius: 2vw;
-overflow-y: scroll;
-box-shadow: 0 0.2vw 0.3vw rgba(0, 0, 0, 0.2);
-`
-
-export const BusinessFlexContainer = styled.div`
-display: flex;
-width: 100%;
-height: 93%;
-justify-content: space-evenly;
-align-items: center;
 `
 
 export default MasterContainer;
