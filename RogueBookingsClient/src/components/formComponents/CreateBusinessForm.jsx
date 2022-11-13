@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import ButtonComponent from "../../../../components/formComponents/ButtonComponent";
-import InputFieldComponent from "../../../../components/formComponents/InputFieldComponent";
-import { MasterContext } from "../../../../containers/MasterContainer";
-import businessRepo from "../../../../repositories/businessRepo";
+import ButtonComponent from "./ButtonComponent";
+import InputFieldComponent from "./InputFieldComponent";
+import { MasterContext } from "../../containers/MasterContainer";
+import businessRepo from "../../repositories/businessRepo";
 
 const CreateBusinessForm = () => {
     

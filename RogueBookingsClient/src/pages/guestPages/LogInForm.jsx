@@ -28,13 +28,13 @@ const LogInForm = ({setShowPage}) => {
            }
             dispatch({type: "LoadLoggedInUser", user})
             localStorageRepo.logIn(user)
-            businessRepo.getAllBusinessesByUserId(user.id).then((businesses) =>{
-                dispatch({type: "LoadMyBusinesses", businesses})
-                memberRepo.getAllMembershipsByUserId(user.id).then((memberships)=>{
-                    dispatch({type: "LoadMyMemberships", memberships})
-                })
+            // businessRepo.getAllBusinessesByUserId(user.id).then((businesses) =>{
+            //     dispatch({type: "LoadMyBusinesses", businesses})
+            //     memberRepo.getAllMembershipsByUserId(user.id).then((memberships)=>{
+            //         dispatch({type: "LoadMyMemberships", memberships})
+            //     })
                 
-                })
+            //     })
             })
     };
 

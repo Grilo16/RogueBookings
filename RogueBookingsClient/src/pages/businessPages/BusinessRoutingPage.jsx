@@ -4,11 +4,11 @@ import ErrorPage from "../ErrorPage";
 import DefaultPage from "../../components/defaultPageComponents/DefaultPage";
 import MiniMenu from "../../components/defaultPageComponents/miniMenuComponents/MiniMenu";
 import { MasterContext } from "../../containers/MasterContainer";
-import RevenuePage from "./SubPages/miniMenu/RevenuePage";
-import SchedulePage from "./SubPages/miniMenu/SchedulePage";
-import SettingsPage from "./SubPages/miniMenu/SettingsPage";
-import StudentsPage from "./SubPages/miniMenu/StudentsPage";
-import TeachersPage from "./SubPages/miniMenu/TeachersPage";
+import RevenuePage from "./SubPages/miniMenuTabs/RevenuePage";
+import SchedulePage from "./SubPages/miniMenuTabs/SchedulePage";
+import SettingsPage from "./SubPages/miniMenuTabs/SettingsPage";
+import StudentsPage from "./SubPages/miniMenuTabs/StudentsPage";
+import TeachersPage from "./SubPages/miniMenuTabs/TeachersPage";
 
 const BusinessRoutingPage = () => {
 

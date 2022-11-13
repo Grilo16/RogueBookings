@@ -6,6 +6,66 @@ import businessRepo from "../../../repositories/businessRepo";
 import paths from "./svgPaths";
 
 
+
+const NavbarItem = ({ item, id }) => {
+  
+  const { state, dispatch } = useContext(MasterContext);
+
+  const handleClick = () => {
+    dispatch({ type: "SelectNavTab", selectedNavTab: id });
+    dispatch({ type: "SetPageColor", color: item.fill });
+    dispatch({ type: "SetNavTabType", tabType: item.type });
+    dispatch({ type: "SetMemberId", memberId: item.memberId });
+    if (item.type === "business_owner" || item.type === "business_member") {
+      businessRepo.getBusinessByBusinessId(item.businessId).then((business) => {
+        dispatch({ type: "SetSelectedBusiness", business });
+        dispatch({ type: "SetSelectedBusinessMembership", business });
+      });
+    }
+  };
+
+  const animatedProps = useSpring({
+    d:
+    state.selectedNavTab === id
+    ? paths.openTab()
+    : state.selectedNavTab - 1 === id
+    ? paths.specialClosedTab()
+    : paths.normalClosedTab(),
+  });
+  
+  return (
+
+<NavItemDiv  >
+      
+      
+        <NavContentContainer  onClick={handleClick}  > 
+
+              <NavItemImg 
+                src="https://via.placeholder.com/69"
+                alt=""
+                />
+
+              <NavH4 className="scroll-within"
+              >
+                {item.name} 
+              </NavH4>
+                {
+                item.type === "business_owner"
+                ?<NavLabel>Owner</NavLabel>
+                :item.type === "business_member"
+                ?<NavLabel>Member</NavLabel>
+                :null
+              }
+          </NavContentContainer>
+      
+        <NavDivBackground viewBox="0 0 306 231">
+          <animated.path d={animatedProps.d} fill={item.fill} />
+        </NavDivBackground>
+    </NavItemDiv>
+  );
+};
+
+
 const NavItemDiv = styled.div`
   position: relative;
   top: 2.1vw;
@@ -21,8 +81,9 @@ z-index: 0;
 
 `
 const NavContentContainer = styled.div`
-display: flex;
 position: relative;
+display: grid;
+grid-template-columns: 1fr 1fr;
 padding-top: 1vw;
 padding-left: 2vw;
 height: 4.4vw;
@@ -49,55 +110,11 @@ height: 4vw;
 
 `;
 
-const NavbarItem = ({ item, id }) => {
-  
-  const { state, dispatch } = useContext(MasterContext);
-
-  const handleClick = () => {
-    dispatch({ type: "SelectNavTab", selectedNavTab: id });
-    dispatch({ type: "SetPageColor", color: item.fill });
-    dispatch({ type: "SetNavTabType", tabType: item.type });
-    dispatch({ type: "SetMemberId", memberId: item.memberId });
-    if (item.type === "business") {
-      businessRepo.getBusinessByBusinessId(item.businessId).then((business) => {
-        dispatch({ type: "SetSelectedBusiness", business });
-      });
-    }
-  };
-
-  const animatedProps = useSpring({
-    d:
-    state.selectedNavTab === id
-    ? paths.openTab()
-    : state.selectedNavTab - 1 === id
-    ? paths.specialClosedTab()
-    : paths.normalClosedTab(),
-  });
-  
-  console.log("does it get here?")
-  return (
-
-<NavItemDiv  >
-      
-      
-        <NavContentContainer  onClick={handleClick}  > 
-
-              <NavItemImg 
-                src="https://via.placeholder.com/69"
-                alt=""
-                />
-
-              <NavH4 className="scroll-within"
-              >
-                {item.name}
-              </NavH4>
-          </NavContentContainer>
-      
-        <NavDivBackground viewBox="0 0 306 231">
-          <animated.path d={animatedProps.d} fill={item.fill} />
-        </NavDivBackground>
-    </NavItemDiv>
-  );
-};
+const NavLabel = styled.p`
+color: grey;
+grid-column-start: 2;
+margin-top: -4.6vw;
+scale: 0.7;
+`
 
 export default NavbarItem;

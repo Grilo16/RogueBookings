@@ -1,4 +1,13 @@
+import businessRepo from "../repositories/businessRepo";
+
 const reducer = (state, action) => {
+
+  const deleteBusiness = (businessId, userId) => {
+    businessRepo.deleteBusinessById(businessId)
+    return businessRepo.getAllBusinessesByUserId(userId)
+  }
+
+
     let nextIndex;
     switch (action.type) {
       case "LoadAllUsers":
@@ -30,7 +39,7 @@ const reducer = (state, action) => {
         return { ...state, selectedBusiness: action.business };
   
       case "SetSelectedBusinessMembership":
-        return { ...state, selectedBusinessMembership: action.membershipId };
+        return { ...state, selectedBusinessMembership: action.membership };
   
       case "SetPageColor":
         return { ...state, pageColor: action.color };
@@ -62,6 +71,10 @@ const reducer = (state, action) => {
 
         case "SetMemberId":
             return {...state, memberId: action.memberId}
+
+
+        case "DeleteMyBusiness": 
+            return {...state,}
 
       default:
         return state;

@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import styled from "styled-components"
 import { MasterContext } from "../../../containers/MasterContainer";
+import businessRepo from "../../../repositories/businessRepo";
+import memberRepo from "../../../repositories/memberRepo";
 import NavbarItem from "./NavbarItem";
 import SpecialHoverButton from "./SpecialHoverButton";
 
@@ -18,13 +20,23 @@ font-size: 1.2vw;
 `
 
 
-const NavbarComponent = ({user}) => {
+const NavbarComponent = () => {
 
 const {state, dispatch} = useContext(MasterContext)
-
   
     
+useEffect(()=>{
+    businessRepo.getAllBusinessesByUserId(state.user.id).then((businesses) =>{
+        dispatch({type: "LoadMyBusinesses", businesses})
+            memberRepo.getAllMembershipsByUserId(state.user.id).then((memberships)=>{
+                dispatch({type: "LoadMyMemberships", memberships})
+                
+            })
+        })
     
+        
+    },[state.selectedTabType])
+
 
 
     const colors = ["#4a499e", "#7775c9", "#9594dc", "#b0afe8", "#cccbf8", ]
@@ -37,7 +49,7 @@ const {state, dispatch} = useContext(MasterContext)
         }else if (counter === 0){
             cycler = false
         }
-        const tabObject = {name: membership.business.name, fill: colors[counter], type: "business", businessId: membership.business.id, memberId: membership.id}
+        const tabObject = {name: membership.business.name, fill: colors[counter], type: "business_member", businessId: membership.business.id, memberId: membership.id}
         !cycler
         ? counter ++
         : counter --
@@ -45,12 +57,28 @@ const {state, dispatch} = useContext(MasterContext)
         
     })
 
+
+        
+        let ownerships = state.myBusinesses.map((ownership, index) => {
+            if (counter === 4){
+                cycler = true
+            }else if (counter === 0){
+                cycler = false
+            }
+            const tabObject = {name: ownership.name, fill: colors[counter], type: "business_owner", businessId: ownership.id, ownerId: ownership.owners.id}
+            !cycler
+            ? counter ++
+            : counter --
+            return tabObject
+        })
+            
+        
    
- 
+    
     
 
     
-    const navItemList = [{name: user ? user.firstName: "No user selected" , fill: "#4a499e", type: "dashboard"}, {name: "My bookings", fill: "#7775c9", type: "join-business"}, ...memberships]
+    const navItemList = [{name: state.user ? state.user.firstName: "No user selected" , fill: "#4a499e", type: "dashboard"}, {name: "My bookings", fill: "#7775c9", type: "join-business"}, ...ownerships ,...memberships]
     
 
 

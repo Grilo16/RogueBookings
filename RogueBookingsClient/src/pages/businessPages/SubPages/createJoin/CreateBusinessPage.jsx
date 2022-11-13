@@ -1,4 +1,4 @@
-import CreateBusinessForm from "./CreateBusinessForm";
+import CreateBusinessForm from "../../../../components/formComponents/CreateBusinessForm";
 import { ContentDiv } from "../../../../containers/MasterContainer";
 
 const CreateBusinessPage = () => {

@@ -29,7 +29,7 @@ const MasterContainer = () => {
         {
           state.selectedTabType ==="dashboard"  
          ? <UserHomePage/>
-         :  state.selectedTabType === "business" 
+         :  state.selectedTabType === "business_owner" || state.selectedTabType  === "business_member"
          ? <BusinessRoutingPage/>
          :  state.selectedTabType === "create-business" 
          ? <CreateBusinessPage/>

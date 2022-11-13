@@ -31,7 +31,8 @@ const DefaultPage = (props) => {
             state.selectedPage === "Students" ||
             state.selectedPage === "Revenue" ||
             state.selectedPage === "Settings") &&
-          state.selectedTabType === "business" ? (
+          (state.selectedTabType === "business_owner" ||
+           state.selectedTabType === "business_member")? (
             <MiniMenu />
           ) : null}
 
